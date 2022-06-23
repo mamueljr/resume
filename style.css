@@ -429,16 +429,16 @@ section {
     color: #c8a028;
 }
 
-.contact .socials .social .twitter:hover {
-    color: #57AEE7;
+.contact .socials .social .github:hover {
+    color: #261974;
 }
 
-.contact .socials .social .linkedin:hover {
-    color: #0177B5;
+.contact .socials .social .watsapp:hover {
+    color: #01b53d;
 }
 
-.contact .socials .social .codepen:hover {
-    color: #707070;
+.contact .socials .social .telegram:hover {
+    color: #1c67ca;
 }
 
 .contact .clear {
