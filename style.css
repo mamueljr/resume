@@ -78,9 +78,11 @@ section {
 
 .about-myself .content {
     text-align: center;
+    font-size: 1.5em;
 }
 
 .about-myself .content h2 {
+    /* text-align: center; */
     color: #3d3d3d;
     font-size: 3em;
     margin-bottom: 20px;
