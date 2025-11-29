@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Section } from './Section';
 import { CERTIFICATIONS, BADGE_IDS } from '../constants';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X } from 'lucide-react';
 
 const MotionDiv = motion.div as any;
 
 export const Certifications: React.FC = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   // Load Credly script dynamically
   useEffect(() => {
@@ -18,6 +20,18 @@ export const Certifications: React.FC = () => {
     }
   }, []);
 
+  const handleImageClick = (imageUrl: string) => {
+    setSelectedImage(imageUrl);
+  };
+
+  const closeLightbox = () => {
+    setSelectedImage(null);
+  };
+
+  const handleContextMenu = (e: React.MouseEvent) => {
+    e.preventDefault();
+  };
+
   return (
     <Section id="certifications" title="Certificaciones y Educación" dark>
       {/* Diplomas Grid */}
@@ -28,13 +42,20 @@ export const Certifications: React.FC = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="bg-slate-700 rounded-lg p-3 text-center hover:bg-slate-600 transition-colors"
+            className="bg-slate-700 rounded-lg p-3 text-center hover:bg-slate-600 transition-colors cursor-pointer"
+            onClick={() => handleImageClick(cert.imageUrl)}
           >
             <div className="h-32 mb-3 overflow-hidden rounded bg-slate-800 flex items-center justify-center">
-              <img src={cert.imageUrl} alt={cert.title} className="max-w-full max-h-full object-contain" />
+              <img 
+                src={cert.imageUrl} 
+                alt={cert.title} 
+                className="max-w-full max-h-full object-contain select-none" 
+                onContextMenu={handleContextMenu}
+                onDragStart={(e) => e.preventDefault()}
+              />
             </div>
-            <h4 className="text-sm font-bold text-white leading-tight mb-1">{cert.title}</h4>
-            <p className="text-xs text-gray-400">{cert.issuer}</p>
+            <h4 className="text-sm font-bold text-white leading-tight mb-1 select-none">{cert.title}</h4>
+            <p className="text-xs text-gray-400 select-none">{cert.issuer}</p>
           </MotionDiv>
         ))}
       </div>
@@ -53,6 +74,34 @@ export const Certifications: React.FC = () => {
           ></div>
         ))}
       </div>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 p-4"
+            onClick={closeLightbox}
+          >
+            <button
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 text-white hover:text-gray-300 focus:outline-none"
+            >
+              <X size={32} />
+            </button>
+            <img
+              src={selectedImage}
+              alt="Certificate Fullscreen"
+              className="max-w-full max-h-full object-contain select-none shadow-2xl"
+              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the image itself
+              onContextMenu={handleContextMenu}
+              onDragStart={(e) => e.preventDefault()}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </Section>
   );
 };
