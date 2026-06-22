@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Education } from './components/Education';
@@ -30,6 +31,7 @@ const App: React.FC = () => {
 
   return (
     <div className="antialiased overflow-x-hidden">
+      <Navbar />
       <Hero />
       <About />
       <Education />
