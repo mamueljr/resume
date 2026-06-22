@@ -99,6 +99,13 @@ export const SKILLS: Skill[] = [
 
 export const WEB_PORTFOLIO: Project[] = [
   {
+    title: "SciDifusión UACH",
+    description: "Plataforma de divulgación científica y académica para la FCCF UACH, con sistema de publicaciones, panel de administración y diseño interactivo.",
+    link: "https://investigacioneducativafccf.net/scidifusion/",
+    imageUrl: "assets/scidifusion.png",
+    tags: ["React", "Tailwind CSS", "PHP / MySQL", "Academic"],
+  },
+  {
     title: "Doctorado FCCF UACH",
     description: "Plataforma web para el programa de investigación educativa.",
     link: "https://investigacioneducativafccf.net/met_avanzada/v2/",
