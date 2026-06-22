@@ -6,6 +6,14 @@ export interface ExperienceItem {
   current?: boolean;
 }
 
+export interface EducationItem {
+  institution: string;
+  degree: string;
+  period: string;
+  description?: string;
+  current?: boolean;
+}
+
 export interface Skill {
   name: string;
   level: number; // 0 to 100

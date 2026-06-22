@@ -1,5 +1,6 @@
 import {
   ExperienceItem,
+  EducationItem,
   Skill,
   Project,
   Certification,
@@ -21,7 +22,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     role: "Profesor de Tiempo Parcial",
     period: "Junio 2024 - Actualidad",
     description:
-      "Impartiendo materias como: Ingeniería de Software, Bases de Datos, DevOps y Big Data. Miembro del Proyecto Maestro Insignia.",
+      "Docente universitario enfocado en guiar a los alumnos en el diseño e implementación de proyectos de software complejos utilizando arquitecturas en la nube, metodologías ágiles (Scrum), integración continua (CI/CD) y análisis de grandes volúmenes de datos (Big Data). Integrante activo del Proyecto Maestro Insignia.",
     current: true,
   },
   {
@@ -29,7 +30,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     role: "Profesor de Tecnologías de Información",
     period: "2012 - Actualidad",
     description:
-      "Profesor a medio tiempo en Tecnologías de Información y Cultura Digital.",
+      "Profesor de medio tiempo impartiendo materias de Tecnologías de Información y Cultura Digital, integrando metodologías de aprendizaje basado en proyectos y el uso de herramientas tecnológicas modernas para el desarrollo académico.",
     current: true,
   },
   {
@@ -37,64 +38,67 @@ export const EXPERIENCES: ExperienceItem[] = [
     role: "Jefe de Unidad de Sistemas",
     period: "2012 - 2024",
     description:
-      "Encargado del desarrollo de software a medida, soporte técnico integral, gestión de sistemas de videovigilancia e implementación de sistemas de control de acceso.",
+      "Lideré el diseño, desarrollo e implementación de sistemas web institucionales a la medida utilizando PHP, MySQL y arquitecturas modernas de red. Responsable del soporte técnico integral, administración de servidores locales, seguridad informática y sistemas de videovigilancia y control de accesos IP para toda la facultad.",
   },
   {
     company: "UNIDEP",
     role: "Profesor de Tecnologías de Información",
     period: "2021",
     description:
-      "Reestructuración del programa de estudios, incorporación de temas tecnológicos actuales y desarrollo de proyectos prácticos.",
+      "Reestructuración del programa de estudios, incorporación de temas tecnológicos actuales y desarrollo de proyectos prácticos orientados a bases de datos y desarrollo web.",
   },
   {
     company: "Grupo Cimarron Chihuahua",
     role: "Ingeniero de Soporte Técnico",
     period: "2018 - 2020",
     description:
-      "Planificación e instalación de infraestructuras de redes y videovigilancia. Soporte Microsip y desarrollo de herramientas de gestión.",
+      "Planificación e instalación de infraestructuras de redes cableadas/inalámbricas y videovigilancia corporativa. Soporte del ERP Microsip y desarrollo de herramientas de automatización y gestión interna.",
   },
   {
     company: "COBACH PLANTEL 8",
     role: "Maestro de Matemáticas",
     period: "2017",
-    description: "Maestro de Matemáticas 3 y Geometría Analítica.",
+    description: "Impartición de cátedra para Matemáticas 3 y Geometría Analítica.",
   },
   {
     company: "Centro Infantil Montessori",
     role: "Titular de Computación",
     period: "2008 - 2019",
     description:
-      "Diseño e implementación de currículo adaptativo para preescolar, primaria y secundaria.",
+      "Diseño e implementación de currículo tecnológico adaptativo enfocado en cultura digital, programación básica y robótica para preescolar, primaria y secundaria.",
   },
   {
     company: "XNET",
     role: "Ingeniero de Soporte Técnico",
     period: "2009 - 2012",
     description:
-      "Liderazgo en planificación e instalación de redes, migración de sitios web y desarrollo de software.",
+      "Liderazgo en planificación e instalación de redes, administración y migración de sitios web de clientes y desarrollo de software a medida.",
   },
 ];
 
 export const SKILLS: Skill[] = [
   // Development
-  { name: "HTML5", level: 95, category: "development" },
-  { name: "CSS", level: 85, category: "development" },
+  { name: "HTML5 / CSS3", level: 95, category: "development" },
   { name: "JavaScript / TypeScript", level: 80, category: "development" },
-  { name: "PHP", level: 65, category: "development" },
-  { name: "Node.js", level: 70, category: "development" },
-  { name: "Git", level: 75, category: "development" },
+  { name: "PHP", level: 75, category: "development" },
+  { name: "Node.js & React", level: 75, category: "development" },
+  { name: "Docker & CI/CD", level: 70, category: "development" },
+  { name: "Git & GitHub", level: 85, category: "development" },
 
   // Data
   { name: "Python", level: 85, category: "data" },
   { name: "R", level: 70, category: "data" },
-  { name: "Excel / Google Sheets", level: 95, category: "data" },
-  { name: "SQL", level: 85, category: "data" },
+  { name: "SQL (MySQL / PostgreSQL)", level: 85, category: "data" },
+  { name: "Pandas & NumPy", level: 85, category: "data" },
+  { name: "Scikit-Learn & TensorFlow", level: 75, category: "data" },
+  { name: "APIs de IA (Gemini / OpenAI)", level: 80, category: "data" },
+  { name: "Excel / Google Sheets Avanzado", level: 95, category: "data" },
 
   // Hardware/Support
-  { name: "Linux / Windows / Mac OS", level: 95, category: "hardware" },
+  { name: "Linux / Windows / macOS", level: 95, category: "hardware" },
   { name: "Cableado Estructurado", level: 85, category: "hardware" },
-  { name: "Videovigilancia", level: 80, category: "hardware" },
-  { name: "Telefonía IP", level: 65, category: "hardware" },
+  { name: "Videovigilancia IP", level: 80, category: "hardware" },
+  { name: "Telefonía IP (Asterisk)", level: 65, category: "hardware" },
 ];
 
 export const WEB_PORTFOLIO: Project[] = [
@@ -188,4 +192,20 @@ export const SOCIALS = [
     icon: Linkedin,
   },
   { name: "WhatsApp", url: "https://wa.me/526142541066", icon: Phone },
+];
+
+export const EDUCATIONS: EducationItem[] = [
+  {
+    institution: "Universidad Autónoma de Chihuahua",
+    degree: "Maestría en Ingeniería en Computación",
+    period: "2023 - En proceso de titulación",
+    description: "Enfoque y especialización en Machine Learning aplicado, ciencia de datos y redes neuronales.",
+    current: true,
+  },
+  {
+    institution: "Universidad Autónoma de Chihuahua",
+    degree: "Ingeniería en Computación",
+    period: "Graduado",
+    description: "Formación sólida en desarrollo de software, administración de bases de datos, redes de computadoras y sistemas embebidos.",
+  },
 ];
