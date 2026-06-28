@@ -1,0 +1,35 @@
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a; /* Slate 900 */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b; /* Slate 800 */
+  border-radius: 5px;
+  border: 2px solid #0f172a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6; /* Accent Blue */
+}
+
+/* Custom Text Selection */
+::selection {
+  background-color: rgba(59, 130, 246, 0.3); /* Blue accent overlay */
+  color: inherit;
+}
+
+/* Base styles / Smooth scrolling defaults */
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  overflow-x: hidden;
+}
