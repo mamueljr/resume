@@ -38,10 +38,15 @@ export const AIAssistant: React.FC = () => {
     // 2. Try localStorage
     const savedKey = (localStorage.getItem('user_gemini_api_key') || '').trim();
 
+    // 3. Default fallback API Key
+    const defaultKey = "AIzaSyBoLv0tZH2m8X0Ajw_ia0DQjAieXn-giDI";
+
     if (envKey) {
       setApiKey(envKey);
     } else if (savedKey) {
       setApiKey(savedKey);
+    } else if (defaultKey) {
+      setApiKey(defaultKey);
     } else {
       setShowKeyInput(true);
     }
