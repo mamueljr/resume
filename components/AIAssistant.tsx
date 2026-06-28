@@ -251,13 +251,6 @@ Instrucciones para responder:
               </div>
               <div className="flex items-center gap-1">
                 <button
-                  onClick={() => setShowKeyInput(!showKeyInput)}
-                  className={`p-2 rounded-lg hover:bg-slate-800 transition-colors ${apiKey && !showKeyInput ? 'text-gray-400' : 'text-accent bg-accent/10'}`}
-                  title="Configurar API Key"
-                >
-                  <Key size={16} />
-                </button>
-                <button
                   onClick={() => setIsOpen(false)}
                   className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-slate-800 transition-colors"
                 >
