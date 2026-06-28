@@ -91,7 +91,7 @@ export const Skills: React.FC = () => {
       <div className="mt-16 max-w-6xl mx-auto border-t border-slate-200 pt-10">
         <h3 className="text-2xl font-bold mb-6 text-slate-800 border-b pb-2">Herramientas & Entornos</h3>
         <div className="flex flex-wrap gap-3">
-          {['Visual Studio Code', 'Git/GitHub', 'Jira', 'Postman', 'Docker', 'Tableau', 'PowerBI', 'Paquetería Office'].map((tool, i) => (
+          {['Visual Studio Code', 'Jupyter Notebook', 'Google Colab', 'RStudio', 'Git / GitHub', 'Docker', 'MySQL Workbench', 'DBeaver', 'Postman', 'Tableau', 'PowerBI', 'Jira / Confluence', 'Linux CLI / Bash', 'Windows Server', 'Microsip ERP', 'Anaconda'].map((tool, i) => (
              <span key={i} className="px-4 py-2 bg-slate-50 text-slate-700 rounded-lg font-medium border border-slate-200 hover:border-accent hover:text-accent transition-all duration-300 cursor-default shadow-sm">
                {tool}
              </span>
