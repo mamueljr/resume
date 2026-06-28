@@ -123,22 +123,6 @@ export const WEB_PORTFOLIO: Project[] = [
     imageUrl: "assets/esiscom.png",
     tags: ["Services", "Landing Page"],
   },
-  {
-    title: "Calculadora de Calificación",
-    description:
-      "Herramienta para estudiantes de la FCCF para proyectar calificaciones.",
-    link: "https://mamueljr.github.io/que-necesito-para-pasar/",
-    imageUrl: "assets/calificacion.png",
-    tags: ["Tool", "Utility", "Education"],
-  },
-  {
-    title: "Calculadora Promedio UACH",
-    description:
-      "Aplicación para el cálculo de promedio ponderado universitario.",
-    link: "https://mamueljr.github.io/calcula-promedio-uach/",
-    imageUrl: "assets/promedio.png",
-    tags: ["Tool", "Utility", "React"],
-  },
 ];
 
 export const CERTIFICATIONS: Certification[] = [
