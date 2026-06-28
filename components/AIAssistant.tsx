@@ -55,7 +55,7 @@ export const AIAssistant: React.FC = () => {
     setMessages([
       {
         sender: 'bot',
-        text: `¡Hola! Soy el asistente virtual del Ing. Adalberto Rojas. ✨\n\nPuedes preguntarme sobre su experiencia laboral, proyectos, habilidades técnicas o formación académica. ¿En qué te puedo ayudar hoy?`,
+        text: `¡Hola! Soy el asistente virtual del Ing. Emmanuel Rojas. ✨\n\nPuedes preguntarme sobre su experiencia laboral, proyectos, habilidades técnicas o formación académica. ¿En qué te puedo ayudar hoy?`,
         timestamp: new Date()
       }
     ]);
@@ -106,9 +106,9 @@ export const AIAssistant: React.FC = () => {
     const portfolioStr = WEB_PORTFOLIO.map(p => `- ${p.title}: ${p.description} (Link: ${p.link || 'N/A'}, Tags: ${p.tags.join(', ')})`).join('\n');
     const certsStr = CERTIFICATIONS.map(c => `- ${c.title} de ${c.issuer}`).join('\n');
 
-    return `Eres el asistente virtual interactivo del Ingeniero Adalberto Emmanuel Rojas. Tu objetivo es responder preguntas de reclutadores, alumnos y colegas sobre su trayectoria profesional basándote estrictamente en su currículum.
+    return `Eres el asistente virtual interactivo del Ingeniero Emmanuel Rojas (Adalberto Emmanuel Rojas). Tu objetivo es responder preguntas de reclutadores, alumnos y colegas sobre su trayectoria profesional basándote estrictamente en su currículum.
 
-Aquí está la información de Adalberto:
+Aquí está la información de Emmanuel:
 Nombre: ${PROFILE.name}
 Título: ${PROFILE.title}
 Acerca de: ${PROFILE.about}
@@ -130,10 +130,10 @@ ${certsStr}
 
 Instrucciones para responder:
 1. Sé profesional, servicial, conciso y amigable. Responde siempre en español.
-2. Basate únicamente en la información proporcionada. Si te preguntan algo que no está en el CV, responde amablemente que no tienes esa información y que pueden contactar a Adalberto directamente usando los enlaces de contacto en el pie de página.
+2. Basate únicamente en la información proporcionada. Si te preguntan algo que no está en el CV, responde amablemente que no tienes esa información y que pueden contactar a Emmanuel directamente usando los enlaces de contacto en el pie de página.
 3. No inventes experiencia, títulos, proyectos ni tecnologías que no estén explícitas.
 4. Mantén las respuestas cortas (máximo 2 o 3 párrafos cortos) para que quepan bien en el chat.
-5. Puedes sugerir formas de contactarlo si te preguntan cómo hablar con él (correo: mamueljr@gmail.com, WhatsApp: +52 614 254 1066, o LinkedIn).`;
+5. Sugiere formas de contactarlo proporcionando siempre los enlaces directos si te preguntan cómo hablar con él (correo: mamueljr@gmail.com, WhatsApp: +52 614 254 1066, o LinkedIn: https://www.linkedin.com/in/adalberto-emmanuel-rojas/).`;
   };
 
   const handleSendMessage = async (text: string) => {
@@ -243,7 +243,7 @@ Instrucciones para responder:
                 </div>
                 <div>
                   <h3 className="font-bold text-sm flex items-center gap-1.5">
-                    Asistente de Adalberto
+                    Asistente de Emmanuel
                     <Sparkles size={14} className="text-yellow-400 fill-yellow-400" />
                   </h3>
                   <p className="text-[11px] text-gray-400 font-light">En línea | Gemini 2.5 Flash</p>
