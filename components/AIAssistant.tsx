@@ -32,23 +32,11 @@ export const AIAssistant: React.FC = () => {
 
   // Load API Key
   useEffect(() => {
-    // 1. Try env variable
-    const envKey = (process.env.GEMINI_API_KEY || process.env.API_KEY || '').trim();
-    
-    // 2. Try localStorage
+    // Try localStorage for custom user key
     const savedKey = (localStorage.getItem('user_gemini_api_key') || '').trim();
 
-    // 3. Default fallback API Key
-    const defaultKey = "AIzaSyBoLv0tZH2m8X0Ajw_ia0DQjAieXn-giDI";
-
-    if (envKey) {
-      setApiKey(envKey);
-    } else if (savedKey) {
+    if (savedKey) {
       setApiKey(savedKey);
-    } else if (defaultKey) {
-      setApiKey(defaultKey);
-    } else {
-      setShowKeyInput(true);
     }
 
     // Add initial bot greeting
@@ -149,48 +137,48 @@ Instrucciones para responder:
     setInputValue('');
     setIsLoading(true);
 
-    if (!apiKey) {
-      setIsLoading(false);
-      setMessages(prev => [
-        ...prev,
-        {
-          sender: 'bot',
-          text: '⚠️ Por favor, introduce una API Key de Gemini válida en la configuración para poder responderte.',
-          timestamp: new Date()
-        }
-      ]);
-      setShowKeyInput(true);
-      return;
-    }
-
     try {
       const systemInstruction = getSystemInstruction();
-      
-      // Build conversation history format for Gemini API
-      // Since this is gemini-2.5-flash / gemini-1.5-flash, the contents contain the user message.
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
-        {
+      let response: Response;
+
+      if (apiKey) {
+        // Si el usuario proporcionó su propia API Key, llamamos directamente a Gemini
+        response = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              contents: [
+                {
+                  parts: [{ text: text }]
+                }
+              ],
+              systemInstruction: {
+                parts: [{ text: systemInstruction }]
+              },
+              generationConfig: {
+                temperature: 0.3,
+                maxOutputTokens: 500,
+              }
+            })
+          }
+        );
+      } else {
+        // Si no hay API Key de usuario, usamos la función Serverless (Proxy)
+        response = await fetch('/api/chat', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            contents: [
-              {
-                parts: [{ text: text }]
-              }
-            ],
-            systemInstruction: {
-              parts: [{ text: systemInstruction }]
-            },
-            generationConfig: {
-              temperature: 0.3,
-              maxOutputTokens: 500,
-            }
+            text,
+            systemInstruction
           })
-        }
-      );
+        });
+      }
 
       if (!response.ok) {
         throw new Error('API Request Failed');
@@ -214,7 +202,7 @@ Instrucciones para responder:
         ...prev,
         {
           sender: 'bot',
-          text: '❌ Hubo un error al conectar con Gemini. Por favor verifica que tu API Key sea correcta o que tengas conexión a internet.',
+          text: '❌ Hubo un error al conectar con Gemini. Por favor verifica tu conexión a internet o configura una API Key válida.',
           timestamp: new Date()
         }
       ]);
