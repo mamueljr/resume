@@ -263,7 +263,7 @@ Instrucciones para responder:
             <div className="flex-1 p-4 overflow-y-auto flex flex-col gap-4 text-sm text-slate-100">
               
               {/* API Key settings panel */}
-              {showKeyInput && (
+              {(showKeyInput || apiKeyError) && (
                 <div className="p-3 bg-slate-800/80 rounded-xl border border-slate-700/60 mb-2">
                   <div className="flex items-start gap-2.5 mb-2">
                     <AlertCircle size={18} className="text-accent shrink-0 mt-0.5" />
