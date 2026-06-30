@@ -161,7 +161,10 @@ Instrucciones para responder:
               },
               generationConfig: {
                 temperature: 0.3,
-                maxOutputTokens: 500,
+                maxOutputTokens: 1000,
+                thinkingConfig: {
+                  thinkingBudget: 0
+                }
               }
             })
           }
