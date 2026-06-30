@@ -169,10 +169,9 @@ Instrucciones para responder:
       } else {
         // En local busca /api/chat, en producción de GitHub Pages apunta a tu servidor backend en Vercel
         const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-        // TODO: Reemplaza 'https://tu-proyecto-en-vercel.vercel.app' con el dominio que te asigne Vercel
         const backendUrl = isLocal 
           ? '/api/chat' 
-          : 'https://tu-proyecto-en-vercel.vercel.app/api/chat';
+          : 'https://resume-ten-red-17.vercel.app/api/chat';
 
         response = await fetch(backendUrl, {
           method: 'POST',
