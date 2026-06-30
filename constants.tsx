@@ -123,6 +123,13 @@ export const WEB_PORTFOLIO: Project[] = [
     imageUrl: "assets/esiscom.png",
     tags: ["Services", "Landing Page"],
   },
+  {
+    title: "App de Clima",
+    description: "Aplicación móvil y web del clima básica, sencilla de entender, ideal para consulta meteorológica en tiempo real.",
+    link: "https://mamueljr.github.io/App_Clima/",
+    imageUrl: "assets/weather_app.jpg",
+    tags: ["JavaScript", "Weather API", "HTML5 / CSS3"],
+  },
 ];
 
 export const CERTIFICATIONS: Certification[] = [
