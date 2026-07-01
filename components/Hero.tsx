@@ -133,7 +133,7 @@ export const Hero: React.FC = () => {
               Conóceme
             </a>
             <a 
-              href="assets/CURRICULUM ER.pdf" 
+              href="assets/Curriculum_Adalberto_Rojas.pdf" 
               target="_blank"
               className="px-8 py-3 bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-semibold rounded-full transition-all flex items-center justify-center gap-2"
             >
