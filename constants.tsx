@@ -103,6 +103,27 @@ export const SKILLS: Skill[] = [
 
 export const WEB_PORTFOLIO: Project[] = [
   {
+    title: "PremierPredictor AI",
+    description: "Aplicación web interactiva que lleva a producción el modelo de Machine Learning de mi tesis de maestría. Predice resultados (Victoria/Empate/Derrota) de la Premier League analizando estadísticas rolling de FBref.",
+    link: "https://mamueljr.github.io/premier-predictor/",
+    imageUrl: "assets/premier_predictor.jpg",
+    tags: ["React", "TypeScript", "Machine Learning", "Data Science"],
+  },
+  {
+    title: "SportMetrics AI",
+    description: "Dashboard clínico de evaluación física e inferencia fisiológica para atletas. Calcula IMC, VO2Max y potencia anaeróbica generando recomendaciones automatizadas.",
+    link: "https://mamueljr.github.io/sport-metrics/",
+    imageUrl: "assets/sport_metrics.jpg",
+    tags: ["React", "TypeScript", "Sports Science", "Dashboard"],
+  },
+  {
+    title: "EduPlan CoPilot",
+    description: "Asistente inteligente de planeación didáctica y rúbricas estructuradas para docentes universitarios utilizando la API de Gemini y modelado estructurado JSON.",
+    link: "https://mamueljr.github.io/edu-plan-copilot/",
+    imageUrl: "assets/edu_plan_copilot.jpg",
+    tags: ["React", "TypeScript", "Generative AI", "Gemini API"],
+  },
+  {
     title: "SciDifusión UACH",
     description: "Plataforma de divulgación científica y académica para la FCCF UACH, con sistema de publicaciones, panel de administración y diseño interactivo.",
     link: "https://investigacioneducativafccf.net/scidifusion/",
