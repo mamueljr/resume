@@ -103,8 +103,8 @@ export const SKILLS: Skill[] = [
 
 export const WEB_PORTFOLIO: Project[] = [
   {
-    title: "PremierPredictor AI",
-    description: "Aplicación web interactiva que lleva a producción el modelo de Machine Learning de mi tesis de maestría. Predice resultados (Victoria/Empate/Derrota) de la Premier League analizando estadísticas rolling de FBref.",
+    title: "PitchPredictor AI (Tesis & World Cup)",
+    description: "Aplicación web interactiva que lleva a producción el modelo de mi tesis. Predice resultados (Victoria/Empate/Derrota) para la Premier League y la Copa del Mundo 2026 (con lógica de localía para co-anfitriones y sedes neutrales).",
     link: "https://mamueljr.github.io/premier-predictor/",
     imageUrl: "assets/premier_predictor.jpg",
     tags: ["React", "TypeScript", "Machine Learning", "Data Science"],
