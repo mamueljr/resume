@@ -60,8 +60,9 @@ export const Skills: React.FC = () => {
               initial={{ opacity: 0, scale: 0.9, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: -15 }}
+              whileHover={{ y: -4 }}
               transition={{ duration: 0.3 }}
-              className="p-4 bg-white border border-slate-200/80 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+              className="p-4 bg-white border border-slate-200/80 rounded-2xl shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="flex justify-between items-center mb-2">
                 <span className="font-semibold text-slate-800">{skill.name}</span>
@@ -71,7 +72,7 @@ export const Skills: React.FC = () => {
                       {getCategoryTitle(skill.category)}
                     </span>
                   )}
-                  <span className="text-sm font-bold text-accent">{skill.level}%</span>
+                  <span className="text-sm font-bold text-accent font-mono">{skill.level}%</span>
                 </div>
               </div>
               <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
@@ -89,7 +90,7 @@ export const Skills: React.FC = () => {
       
       {/* Tools Pills */}
       <div className="mt-16 max-w-6xl mx-auto border-t border-slate-200 pt-10">
-        <h3 className="text-2xl font-bold mb-6 text-slate-800 border-b pb-2">Herramientas & Entornos</h3>
+        <h3 className="text-2xl font-bold mb-6 text-slate-800 border-b pb-2 font-display">Herramientas & Entornos</h3>
         <div className="flex flex-wrap gap-3">
           {['Visual Studio Code', 'Jupyter Notebook', 'Google Colab', 'RStudio', 'Git / GitHub', 'Docker', 'MySQL Workbench', 'DBeaver', 'Postman', 'Tableau', 'PowerBI', 'Jira / Confluence', 'Linux CLI / Bash', 'Windows Server', 'Microsip ERP', 'Anaconda'].map((tool, i) => (
              <span key={i} className="px-4 py-2 bg-slate-50 text-slate-700 rounded-lg font-medium border border-slate-200 hover:border-accent hover:text-accent transition-all duration-300 cursor-default shadow-sm">

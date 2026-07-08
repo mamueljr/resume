@@ -41,11 +41,12 @@ export const Certifications: React.FC = () => {
             key={idx}
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
+            whileHover={{ y: -4 }}
             viewport={{ once: true }}
-            className="bg-slate-700 rounded-lg p-3 text-center hover:bg-slate-600 transition-colors cursor-pointer"
+            className="bg-secondary rounded-2xl p-3 text-center hover:bg-white/10 transition-colors cursor-pointer"
             onClick={() => handleImageClick(cert.imageUrl)}
           >
-            <div className="h-32 mb-3 overflow-hidden rounded bg-slate-800 flex items-center justify-center">
+            <div className="h-32 mb-3 overflow-hidden rounded-lg bg-primary flex items-center justify-center">
               <img 
                 src={cert.imageUrl} 
                 alt={cert.title} 
@@ -61,7 +62,7 @@ export const Certifications: React.FC = () => {
       </div>
 
       {/* Credly Badges */}
-      <h3 className="text-2xl font-bold text-center text-white mb-10">Credly Digital Badges</h3>
+      <h3 className="text-2xl font-bold text-center text-white mb-10 font-display">Credly Digital Badges</h3>
       <div className="flex flex-wrap justify-center gap-6">
         {BADGE_IDS.map((id, idx) => (
           <div 
@@ -82,7 +83,7 @@ export const Certifications: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 p-4"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black bg-opacity-90 p-4"
             onClick={closeLightbox}
           >
             <button

@@ -26,7 +26,7 @@ export const Section: React.FC<SectionProps> = ({ id, title, className = "", chi
             transition={{ duration: 0.6 }}
             className="mb-12 text-center"
           >
-            <h2 className={`text-3xl md:text-4xl font-bold uppercase tracking-wider ${dark ? 'text-white' : 'text-primary'}`}>
+            <h2 className={`text-3xl md:text-4xl font-bold uppercase tracking-wider font-display ${dark ? 'text-white' : 'text-primary'}`}>
               {title}
             </h2>
             <div className={`h-1 w-20 mx-auto mt-4 ${dark ? 'bg-accent' : 'bg-accent'}`}></div>

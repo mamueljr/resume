@@ -7,53 +7,67 @@ import { motion } from 'framer-motion';
 const MotionDiv = motion.div as any;
 
 export const About: React.FC = () => {
-  const cards = [
-    {
-      icon: Code2,
-      title: "Desarrollo de Software",
-      description: "Más de una década diseñando sistemas a medida, automatizaciones avanzadas y plataformas web robustas utilizando frameworks modernos.",
-    },
-    {
-      icon: Brain,
-      title: "Ciencia de Datos e IA",
-      description: "Especializado en análisis predictivo, modelos de Machine Learning y la integración práctica de APIs de Inteligencia Artificial.",
-    },
-    {
-      icon: Users,
-      title: "Docencia Universitaria",
-      description: "Profesor universitario en asignaturas críticas como Big Data, DevOps, Ingeniería de Software y Bases de Datos.",
-    },
-  ];
-
   return (
     <Section id="about">
       <div className="max-w-4xl mx-auto text-center mb-16">
-        <h3 className="text-2xl font-bold text-slate-800 mb-6">Perfil Profesional</h3>
+        <h3 className="text-2xl font-bold text-slate-800 mb-6 font-display">Perfil Profesional</h3>
         <p className="text-lg md:text-xl leading-relaxed text-slate-600">
           {PROFILE.about}
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {cards.map((card, idx) => {
-          const Icon = card.icon;
-          return (
-            <MotionDiv
-              key={idx}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.15, duration: 0.6 }}
-              className="bg-slate-50 p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-accent/30 transition-all duration-300 flex flex-col items-center text-center group"
-            >
-              <div className="p-4 bg-accent/10 rounded-full text-accent mb-5 group-hover:bg-accent group-hover:text-white transition-all duration-300">
-                <Icon size={32} />
-              </div>
-              <h4 className="text-xl font-bold text-slate-800 mb-3">{card.title}</h4>
-              <p className="text-slate-600 text-sm leading-relaxed">{card.description}</p>
-            </MotionDiv>
-          );
-        })}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {/* Same footprint for all three; the first pops through color, not size */}
+        <MotionDiv
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          whileHover={{ y: -6 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="bg-primary text-white p-7 rounded-2xl shadow-md"
+        >
+          <div className="p-3 bg-accent/20 rounded-full text-accent-soft w-fit mb-5">
+            <Code2 size={26} />
+          </div>
+          <h4 className="text-lg font-bold mb-2 font-display">Desarrollo de Software</h4>
+          <p className="text-slate-300 text-sm leading-relaxed">
+            Más de una década diseñando sistemas a medida, automatizaciones avanzadas y plataformas web robustas.
+          </p>
+        </MotionDiv>
+
+        <MotionDiv
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          whileHover={{ y: -6 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1, duration: 0.5 }}
+          className="bg-slate-50 p-7 rounded-2xl border border-slate-200 hover:border-accent/30 transition-colors duration-300"
+        >
+          <div className="p-3 bg-accent/10 rounded-full text-accent w-fit mb-5">
+            <Brain size={26} />
+          </div>
+          <h4 className="text-lg font-bold text-slate-800 mb-2">Ciencia de Datos e IA</h4>
+          <p className="text-slate-600 text-sm leading-relaxed">
+            Análisis predictivo, modelos de Machine Learning e integración práctica de APIs de Inteligencia Artificial.
+          </p>
+        </MotionDiv>
+
+        <MotionDiv
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          whileHover={{ y: -6 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          className="bg-slate-50 p-7 rounded-2xl border border-slate-200 hover:border-accent/30 transition-colors duration-300"
+        >
+          <div className="p-3 bg-accent/10 rounded-full text-accent w-fit mb-5">
+            <Users size={26} />
+          </div>
+          <h4 className="text-lg font-bold text-slate-800 mb-2">Docencia Universitaria</h4>
+          <p className="text-slate-600 text-sm leading-relaxed">
+            Profesor en asignaturas críticas como Big Data, DevOps, Ingeniería de Software y Bases de Datos.
+          </p>
+        </MotionDiv>
       </div>
     </Section>
   );

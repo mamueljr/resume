@@ -5,7 +5,7 @@ export const Contact: React.FC = () => {
   return (
     <footer className="bg-primary text-white py-16">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold mb-8">Contacto</h2>
+        <h2 className="text-3xl font-bold mb-8 font-display">Contacto</h2>
         
         <div className="flex justify-center gap-8 mb-12">
           {SOCIALS.map((social, idx) => {
@@ -16,7 +16,7 @@ export const Contact: React.FC = () => {
                 href={social.url} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="p-4 bg-slate-800 rounded-full hover:bg-accent hover:scale-110 transition-all duration-300 group"
+                className="p-4 bg-secondary rounded-full hover:bg-accent hover:scale-110 transition-all duration-300 group"
                 aria-label={social.name}
               >
                 <Icon size={24} className="text-gray-300 group-hover:text-white" />
@@ -25,7 +25,7 @@ export const Contact: React.FC = () => {
           })}
         </div>
         
-        <div className="border-t border-slate-800 pt-8">
+        <div className="border-t border-white/10 pt-8">
           <p className="text-gray-500 text-sm">
             &copy; {new Date().getFullYear()} ESISCOM. Todos los derechos reservados.
           </p>

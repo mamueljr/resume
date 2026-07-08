@@ -27,7 +27,7 @@ export const Portfolio: React.FC = () => {
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
             onClick={() => setSelectedProject(project)}
-            className="group bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col cursor-pointer border border-slate-200/50"
+            className="group bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex flex-col cursor-pointer border border-slate-200/50"
           >
             <div className="relative h-56 overflow-hidden bg-slate-900">
               <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/20 transition-colors z-10 flex items-center justify-center">
@@ -42,7 +42,7 @@ export const Portfolio: React.FC = () => {
               />
             </div>
             <div className="p-6 flex flex-col flex-1">
-              <h3 className="text-xl font-bold text-slate-800 group-hover:text-accent transition-colors mb-2">
+              <h3 className="text-xl font-bold text-slate-800 group-hover:text-accent transition-colors mb-2 font-display">
                 {project.title}
               </h3>
               <p className="text-slate-600 mb-6 text-sm leading-relaxed line-clamp-2">
@@ -50,7 +50,7 @@ export const Portfolio: React.FC = () => {
               </p>
               <div className="flex flex-wrap gap-2 mt-auto">
                 {project.tags.map((tag, tIdx) => (
-                  <span key={tIdx} className="text-xs font-semibold px-2 py-1 bg-blue-50 text-blue-600 rounded">
+                  <span key={tIdx} className="text-xs font-mono font-medium px-2 py-1 bg-teal-50 text-teal-700 rounded-md">
                     #{tag}
                   </span>
                 ))}
@@ -90,7 +90,7 @@ export const Portfolio: React.FC = () => {
               <div className="md:w-1/2 p-8 flex flex-col justify-between overflow-y-auto">
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-2xl font-bold text-slate-800">{selectedProject.title}</h3>
+                    <h3 className="text-2xl font-bold text-slate-800 font-display">{selectedProject.title}</h3>
                     <button
                       onClick={() => setSelectedProject(null)}
                       className="p-1.5 text-slate-400 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors"
@@ -106,7 +106,7 @@ export const Portfolio: React.FC = () => {
 
                   <div className="flex flex-wrap gap-2 mb-6">
                     {selectedProject.tags.map((tag, tIdx) => (
-                      <span key={tIdx} className="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-600 rounded">
+                      <span key={tIdx} className="text-xs font-mono font-medium px-2.5 py-1 bg-slate-100 text-slate-600 rounded-md">
                         #{tag}
                       </span>
                     ))}
@@ -119,7 +119,7 @@ export const Portfolio: React.FC = () => {
                       href={selectedProject.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 px-5 py-2.5 bg-accent hover:bg-blue-600 text-white text-sm font-semibold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-accent/20 transition-all text-center"
+                      className="flex-1 px-5 py-2.5 bg-accent hover:bg-teal-600 text-white text-sm font-semibold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-accent/20 transition-all text-center"
                     >
                       <Globe size={16} />
                       Visitar Sitio
