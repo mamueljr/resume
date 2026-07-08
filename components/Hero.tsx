@@ -57,33 +57,20 @@ export const Hero: React.FC = () => {
       <div className="grain-overlay fixed inset-0 z-0 pointer-events-none"></div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-10 items-center py-28 md:py-0">
-        {/* Portrait: modest size, animated gradient ring for a premium touch */}
+        {/* Portrait: modest size, static ring, no spin, just a calm entrance */}
         <MotionDiv
           initial={{ scale: 0.85, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="order-1 mx-auto md:mx-0"
         >
-          <MotionDiv
-            className="relative w-36 h-36 md:w-44 md:h-44 rounded-full p-[3px]"
-            style={{
-              background: "conic-gradient(from 0deg, var(--color-accent), transparent 40%, var(--color-accent-soft), transparent 80%, var(--color-accent))",
-            }}
-            animate={reduce ? undefined : { rotate: 360 }}
-            transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
-          >
-            <MotionDiv
-              className="w-full h-full rounded-full overflow-hidden bg-primary"
-              animate={reduce ? undefined : { y: [0, -6, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <img
-                src={PROFILE.photoUrl}
-                alt={PROFILE.name}
-                className="w-full h-full object-cover rounded-full border-2 border-primary"
-              />
-            </MotionDiv>
-          </MotionDiv>
+          <div className="relative w-36 h-36 md:w-44 md:h-44 rounded-full ring-2 ring-accent/50 shadow-[0_0_40px_rgba(20,184,166,0.25)] overflow-hidden">
+            <img
+              src={PROFILE.photoUrl}
+              alt={PROFILE.name}
+              className="w-full h-full object-cover"
+            />
+          </div>
         </MotionDiv>
 
         {/* Text column */}

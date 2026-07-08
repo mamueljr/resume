@@ -10,9 +10,9 @@ import { Github, Linkedin, Mail, Phone } from "lucide-react";
 
 export const PROFILE = {
   name: "Ing. Adalberto Emmanuel Rojas",
-  title: "Ingeniero en Computación & Data Specialist",
+  title: "Ingeniero en Sistemas & Data Specialist",
   about:
-    "Ingeniero en Computación con amplia experiencia en desarrollo de software e implementación de soluciones basadas en ciencia de datos e inteligencia artificial. Maestría en Ingeniería en Computación (en proceso de titulación), con enfoque en machine learning aplicado. Más de una década de experiencia como docente universitario, combinando la teoría con la práctica en proyectos reales de análisis de datos, automatización y soporte tecnológico.",
+    "Ingeniero en Sistemas con amplia experiencia en desarrollo de software e implementación de soluciones basadas en ciencia de datos e inteligencia artificial. Maestría en Ingeniería en Ciencias Computacionales (en proceso de titulación), con enfoque en machine learning aplicado. Más de una década de experiencia como docente universitario, combinando la teoría con la práctica en proyectos reales de análisis de datos, automatización y soporte tecnológico.",
   photoUrl: "assets/18875.jpg",
 };
 
@@ -188,14 +188,14 @@ export const SOCIALS = [
 export const EDUCATIONS: EducationItem[] = [
   {
     institution: "Universidad Autónoma de Chihuahua",
-    degree: "Maestría en Ingeniería en Computación",
+    degree: "Maestría en Ingeniería en Ciencias Computacionales",
     period: "2023 - En proceso de titulación",
     description: "Enfoque y especialización en Machine Learning aplicado, ciencia de datos y redes neuronales.",
     current: true,
   },
   {
     institution: "Universidad Autónoma de Chihuahua",
-    degree: "Ingeniería en Computación",
+    degree: "Ingeniería en Sistemas",
     period: "Graduado",
     description: "Formación sólida en desarrollo de software, administración de bases de datos, redes de computadoras y sistemas embebidos.",
   },
