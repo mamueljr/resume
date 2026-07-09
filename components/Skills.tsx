@@ -65,7 +65,7 @@ export const Skills: React.FC = () => {
               transition={{ duration: 0.3 }}
               className="p-4 bg-white border border-slate-200/80 rounded-2xl shadow-sm hover:shadow-md transition-shadow"
             >
-              <div className="flex justify-between items-center mb-2">
+              <div className="flex justify-between items-center mb-3">
                 <span className="font-semibold text-slate-800">{skill.name}</span>
                 <div className="flex items-center gap-2">
                   {activeTab === 'all' && (
@@ -73,16 +73,22 @@ export const Skills: React.FC = () => {
                       {getCategoryTitle(skill.category)}
                     </span>
                   )}
-                  <span className="text-sm font-bold text-accent font-mono">{skill.level}%</span>
+                  <span className="text-sm font-bold text-accent font-mono tabular-nums">{skill.level}%</span>
                 </div>
               </div>
-              <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
-                <MotionDiv
-                  initial={{ width: 0 }}
-                  animate={{ width: `${skill.level}%` }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                  className="bg-accent h-2.5 rounded-full"
-                />
+              {/* Segmented meter: 10 blocks, reads more technical than a progress bar */}
+              <div className="flex gap-1" role="img" aria-label={`Nivel: ${skill.level} de 100`}>
+                {Array.from({ length: 10 }).map((_, i) => (
+                  <MotionDiv
+                    key={i}
+                    initial={{ opacity: 0, scaleY: 0.3 }}
+                    animate={{ opacity: 1, scaleY: 1 }}
+                    transition={{ duration: 0.25, delay: i * 0.035 }}
+                    className={`h-2.5 flex-1 rounded-[3px] ${
+                      i < Math.round(skill.level / 10) ? 'bg-accent' : 'bg-slate-200'
+                    }`}
+                  />
+                ))}
               </div>
             </MotionDiv>
           ))}

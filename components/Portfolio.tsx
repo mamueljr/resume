@@ -19,45 +19,55 @@ export const Portfolio: React.FC = () => {
   return (
     <Section id="portfolio" kicker="Trabajo seleccionado" title="Portafolio Web">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-        {WEB_PORTFOLIO.map((project, index) => (
-          <MotionDiv
-            key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            onClick={() => setSelectedProject(project)}
-            className="group bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex flex-col cursor-pointer border border-slate-200/50"
-          >
-            <div className="relative h-56 overflow-hidden bg-slate-900">
-              <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/20 transition-colors z-10 flex items-center justify-center">
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/95 text-slate-800 px-4 py-2 rounded-full font-semibold text-sm flex items-center gap-1.5 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
-                  <Eye size={16} /> Ver detalles
-                </span>
-              </div>
-              <img 
-                src={project.imageUrl} 
-                alt={project.title} 
-                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <div className="p-6 flex flex-col flex-1">
-              <h3 className="text-xl font-bold text-slate-800 group-hover:text-accent transition-colors mb-2 font-display">
-                {project.title}
-              </h3>
-              <p className="text-slate-600 mb-6 text-sm leading-relaxed line-clamp-2">
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-2 mt-auto">
-                {project.tags.map((tag, tIdx) => (
-                  <span key={tIdx} className="text-xs font-mono font-medium px-2 py-1 bg-teal-50 text-teal-700 rounded-md">
-                    #{tag}
+        {WEB_PORTFOLIO.map((project, index) => {
+          const featured = index === 0;
+          return (
+            <MotionDiv
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              onClick={() => setSelectedProject(project)}
+              className={`group bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer border border-slate-200/50 flex flex-col ${
+                featured ? 'md:col-span-2 md:grid md:grid-cols-[3fr_2fr]' : ''
+              }`}
+            >
+              <div className={`relative overflow-hidden bg-slate-900 ${featured ? 'h-56 md:h-full md:min-h-[320px]' : 'h-56'}`}>
+                <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/20 transition-colors z-10 flex items-center justify-center">
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/95 text-slate-800 px-4 py-2 rounded-full font-semibold text-sm flex items-center gap-1.5 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                    <Eye size={16} /> Ver detalles
                   </span>
-                ))}
+                </div>
+                <img
+                  src={project.imageUrl}
+                  alt={project.title}
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                />
               </div>
-            </div>
-          </MotionDiv>
-        ))}
+              <div className={`p-6 flex flex-col flex-1 ${featured ? 'md:p-9 md:justify-center' : ''}`}>
+                {featured && (
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent mb-3">
+                    Proyecto destacado
+                  </span>
+                )}
+                <h3 className={`font-bold text-slate-800 group-hover:text-accent transition-colors mb-2 font-display ${featured ? 'text-2xl md:text-3xl' : 'text-xl'}`}>
+                  {project.title}
+                </h3>
+                <p className={`text-slate-600 mb-6 text-sm leading-relaxed ${featured ? '' : 'line-clamp-2'}`}>
+                  {project.description}
+                </p>
+                <div className={`flex flex-wrap gap-2 ${featured ? '' : 'mt-auto'}`}>
+                  {project.tags.map((tag, tIdx) => (
+                    <span key={tIdx} className="text-xs font-mono font-medium px-2 py-1 bg-teal-50 text-teal-700 rounded-md">
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </MotionDiv>
+          );
+        })}
       </div>
 
       {/* Project Details Modal */}

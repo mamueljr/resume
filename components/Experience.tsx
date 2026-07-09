@@ -18,10 +18,10 @@ export const Experience: React.FC = () => {
             whileHover={{ x: 4 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.05, duration: 0.5 }}
-            className="py-8 grid grid-cols-1 md:grid-cols-[3rem_1fr] gap-3 md:gap-8"
+            className="group py-8 md:px-5 md:-mx-5 rounded-2xl hover:bg-white/[0.03] transition-colors duration-300 grid grid-cols-1 md:grid-cols-[3rem_1fr] gap-3 md:gap-8"
           >
             <div className="flex md:flex-col items-center md:items-start gap-3">
-              <span className="font-mono text-sm text-accent">{String(index + 1).padStart(2, '0')}</span>
+              <span className="font-mono text-sm text-slate-500 group-hover:text-accent transition-colors">{String(index + 1).padStart(2, '0')}</span>
               {exp.current && (
                 <span className="text-[10px] font-mono uppercase tracking-wide text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-full">
                   Actual

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Code, Database, GraduationCap, Briefcase, Award, Home, User } from 'lucide-react';
+import { Menu, X, Code, Database, GraduationCap, Briefcase, Award, Home, User, Mail } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 
 const MotionNav = motion.nav as any;
@@ -23,6 +23,7 @@ export const Navbar: React.FC = () => {
     { name: 'Habilidades', href: '#skills', id: 'skills', icon: Code },
     { name: 'Portafolio', href: '#portfolio', id: 'portfolio', icon: Database },
     { name: 'Certificaciones', href: '#certifications', id: 'certifications', icon: Award },
+    { name: 'Contacto', href: '#contact', id: 'contact', icon: Mail },
   ];
 
   React.useEffect(() => {

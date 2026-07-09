@@ -9,7 +9,7 @@ const MotionDiv = motion.div as any;
 export const About: React.FC = () => {
   return (
     <Section id="about" kicker="Quién soy" title="Perfil Profesional">
-      <p className="text-lg md:text-xl leading-relaxed text-slate-600 max-w-2xl mb-14">
+      <p className="text-xl md:text-2xl font-light leading-relaxed text-slate-600 max-w-3xl mb-14 text-pretty">
         {PROFILE.about}
       </p>
 
