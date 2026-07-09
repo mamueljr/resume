@@ -1,15 +1,40 @@
-import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
-import { PROFILE } from '../constants';
+import React, { useEffect, useState } from 'react';
+import { motion, animate, useReducedMotion } from 'framer-motion';
 import { Download } from 'lucide-react';
+import { useLang, UIKey } from '../i18n';
 
 const MotionDiv = motion.div as any;
 
-const STATS = [
-  { value: '15+', label: 'Años en tecnología' },
-  { value: '03', label: 'Universidades' },
-  { value: '11', label: 'Certificaciones y badges' },
+const STATS: { value: number; suffix: string; pad: number; labelKey: UIKey }[] = [
+  { value: 15, suffix: '+', pad: 0, labelKey: 'statYears' },
+  { value: 3, suffix: '', pad: 2, labelKey: 'statUniversities' },
+  { value: 11, suffix: '', pad: 0, labelKey: 'statCerts' },
 ];
+
+const CountUp: React.FC<{ value: number; pad: number; suffix: string; reduce: boolean }> = ({ value, pad, suffix, reduce }) => {
+  const [display, setDisplay] = useState(reduce ? value : 0);
+
+  useEffect(() => {
+    if (reduce) {
+      setDisplay(value);
+      return;
+    }
+    const controls = animate(0, value, {
+      duration: 1.8,
+      delay: 0.5,
+      ease: [0.16, 1, 0.3, 1],
+      onUpdate: (v: number) => setDisplay(Math.round(v)),
+    });
+    return () => controls.stop();
+  }, [value, reduce]);
+
+  return (
+    <>
+      {String(display).padStart(pad, '0')}
+      {suffix}
+    </>
+  );
+};
 
 const STACK = [
   'Python', 'Machine Learning', 'React', 'TypeScript', 'SQL', 'Docker',
@@ -18,6 +43,7 @@ const STACK = [
 
 export const Hero: React.FC = () => {
   const reduce = useReducedMotion();
+  const { t, profile } = useLang();
 
   return (
     <div id="home" className="relative min-h-[100dvh] flex flex-col bg-primary overflow-hidden">
@@ -45,7 +71,7 @@ export const Hero: React.FC = () => {
           >
             <p className="font-mono text-xs md:text-sm text-accent-soft tracking-[0.18em] uppercase mb-6 flex items-center justify-center md:justify-start gap-3">
               <span className="hidden md:inline-block w-8 h-px bg-accent-soft/60" />
-              Ingeniería &middot; Datos &middot; Inteligencia Artificial
+              {t('heroEyebrow')}
             </p>
 
             <h1 className="font-display font-bold tracking-tight leading-[0.95] text-white mb-6">
@@ -55,7 +81,7 @@ export const Hero: React.FC = () => {
             </h1>
 
             <p className="text-lg md:text-xl text-slate-300 font-light max-w-md mx-auto md:mx-0 mb-10 text-pretty">
-              {PROFILE.title}. Docente universitario y constructor de soluciones con datos, código e IA.
+              {profile.title}. {t('heroSubtitle')}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
@@ -64,7 +90,7 @@ export const Hero: React.FC = () => {
                 href="#about"
                 className="px-8 py-3 bg-accent hover:bg-teal-600 text-white font-semibold rounded-full transition-all shadow-lg hover:shadow-accent/30"
               >
-                Conóceme
+                {t('heroCtaAbout')}
               </motion.a>
               <motion.a
                 whileTap={{ scale: 0.97 }}
@@ -73,7 +99,7 @@ export const Hero: React.FC = () => {
                 className="px-8 py-3 bg-transparent border-2 border-white/70 hover:bg-white hover:text-primary text-white font-semibold rounded-full transition-all flex items-center justify-center gap-2"
               >
                 <Download size={20} />
-                Descargar CV
+                {t('heroCtaCV')}
               </motion.a>
             </div>
           </MotionDiv>
@@ -88,16 +114,20 @@ export const Hero: React.FC = () => {
           >
             <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-secondary shadow-2xl shadow-black/50">
               <img
-                src={PROFILE.photoUrl}
-                alt={PROFILE.name}
+                src={profile.photoUrl}
+                alt={profile.name}
+                fetchPriority="high"
+                decoding="async"
+                width={304}
+                height={380}
                 className="w-full aspect-[4/5] object-cover"
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/95 via-primary/60 to-transparent p-4 pt-12">
                 <p className="font-mono text-[11px] text-accent-soft tracking-wider">
-                  MIC &middot; Ingeniero en Sistemas
+                  {t('heroCardCredential')}
                 </p>
                 <p className="font-mono text-[11px] text-slate-400 tracking-wider mt-1">
-                  Chihuahua, México
+                  {t('heroCardLocation')}
                 </p>
               </div>
             </div>
@@ -117,12 +147,12 @@ export const Hero: React.FC = () => {
       >
         <div className="max-w-6xl mx-auto px-4 py-6 grid grid-cols-3 gap-4">
           {STATS.map((stat) => (
-            <div key={stat.label} className="text-center md:text-left md:flex md:items-baseline md:gap-3">
+            <div key={stat.labelKey} className="text-center md:text-left md:flex md:items-baseline md:gap-3">
               <span className="block font-display font-bold text-2xl md:text-3xl text-white tabular-nums">
-                {stat.value}
+                <CountUp value={stat.value} pad={stat.pad} suffix={stat.suffix} reduce={!!reduce} />
               </span>
               <span className="block font-mono text-[10px] md:text-xs uppercase tracking-[0.15em] text-slate-500 mt-1 md:mt-0">
-                {stat.label}
+                {t(stat.labelKey)}
               </span>
             </div>
           ))}

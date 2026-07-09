@@ -1,16 +1,18 @@
 import React from 'react';
 import { Section } from './Section';
-import { PROFILE } from '../constants';
 import { Code2, Brain, Users } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLang } from '../i18n';
 
 const MotionDiv = motion.div as any;
 
 export const About: React.FC = () => {
+  const { t, profile } = useLang();
+
   return (
-    <Section id="about" kicker="Quién soy" title="Perfil Profesional">
+    <Section id="about" kicker={t('aboutKicker')} title={t('aboutTitle')}>
       <p className="text-xl md:text-2xl font-light leading-relaxed text-slate-600 max-w-3xl mb-14 text-pretty">
-        {PROFILE.about}
+        {profile.about}
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-6xl mx-auto">
@@ -27,10 +29,8 @@ export const About: React.FC = () => {
             <Code2 size={32} />
           </div>
           <div>
-            <h4 className="text-xl font-bold mb-2 font-display">Desarrollo de Software</h4>
-            <p className="text-slate-300 leading-relaxed max-w-xl">
-              Más de una década diseñando sistemas a medida, automatizaciones avanzadas y plataformas web robustas.
-            </p>
+            <h4 className="text-xl font-bold mb-2 font-display">{t('aboutCard1Title')}</h4>
+            <p className="text-slate-300 leading-relaxed max-w-xl">{t('aboutCard1Text')}</p>
           </div>
         </MotionDiv>
 
@@ -45,10 +45,8 @@ export const About: React.FC = () => {
           <div className="p-3 bg-accent/10 rounded-full text-accent w-fit mb-5">
             <Brain size={26} />
           </div>
-          <h4 className="text-lg font-bold text-slate-800 mb-2 font-display">Ciencia de Datos e IA</h4>
-          <p className="text-slate-600 text-sm leading-relaxed">
-            Análisis predictivo, modelos de Machine Learning e integración práctica de APIs de Inteligencia Artificial.
-          </p>
+          <h4 className="text-lg font-bold text-slate-800 mb-2 font-display">{t('aboutCard2Title')}</h4>
+          <p className="text-slate-600 text-sm leading-relaxed">{t('aboutCard2Text')}</p>
         </MotionDiv>
 
         <MotionDiv
@@ -62,10 +60,8 @@ export const About: React.FC = () => {
           <div className="p-3 bg-accent/10 rounded-full text-accent w-fit mb-5">
             <Users size={26} />
           </div>
-          <h4 className="text-lg font-bold text-slate-800 mb-2 font-display">Docencia Universitaria</h4>
-          <p className="text-slate-600 text-sm leading-relaxed">
-            Profesor en asignaturas críticas como Big Data, DevOps, Ingeniería de Software y Bases de Datos.
-          </p>
+          <h4 className="text-lg font-bold text-slate-800 mb-2 font-display">{t('aboutCard3Title')}</h4>
+          <p className="text-slate-600 text-sm leading-relaxed">{t('aboutCard3Text')}</p>
         </MotionDiv>
       </div>
     </Section>

@@ -1,16 +1,18 @@
 import React from 'react';
 import { Section } from './Section';
-import { EDUCATIONS } from '../constants';
 import { GraduationCap } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLang } from '../i18n';
 
 const MotionDiv = motion.div as any;
 
 export const Education: React.FC = () => {
+  const { t, educations } = useLang();
+
   return (
-    <Section id="education" kicker="Trayectoria académica" title="Formación Académica">
+    <Section id="education" kicker={t('educationKicker')} title={t('educationTitle')}>
       <div className="relative border-l-4 border-accent ml-4 md:ml-12 space-y-12">
-        {EDUCATIONS.map((edu, index) => (
+        {educations.map((edu, index) => (
           <MotionDiv 
             key={index}
             initial={{ opacity: 0, x: -50 }}

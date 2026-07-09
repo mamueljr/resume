@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { Section } from './Section';
-import { WEB_PORTFOLIO } from '../constants';
 import { Project } from '../types';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, X, Globe, Eye } from 'lucide-react';
+import { useLang } from '../i18n';
 
 const MotionDiv = motion.div as any;
 
 export const Portfolio: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const { t, portfolio } = useLang();
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Escape') {
@@ -17,9 +18,9 @@ export const Portfolio: React.FC = () => {
   };
 
   return (
-    <Section id="portfolio" kicker="Trabajo seleccionado" title="Portafolio Web">
+    <Section id="portfolio" kicker={t('portfolioKicker')} title={t('portfolioTitle')}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-        {WEB_PORTFOLIO.map((project, index) => {
+        {portfolio.map((project, index) => {
           const featured = index === 0;
           return (
             <MotionDiv
@@ -36,19 +37,21 @@ export const Portfolio: React.FC = () => {
               <div className={`relative overflow-hidden bg-slate-900 ${featured ? 'h-56 md:h-full md:min-h-[320px]' : 'h-56'}`}>
                 <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/20 transition-colors z-10 flex items-center justify-center">
                   <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/95 text-slate-800 px-4 py-2 rounded-full font-semibold text-sm flex items-center gap-1.5 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
-                    <Eye size={16} /> Ver detalles
+                    <Eye size={16} /> {t('portfolioView')}
                   </span>
                 </div>
                 <img
                   src={project.imageUrl}
                   alt={project.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className={`p-6 flex flex-col flex-1 ${featured ? 'md:p-9 md:justify-center' : ''}`}>
                 {featured && (
                   <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent mb-3">
-                    Proyecto destacado
+                    {t('portfolioFeatured')}
                   </span>
                 )}
                 <h3 className={`font-bold text-slate-800 group-hover:text-accent transition-colors mb-2 font-display ${featured ? 'text-2xl md:text-3xl' : 'text-xl'}`}>
@@ -133,7 +136,7 @@ export const Portfolio: React.FC = () => {
                       className="flex-1 px-5 py-2.5 bg-accent hover:bg-teal-600 text-white text-sm font-semibold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-accent/20 transition-all text-center"
                     >
                       <Globe size={16} />
-                      Visitar Sitio
+                      {t('portfolioVisit')}
                       <ExternalLink size={14} />
                     </motion.a>
                   )}
@@ -142,7 +145,7 @@ export const Portfolio: React.FC = () => {
                     onClick={() => setSelectedProject(null)}
                     className="flex-1 px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-semibold rounded-xl transition-colors text-center"
                   >
-                    Cerrar
+                    {t('portfolioClose')}
                   </motion.button>
                 </div>
               </div>

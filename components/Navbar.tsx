@@ -1,14 +1,36 @@
 import React, { useState } from 'react';
 import { Menu, X, Code, Database, GraduationCap, Briefcase, Award, Home, User, Mail } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
+import { useLang, Lang } from '../i18n';
 
 const MotionNav = motion.nav as any;
 const MotionDiv = motion.div as any;
+
+const LangToggle: React.FC<{ className?: string }> = ({ className = '' }) => {
+  const { lang, setLang } = useLang();
+  return (
+    <div className={`flex items-center gap-0.5 font-mono text-xs border border-white/15 rounded-full p-0.5 ${className}`}>
+      {(['es', 'en'] as Lang[]).map((code) => (
+        <button
+          key={code}
+          onClick={() => setLang(code)}
+          aria-pressed={lang === code}
+          className={`px-2.5 py-1 rounded-full uppercase tracking-wider transition-colors ${
+            lang === code ? 'bg-accent text-white' : 'text-gray-400 hover:text-white'
+          }`}
+        >
+          {code}
+        </button>
+      ))}
+    </div>
+  );
+};
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const { t } = useLang();
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -16,14 +38,14 @@ export const Navbar: React.FC = () => {
   });
 
   const navLinks = [
-    { name: 'Inicio', href: '#home', id: 'home', icon: Home },
-    { name: 'Perfil', href: '#about', id: 'about', icon: User },
-    { name: 'Educación', href: '#education', id: 'education', icon: GraduationCap },
-    { name: 'Experiencia', href: '#experience', id: 'experience', icon: Briefcase },
-    { name: 'Habilidades', href: '#skills', id: 'skills', icon: Code },
-    { name: 'Portafolio', href: '#portfolio', id: 'portfolio', icon: Database },
-    { name: 'Certificaciones', href: '#certifications', id: 'certifications', icon: Award },
-    { name: 'Contacto', href: '#contact', id: 'contact', icon: Mail },
+    { name: t('navHome'), href: '#home', id: 'home', icon: Home },
+    { name: t('navAbout'), href: '#about', id: 'about', icon: User },
+    { name: t('navEducation'), href: '#education', id: 'education', icon: GraduationCap },
+    { name: t('navExperience'), href: '#experience', id: 'experience', icon: Briefcase },
+    { name: t('navSkills'), href: '#skills', id: 'skills', icon: Code },
+    { name: t('navPortfolio'), href: '#portfolio', id: 'portfolio', icon: Database },
+    { name: t('navCertifications'), href: '#certifications', id: 'certifications', icon: Award },
+    { name: t('navContact'), href: '#contact', id: 'contact', icon: Mail },
   ];
 
   React.useEffect(() => {
@@ -82,16 +104,20 @@ export const Navbar: React.FC = () => {
                 </a>
               );
             })}
+            <LangToggle />
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-gray-300 hover:text-white focus:outline-none"
-            aria-label="Toggle Menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Mobile: language toggle + menu button */}
+          <div className="md:hidden flex items-center gap-2">
+            <LangToggle />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 text-gray-300 hover:text-white focus:outline-none"
+              aria-label="Toggle Menu"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </MotionNav>
 

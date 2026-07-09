@@ -1,16 +1,18 @@
 import React from 'react';
 import { Section } from './Section';
-import { EXPERIENCES } from '../constants';
 import { Briefcase } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLang } from '../i18n';
 
 const MotionDiv = motion.div as any;
 
 export const Experience: React.FC = () => {
+  const { t, experiences } = useLang();
+
   return (
-    <Section id="experience" kicker="Recorrido profesional" title="Experiencia Profesional" dark>
+    <Section id="experience" kicker={t('experienceKicker')} title={t('experienceTitle')} dark>
       <div className="max-w-4xl mx-auto divide-y divide-white/10">
-        {EXPERIENCES.map((exp, index) => (
+        {experiences.map((exp, index) => (
           <MotionDiv
             key={index}
             initial={{ opacity: 0, y: 20 }}
@@ -24,7 +26,7 @@ export const Experience: React.FC = () => {
               <span className="font-mono text-sm text-slate-500 group-hover:text-accent transition-colors">{String(index + 1).padStart(2, '0')}</span>
               {exp.current && (
                 <span className="text-[10px] font-mono uppercase tracking-wide text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-full">
-                  Actual
+                  {t('experienceCurrent')}
                 </span>
               )}
             </div>

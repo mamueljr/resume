@@ -36,3 +36,13 @@ Incorpora un **asistente de IA flotante** (`components/AIAssistant.tsx`) que cha
 **Otros**
 - TypeScript en modo estricto (`tsconfig.json`)
 - Estructura de datos centralizada en `constants.tsx` y tipos en `types.ts`
+- Bilingüe ES/EN (`i18n.tsx`): contexto de idioma con toggle en el navbar, persistido en `localStorage`. `constants.tsx` queda en español (el AIAssistant lo consume tal cual); los espejos en inglés viven en `i18n.tsx`
+- Imágenes en WebP (script `scripts/convert-webp.mjs` con sharp; los originales se conservan como respaldo)
+- SEO: JSON-LD schema.org Person, Open Graph con imagen dedicada (`public/assets/og-image.png`, 1200×630) y página 404 personalizada (`public/404.html`)
+
+## Pendiente de activación manual
+
+**Analytics (GoatCounter)**: `index.html` ya incluye el snippet apuntando a
+`https://mamueljr.goatcounter.com/count`. Para que empiece a contar visitas,
+registra el código `mamueljr` en https://www.goatcounter.com (gratuito, sin
+cookies). Mientras no exista la cuenta, el script es inofensivo y no afecta al sitio.

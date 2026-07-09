@@ -1,8 +1,11 @@
 import React from 'react';
 import { SOCIALS } from '../constants';
 import { ArrowUpRight } from 'lucide-react';
+import { useLang } from '../i18n';
 
 export const Contact: React.FC = () => {
+  const { t } = useLang();
+
   return (
     <footer id="contact" className="relative bg-primary text-white overflow-hidden">
       <div className="absolute -top-32 left-1/4 w-[480px] h-[480px] bg-accent/10 rounded-full blur-[140px] pointer-events-none z-0" />
@@ -10,11 +13,11 @@ export const Contact: React.FC = () => {
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 pt-24 md:pt-28 pb-10">
         <span className="block font-mono text-xs tracking-[0.2em] uppercase text-accent-soft mb-5">
-          ¿Un proyecto, una vacante, una colaboración?
+          {t('contactKicker')}
         </span>
 
         <h2 className="font-display font-bold tracking-tight leading-none text-[clamp(3rem,10vw,7rem)] mb-10 text-balance">
-          Hablemos<span className="text-accent">.</span>
+          {t('contactTitle')}<span className="text-accent">.</span>
         </h2>
 
         <a
@@ -52,7 +55,7 @@ export const Contact: React.FC = () => {
         </div>
 
         <div className="border-t border-white/10 mt-16 pt-6 flex flex-col md:flex-row md:items-center justify-between gap-2 font-mono text-xs text-slate-500">
-          <p>&copy; {new Date().getFullYear()} Emmanuel Rojas &middot; ESISCOM</p>
+          <p>&copy; {new Date().getFullYear()} {t('contactRights')}</p>
           <p>React &middot; TypeScript &middot; Tailwind &middot; Gemini AI</p>
         </div>
       </div>

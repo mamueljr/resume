@@ -2,34 +2,36 @@ import React, { useState } from 'react';
 import { Section } from './Section';
 import { SKILLS } from '../constants';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLang } from '../i18n';
 
 const MotionDiv = motion.div as any;
 
 export const Skills: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'all' | 'development' | 'data' | 'hardware'>('all');
+  const { t } = useLang();
 
   const tabs = [
-    { id: 'all', label: 'Todas' },
-    { id: 'development', label: 'Desarrollo de Software' },
-    { id: 'data', label: 'Ciencia de Datos & IA' },
-    { id: 'hardware', label: 'Infraestructura & Hardware' },
+    { id: 'all', label: t('skillsTabAll') },
+    { id: 'development', label: t('skillsTabDev') },
+    { id: 'data', label: t('skillsTabData') },
+    { id: 'hardware', label: t('skillsTabHardware') },
   ] as const;
 
-  const filteredSkills = activeTab === 'all' 
-    ? SKILLS 
+  const filteredSkills = activeTab === 'all'
+    ? SKILLS
     : SKILLS.filter(skill => skill.category === activeTab);
 
   const getCategoryTitle = (category: string) => {
     switch (category) {
-      case 'development': return 'Desarrollo de Software';
-      case 'data': return 'Ciencia de Datos & IA';
-      case 'hardware': return 'Infraestructura & Hardware';
+      case 'development': return t('skillsTabDev');
+      case 'data': return t('skillsTabData');
+      case 'hardware': return t('skillsTabHardware');
       default: return '';
     }
   };
 
   return (
-    <Section id="skills" kicker="Caja de herramientas" title="Habilidades Técnicas">
+    <Section id="skills" kicker={t('skillsKicker')} title={t('skillsTitle')}>
       {/* Tab Filter Buttons */}
       <div className="flex flex-wrap justify-center gap-2 mb-12">
         {tabs.map((tab) => (
@@ -77,7 +79,7 @@ export const Skills: React.FC = () => {
                 </div>
               </div>
               {/* Segmented meter: 10 blocks, reads more technical than a progress bar */}
-              <div className="flex gap-1" role="img" aria-label={`Nivel: ${skill.level} de 100`}>
+              <div className="flex gap-1" role="img" aria-label={`${t('skillsLevel')}: ${skill.level}/100`}>
                 {Array.from({ length: 10 }).map((_, i) => (
                   <MotionDiv
                     key={i}
@@ -97,7 +99,7 @@ export const Skills: React.FC = () => {
       
       {/* Tools Pills */}
       <div className="mt-16 max-w-6xl mx-auto border-t border-slate-200 pt-10">
-        <h3 className="text-2xl font-bold mb-6 text-slate-800 border-b pb-2 font-display">Herramientas & Entornos</h3>
+        <h3 className="text-2xl font-bold mb-6 text-slate-800 border-b pb-2 font-display">{t('skillsTools')}</h3>
         <div className="flex flex-wrap gap-3">
           {['Visual Studio Code', 'Jupyter Notebook', 'Google Colab', 'RStudio', 'Git / GitHub', 'Docker', 'MySQL Workbench', 'DBeaver', 'Postman', 'Tableau', 'PowerBI', 'Jira / Confluence', 'Linux CLI / Bash', 'Windows Server', 'Microsip ERP', 'Anaconda'].map((tool, i) => (
              <span key={i} className="px-4 py-2 bg-white text-slate-700 rounded-lg font-medium border border-slate-200/80 hover:border-accent hover:text-accent transition-all duration-300 cursor-default shadow-sm">

@@ -11,9 +11,11 @@ import { Contact } from './components/Contact';
 import { AIAssistant } from './components/AIAssistant';
 import { ArrowUp } from 'lucide-react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
+import { useLang } from './i18n';
 
 const App: React.FC = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const { t } = useLang();
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -30,7 +32,7 @@ const App: React.FC = () => {
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-accent focus:text-white focus:rounded-lg focus:shadow-lg"
       >
-        Saltar al contenido principal
+        {t('skipToContent')}
       </a>
 
       <Navbar />
@@ -57,7 +59,7 @@ const App: React.FC = () => {
         className={`fixed bottom-24 right-8 p-3 bg-accent text-white rounded-full shadow-lg z-50 transition-all duration-300 hover:bg-teal-600 ${
           showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
         }`}
-        aria-label="Volver arriba"
+        aria-label={t('backToTop')}
       >
         <ArrowUp size={24} />
       </motion.button>
