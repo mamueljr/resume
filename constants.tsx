@@ -196,7 +196,7 @@ export const EDUCATIONS: EducationItem[] = [
   {
     institution: "Universidad Autónoma de Chihuahua",
     degree: "Ingeniería en Sistemas",
-    period: "Graduado",
+    period: "Titulado",
     description: "Formación sólida en desarrollo de software, administración de bases de datos, redes de computadoras y sistemas embebidos.",
   },
 ];

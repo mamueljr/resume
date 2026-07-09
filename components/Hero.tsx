@@ -94,7 +94,7 @@ export const Hero: React.FC = () => {
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/95 via-primary/60 to-transparent p-4 pt-12">
                 <p className="font-mono text-[11px] text-accent-soft tracking-wider">
-                  MSc. en Cs. Computacionales — en proceso
+                  MIC &middot; Ingeniero en Sistemas
                 </p>
                 <p className="font-mono text-[11px] text-slate-400 tracking-wider mt-1">
                   Chihuahua, México
