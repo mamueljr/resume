@@ -8,7 +8,7 @@ const MotionDiv = motion.div as any;
 
 export const Experience: React.FC = () => {
   return (
-    <Section id="experience" title="Experiencia Profesional" dark>
+    <Section id="experience" kicker="Recorrido profesional" title="Experiencia Profesional" dark>
       <div className="max-w-4xl mx-auto divide-y divide-white/10">
         {EXPERIENCES.map((exp, index) => (
           <MotionDiv

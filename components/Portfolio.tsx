@@ -17,7 +17,7 @@ export const Portfolio: React.FC = () => {
   };
 
   return (
-    <Section id="portfolio" title="Portafolio Web" className="bg-slate-100">
+    <Section id="portfolio" kicker="Trabajo seleccionado" title="Portafolio Web">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
         {WEB_PORTFOLIO.map((project, index) => (
           <MotionDiv
@@ -115,7 +115,8 @@ export const Portfolio: React.FC = () => {
 
                 <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-slate-100">
                   {selectedProject.link && (
-                    <a
+                    <motion.a
+                      whileTap={{ scale: 0.97 }}
                       href={selectedProject.link}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -124,14 +125,15 @@ export const Portfolio: React.FC = () => {
                       <Globe size={16} />
                       Visitar Sitio
                       <ExternalLink size={14} />
-                    </a>
+                    </motion.a>
                   )}
-                  <button
+                  <motion.button
+                    whileTap={{ scale: 0.97 }}
                     onClick={() => setSelectedProject(null)}
                     className="flex-1 px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-semibold rounded-xl transition-colors text-center"
                   >
                     Cerrar
-                  </button>
+                  </motion.button>
                 </div>
               </div>
             </MotionDiv>

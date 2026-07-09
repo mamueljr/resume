@@ -8,7 +8,7 @@ const MotionDiv = motion.div as any;
 
 export const Education: React.FC = () => {
   return (
-    <Section id="education" title="Formación Académica" className="bg-slate-50">
+    <Section id="education" kicker="Trayectoria académica" title="Formación Académica">
       <div className="relative border-l-4 border-accent ml-4 md:ml-12 space-y-12">
         {EDUCATIONS.map((edu, index) => (
           <MotionDiv 
@@ -20,9 +20,9 @@ export const Education: React.FC = () => {
             className="relative pl-8 md:pl-12"
           >
             {/* Dot on timeline */}
-            <div className={`absolute -left-[14px] top-1 w-6 h-6 rounded-full border-4 border-slate-50 ${edu.current ? 'bg-green-500' : 'bg-accent'}`}></div>
+            <div className={`absolute -left-[14px] top-1 w-6 h-6 rounded-full border-4 border-paper ${edu.current ? 'bg-emerald-500' : 'bg-accent'}`}></div>
 
-            <MotionDiv whileHover={{ y: -4 }} className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-slate-200">
+            <MotionDiv whileHover={{ y: -4 }} className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg hover:shadow-accent/5 transition-shadow border border-slate-200/80">
               <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
                 <h3 className="text-xl font-bold text-slate-800 flex items-center gap-2 font-display">
                   <GraduationCap size={22} className="text-accent" />

@@ -29,21 +29,22 @@ export const Skills: React.FC = () => {
   };
 
   return (
-    <Section id="skills" title="Habilidades Técnicas">
+    <Section id="skills" kicker="Caja de herramientas" title="Habilidades Técnicas">
       {/* Tab Filter Buttons */}
       <div className="flex flex-wrap justify-center gap-2 mb-12">
         {tabs.map((tab) => (
-          <button
+          <motion.button
             key={tab.id}
+            whileTap={{ scale: 0.96 }}
             onClick={() => setActiveTab(tab.id)}
             className={`px-5 py-2.5 rounded-full font-medium text-sm transition-all duration-300 relative ${
               activeTab === tab.id
                 ? 'bg-accent text-white shadow-lg shadow-accent/25'
-                : 'bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900'
+                : 'bg-white hover:bg-slate-100 text-slate-600 hover:text-slate-900 border border-slate-200/80'
             }`}
           >
             {tab.label}
-          </button>
+          </motion.button>
         ))}
       </div>
 
@@ -93,7 +94,7 @@ export const Skills: React.FC = () => {
         <h3 className="text-2xl font-bold mb-6 text-slate-800 border-b pb-2 font-display">Herramientas & Entornos</h3>
         <div className="flex flex-wrap gap-3">
           {['Visual Studio Code', 'Jupyter Notebook', 'Google Colab', 'RStudio', 'Git / GitHub', 'Docker', 'MySQL Workbench', 'DBeaver', 'Postman', 'Tableau', 'PowerBI', 'Jira / Confluence', 'Linux CLI / Bash', 'Windows Server', 'Microsip ERP', 'Anaconda'].map((tool, i) => (
-             <span key={i} className="px-4 py-2 bg-slate-50 text-slate-700 rounded-lg font-medium border border-slate-200 hover:border-accent hover:text-accent transition-all duration-300 cursor-default shadow-sm">
+             <span key={i} className="px-4 py-2 bg-white text-slate-700 rounded-lg font-medium border border-slate-200/80 hover:border-accent hover:text-accent transition-all duration-300 cursor-default shadow-sm">
                {tool}
              </span>
           ))}

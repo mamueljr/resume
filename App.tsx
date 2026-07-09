@@ -10,7 +10,7 @@ import { Certifications } from './components/Certifications';
 import { Contact } from './components/Contact';
 import { AIAssistant } from './components/AIAssistant';
 import { ArrowUp } from 'lucide-react';
-import { useScroll, useMotionValueEvent } from 'framer-motion';
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 
 const App: React.FC = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -26,29 +26,41 @@ const App: React.FC = () => {
 
   return (
     <div className="antialiased overflow-x-hidden">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-accent focus:text-white focus:rounded-lg focus:shadow-lg"
+      >
+        Saltar al contenido principal
+      </a>
+
       <Navbar />
-      <Hero />
-      <About />
-      <Education />
-      <Experience />
-      <Skills />
-      <Portfolio />
-      <Certifications />
+
+      <main id="main-content">
+        <Hero />
+        <About />
+        <Education />
+        <Experience />
+        <Skills />
+        <Portfolio />
+        <Certifications />
+      </main>
+
       <Contact />
 
       {/* AIAssistant floating chatbot */}
       <AIAssistant />
 
       {/* Scroll to top button */}
-      <button
+      <motion.button
+        whileTap={{ scale: 0.94 }}
         onClick={scrollToTop}
         className={`fixed bottom-24 right-8 p-3 bg-accent text-white rounded-full shadow-lg z-50 transition-all duration-300 hover:bg-teal-600 ${
           showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
         }`}
-        aria-label="Scroll to top"
+        aria-label="Volver arriba"
       >
         <ArrowUp size={24} />
-      </button>
+      </motion.button>
     </div>
   );
 };

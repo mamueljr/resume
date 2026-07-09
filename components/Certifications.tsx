@@ -33,7 +33,7 @@ export const Certifications: React.FC = () => {
   };
 
   return (
-    <Section id="certifications" title="Certificaciones y Educación" dark>
+    <Section id="certifications" kicker="Validación y reconocimiento" title="Certificaciones y Educación" dark>
       {/* Diplomas Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-20">
         {CERTIFICATIONS.map((cert, idx) => (

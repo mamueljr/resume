@@ -228,19 +228,19 @@ Instrucciones para responder:
             initial={{ opacity: 0, scale: 0.8, y: 50 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 50 }}
-            className="w-[350px] sm:w-[400px] h-[550px] bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 rounded-2xl shadow-2xl flex flex-col overflow-hidden mb-4 mr-0 md:mr-2"
+            className="w-[350px] sm:w-[400px] h-[550px] bg-primary/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-black/40 flex flex-col overflow-hidden mb-4 mr-0 md:mr-2"
           >
             {/* Header */}
-            <div className="p-4 bg-gradient-to-r from-slate-900 to-slate-800 border-b border-slate-700/50 flex items-center justify-between text-white">
+            <div className="p-4 bg-gradient-to-r from-primary to-secondary border-b border-white/10 flex items-center justify-between text-white">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-accent/20 border border-accent flex items-center justify-center text-accent relative">
                   <Bot size={22} />
-                  <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-slate-950"></span>
+                  <span className="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 rounded-full border-2 border-primary"></span>
                 </div>
                 <div>
                   <h3 className="font-bold text-sm flex items-center gap-1.5">
                     Asistente de Emmanuel
-                    <Sparkles size={14} className="text-yellow-400 fill-yellow-400" />
+                    <Sparkles size={14} className="text-accent-soft fill-accent-soft" />
                   </h3>
                   <p className="text-[11px] text-gray-400 font-light">En línea | Gemini 2.5 Flash</p>
                 </div>
@@ -248,7 +248,7 @@ Instrucciones para responder:
               <div className="flex items-center gap-1">
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-slate-800 transition-colors"
+                  className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
                 >
                   <X size={18} />
                 </button>
@@ -260,7 +260,7 @@ Instrucciones para responder:
               
               {/* API Key settings panel */}
               {(showKeyInput || apiKeyError) && (
-                <div className="p-3 bg-slate-800/80 rounded-xl border border-slate-700/60 mb-2">
+                <div className="p-3 bg-secondary/80 rounded-xl border border-white/10 mb-2">
                   <div className="flex items-start gap-2.5 mb-2">
                     <AlertCircle size={18} className="text-accent shrink-0 mt-0.5" />
                     <div>
@@ -279,7 +279,7 @@ Instrucciones para responder:
                         if (e.key === 'Enter') handleSaveCustomKey((e.target as HTMLInputElement).value);
                       }}
                       id="gemini-key-input"
-                      className="flex-1 px-3 py-1.5 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white focus:outline-none focus:border-accent"
+                      className="flex-1 px-3 py-1.5 bg-primary border border-white/10 rounded-lg text-xs text-white focus:outline-none focus:border-accent"
                     />
                     <button
                       onClick={() => {
@@ -317,8 +317,8 @@ Instrucciones para responder:
                   className={`flex gap-2.5 max-w-[85%] ${msg.sender === 'user' ? 'self-end flex-row-reverse' : 'self-start'}`}
                 >
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 border ${
-                    msg.sender === 'user' 
-                      ? 'bg-slate-800 border-slate-700 text-gray-300' 
+                    msg.sender === 'user'
+                      ? 'bg-secondary border-white/10 text-gray-300'
                       : 'bg-accent/15 border-accent/30 text-accent'
                   }`}>
                     {msg.sender === 'user' ? <User size={14} /> : <Bot size={14} />}
@@ -326,7 +326,7 @@ Instrucciones para responder:
                   <div className={`p-3 rounded-2xl whitespace-pre-wrap leading-relaxed ${
                     msg.sender === 'user'
                       ? 'bg-accent text-white rounded-tr-none shadow-md shadow-accent/10'
-                      : 'bg-slate-800/60 border border-slate-800 rounded-tl-none text-slate-100'
+                      : 'bg-secondary/60 border border-white/10 rounded-tl-none text-slate-100'
                   }`}>
                     {msg.text}
                   </div>
@@ -339,7 +339,7 @@ Instrucciones para responder:
                   <div className="w-8 h-8 rounded-full bg-accent/15 border border-accent/30 text-accent flex items-center justify-center shrink-0">
                     <Bot size={14} />
                   </div>
-                  <div className="p-3 bg-slate-800/60 border border-slate-800 rounded-2xl rounded-tl-none flex items-center gap-1">
+                  <div className="p-3 bg-secondary/60 border border-white/10 rounded-2xl rounded-tl-none flex items-center gap-1">
                     <span className="w-2 h-2 bg-accent rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></span>
                     <span className="w-2 h-2 bg-accent rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></span>
                     <span className="w-2 h-2 bg-accent rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></span>
@@ -352,14 +352,14 @@ Instrucciones para responder:
 
             {/* Suggestions Chips */}
             {messages.length === 1 && !isLoading && (
-              <div className="px-4 pb-2 pt-1 flex flex-col gap-1.5 border-t border-slate-800/50 bg-slate-900/40">
+              <div className="px-4 pb-2 pt-1 flex flex-col gap-1.5 border-t border-white/10 bg-primary/40">
                 <p className="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Preguntas sugeridas:</p>
                 <div className="flex flex-wrap gap-1.5 max-h-24 overflow-y-auto pb-1">
                   {suggestions.map((sug, i) => (
                     <button
                       key={i}
                       onClick={() => handleSendMessage(sug)}
-                      className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 border border-slate-700/50 text-[11px] text-gray-300 rounded-full transition-colors text-left"
+                      className="px-2.5 py-1 bg-secondary hover:bg-white/10 border border-white/10 text-[11px] text-gray-300 rounded-full transition-colors text-left"
                     >
                       {sug}
                     </button>
@@ -369,7 +369,7 @@ Instrucciones para responder:
             )}
 
             {/* Input Footer */}
-            <div className="p-3 bg-slate-900 border-t border-slate-800 flex gap-2">
+            <div className="p-3 bg-primary border-t border-white/10 flex gap-2">
               <input
                 type="text"
                 placeholder="Escribe una pregunta..."
@@ -379,24 +379,26 @@ Instrucciones para responder:
                   if (e.key === 'Enter') handleSendMessage(inputValue);
                 }}
                 disabled={isLoading}
-                className="flex-1 px-4 py-2 bg-slate-800/80 border border-slate-700 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-accent disabled:opacity-50 text-sm"
+                className="flex-1 px-4 py-2 bg-secondary/80 border border-white/10 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-accent disabled:opacity-50 text-sm"
               />
-              <button
+              <motion.button
+                whileTap={{ scale: 0.94 }}
                 onClick={() => handleSendMessage(inputValue)}
                 disabled={isLoading || !inputValue.trim()}
-                className="p-2.5 bg-accent hover:bg-blue-600 disabled:bg-slate-800 disabled:text-slate-600 text-white rounded-xl transition-all shadow-lg hover:shadow-accent/20 flex items-center justify-center"
+                className="p-2.5 bg-accent hover:bg-teal-600 disabled:bg-secondary disabled:text-slate-600 text-white rounded-xl transition-all shadow-lg hover:shadow-accent/20 flex items-center justify-center"
               >
                 <Send size={16} />
-              </button>
+              </motion.button>
             </div>
           </MotionDiv>
         )}
       </AnimatePresence>
 
       {/* Floating Toggle Button */}
-      <button
+      <motion.button
+        whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="p-4 bg-accent hover:bg-blue-600 text-white rounded-full shadow-2xl transition-all hover:scale-110 flex items-center justify-center gap-2 group relative z-50 hover:shadow-accent/30"
+        className="p-4 bg-accent hover:bg-teal-600 text-white rounded-full shadow-2xl transition-all hover:scale-110 flex items-center justify-center gap-2 group relative z-50 hover:shadow-accent/30"
         aria-label="Abrir asistente de IA"
       >
         <MessageSquare size={24} className="group-hover:rotate-12 transition-transform" />
@@ -406,7 +408,7 @@ Instrucciones para responder:
         
         {/* Glow pulsing ring around the button to make it look premium */}
         <span className="absolute inset-0 rounded-full border border-accent animate-ping opacity-75"></span>
-      </button>
+      </motion.button>
     </div>
   );
 };

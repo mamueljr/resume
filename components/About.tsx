@@ -8,31 +8,30 @@ const MotionDiv = motion.div as any;
 
 export const About: React.FC = () => {
   return (
-    <Section id="about">
-      <div className="max-w-4xl mx-auto text-center mb-16">
-        <h3 className="text-2xl font-bold text-slate-800 mb-6 font-display">Perfil Profesional</h3>
-        <p className="text-lg md:text-xl leading-relaxed text-slate-600">
-          {PROFILE.about}
-        </p>
-      </div>
+    <Section id="about" kicker="Quién soy" title="Perfil Profesional">
+      <p className="text-lg md:text-xl leading-relaxed text-slate-600 max-w-2xl mb-14">
+        {PROFILE.about}
+      </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        {/* Same footprint for all three; the first pops through color, not size */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-6xl mx-auto">
+        {/* Featured tile: wide, dark, sets the anchor for the bento */}
         <MotionDiv
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           whileHover={{ y: -6 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="bg-primary text-white p-7 rounded-2xl shadow-md"
+          className="md:col-span-2 bg-primary text-white p-8 md:p-10 rounded-3xl shadow-xl shadow-primary/20 flex flex-col md:flex-row md:items-center gap-6"
         >
-          <div className="p-3 bg-accent/20 rounded-full text-accent-soft w-fit mb-5">
-            <Code2 size={26} />
+          <div className="p-4 bg-accent/20 rounded-2xl text-accent-soft w-fit shrink-0">
+            <Code2 size={32} />
           </div>
-          <h4 className="text-lg font-bold mb-2 font-display">Desarrollo de Software</h4>
-          <p className="text-slate-300 text-sm leading-relaxed">
-            Más de una década diseñando sistemas a medida, automatizaciones avanzadas y plataformas web robustas.
-          </p>
+          <div>
+            <h4 className="text-xl font-bold mb-2 font-display">Desarrollo de Software</h4>
+            <p className="text-slate-300 leading-relaxed max-w-xl">
+              Más de una década diseñando sistemas a medida, automatizaciones avanzadas y plataformas web robustas.
+            </p>
+          </div>
         </MotionDiv>
 
         <MotionDiv
@@ -41,12 +40,12 @@ export const About: React.FC = () => {
           whileHover={{ y: -6 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1, duration: 0.5 }}
-          className="bg-slate-50 p-7 rounded-2xl border border-slate-200 hover:border-accent/30 transition-colors duration-300"
+          className="bg-white p-7 rounded-2xl border border-slate-200/80 hover:border-accent/40 shadow-sm hover:shadow-lg hover:shadow-accent/5 transition-all duration-300"
         >
           <div className="p-3 bg-accent/10 rounded-full text-accent w-fit mb-5">
             <Brain size={26} />
           </div>
-          <h4 className="text-lg font-bold text-slate-800 mb-2">Ciencia de Datos e IA</h4>
+          <h4 className="text-lg font-bold text-slate-800 mb-2 font-display">Ciencia de Datos e IA</h4>
           <p className="text-slate-600 text-sm leading-relaxed">
             Análisis predictivo, modelos de Machine Learning e integración práctica de APIs de Inteligencia Artificial.
           </p>
@@ -58,12 +57,12 @@ export const About: React.FC = () => {
           whileHover={{ y: -6 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="bg-slate-50 p-7 rounded-2xl border border-slate-200 hover:border-accent/30 transition-colors duration-300"
+          className="bg-white p-7 rounded-2xl border border-slate-200/80 hover:border-accent/40 shadow-sm hover:shadow-lg hover:shadow-accent/5 transition-all duration-300"
         >
           <div className="p-3 bg-accent/10 rounded-full text-accent w-fit mb-5">
             <Users size={26} />
           </div>
-          <h4 className="text-lg font-bold text-slate-800 mb-2">Docencia Universitaria</h4>
+          <h4 className="text-lg font-bold text-slate-800 mb-2 font-display">Docencia Universitaria</h4>
           <p className="text-slate-600 text-sm leading-relaxed">
             Profesor en asignaturas críticas como Big Data, DevOps, Ingeniería de Software y Bases de Datos.
           </p>
