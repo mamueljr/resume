@@ -151,6 +151,20 @@ export const WEB_PORTFOLIO: Project[] = [
     imageUrl: "assets/weather_app.webp",
     tags: ["JavaScript", "Weather API", "HTML5 / CSS3"],
   },
+  {
+    title: "Aura Inventory",
+    description: "App de inventario personal offline-first del ecosistema Aura. Organiza y consulta tus objetos desde cualquier lugar, sin depender de conexión a internet.",
+    link: "https://mamueljr.github.io/AuraInventory/",
+    imageUrl: "assets/aura_inventory.webp",
+    tags: ["React", "PWA", "Offline-First"],
+  },
+  {
+    title: "Aura Home",
+    description: "Dashboard de administración del hogar del ecosistema Aura: pagos y servicios, tareas pendientes, calendario de eventos, compras, mantenimiento, contactos, mascotas y vehículos en un solo lugar.",
+    link: "https://mamueljr.github.io/AuraHome/",
+    imageUrl: "assets/aura_home.webp",
+    tags: ["React", "PWA", "Dashboard"],
+  },
 ];
 
 export const CERTIFICATIONS: Certification[] = [
