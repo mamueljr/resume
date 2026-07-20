@@ -252,6 +252,31 @@ const PORTFOLIO_EN: Project[] = [
     description:
       'Simple, easy-to-understand web and mobile weather app, ideal for real-time weather checks.',
   },
+  {
+    ...WEB_PORTFOLIO[4],
+    description:
+      'Offline-first personal inventory app from the Aura ecosystem. Organize and check your belongings from anywhere, no internet connection required.',
+  },
+  {
+    ...WEB_PORTFOLIO[5],
+    description:
+      'Home management dashboard from the Aura ecosystem: bills and services, pending tasks, upcoming events, shopping, maintenance, contacts, pets, and vehicles in one place.',
+  },
+  {
+    ...WEB_PORTFOLIO[6],
+    description:
+      "Interactive web app bringing my thesis model to production. Predicts outcomes (Win/Draw/Loss) for the Premier League and the 2026 World Cup (with home-advantage logic for co-hosts and neutral venues).",
+  },
+  {
+    ...WEB_PORTFOLIO[7],
+    description:
+      'Clinical dashboard for physical assessment and physiological inference for athletes. Calculates BMI, VO2Max, and anaerobic power, generating automated recommendations.',
+  },
+  {
+    ...WEB_PORTFOLIO[8],
+    description:
+      'Intelligent lesson-planning assistant and structured rubric builder for university instructors, powered by the Gemini API and structured JSON modeling.',
+  },
 ];
 
 /* ------------------------------------------------------------------ */
