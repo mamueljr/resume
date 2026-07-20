@@ -3,11 +3,13 @@ import { Section } from './Section';
 import { CERTIFICATIONS, BADGE_IDS } from '../constants';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
+import { useLang } from '../i18n';
 
 const MotionDiv = motion.div as any;
 
 export const Certifications: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const { t } = useLang();
 
   // Load Credly script dynamically
   useEffect(() => {
@@ -33,7 +35,7 @@ export const Certifications: React.FC = () => {
   };
 
   return (
-    <Section id="certifications" title="Certificaciones y Educación" dark>
+    <Section id="certifications" kicker={t('certsKicker')} title={t('certsTitle')} dark>
       {/* Diplomas Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-20">
         {CERTIFICATIONS.map((cert, idx) => (
@@ -41,15 +43,18 @@ export const Certifications: React.FC = () => {
             key={idx}
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
+            whileHover={{ y: -4 }}
             viewport={{ once: true }}
-            className="bg-slate-700 rounded-lg p-3 text-center hover:bg-slate-600 transition-colors cursor-pointer"
+            className="bg-secondary rounded-2xl p-3 text-center hover:bg-white/10 transition-colors cursor-pointer"
             onClick={() => handleImageClick(cert.imageUrl)}
           >
-            <div className="h-32 mb-3 overflow-hidden rounded bg-slate-800 flex items-center justify-center">
-              <img 
-                src={cert.imageUrl} 
-                alt={cert.title} 
-                className="max-w-full max-h-full object-contain select-none" 
+            <div className="h-32 mb-3 overflow-hidden rounded-lg bg-primary flex items-center justify-center">
+              <img
+                src={cert.imageUrl}
+                alt={cert.title}
+                loading="lazy"
+                decoding="async"
+                className="max-w-full max-h-full object-contain select-none"
                 onContextMenu={handleContextMenu}
                 onDragStart={(e) => e.preventDefault()}
               />
@@ -61,7 +66,7 @@ export const Certifications: React.FC = () => {
       </div>
 
       {/* Credly Badges */}
-      <h3 className="text-2xl font-bold text-center text-white mb-10">Credly Digital Badges</h3>
+      <h3 className="text-2xl font-bold text-center text-white mb-10 font-display">{t('certsBadges')}</h3>
       <div className="flex flex-wrap justify-center gap-6">
         {BADGE_IDS.map((id, idx) => (
           <div 
@@ -82,7 +87,7 @@ export const Certifications: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 p-4"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black bg-opacity-90 p-4"
             onClick={closeLightbox}
           >
             <button

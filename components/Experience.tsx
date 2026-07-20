@@ -1,39 +1,45 @@
 import React from 'react';
 import { Section } from './Section';
-import { EXPERIENCES } from '../constants';
 import { Briefcase } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLang } from '../i18n';
 
 const MotionDiv = motion.div as any;
 
 export const Experience: React.FC = () => {
+  const { t, experiences } = useLang();
+
   return (
-    <Section id="experience" title="Experiencia Profesional" dark>
-      <div className="relative border-l-4 border-accent ml-4 md:ml-12 space-y-12">
-        {EXPERIENCES.map((exp, index) => (
-          <MotionDiv 
+    <Section id="experience" kicker={t('experienceKicker')} title={t('experienceTitle')} dark>
+      <div className="max-w-4xl mx-auto divide-y divide-white/10">
+        {experiences.map((exp, index) => (
+          <MotionDiv
             key={index}
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ x: 4 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            className="relative pl-8 md:pl-12"
+            transition={{ delay: index * 0.05, duration: 0.5 }}
+            className="group py-8 md:px-5 md:-mx-5 rounded-2xl hover:bg-white/[0.03] transition-colors duration-300 grid grid-cols-1 md:grid-cols-[3rem_1fr] gap-3 md:gap-8"
           >
-            {/* Dot on timeline */}
-            <div className={`absolute -left-[14px] top-1 w-6 h-6 rounded-full border-4 border-secondary ${exp.current ? 'bg-green-500' : 'bg-accent'}`}></div>
-            
-            <div className="bg-slate-700/50 p-6 rounded-lg shadow-xl hover:bg-slate-700 transition-colors">
-              <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
-                <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                  <Briefcase size={20} className="text-accent" />
+            <div className="flex md:flex-col items-center md:items-start gap-3">
+              <span className="font-mono text-sm text-slate-500 group-hover:text-accent transition-colors">{String(index + 1).padStart(2, '0')}</span>
+              {exp.current && (
+                <span className="text-[10px] font-mono uppercase tracking-wide text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-full">
+                  {t('experienceCurrent')}
+                </span>
+              )}
+            </div>
+            <div>
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
+                <h3 className="text-xl font-bold text-white flex items-center gap-2 font-display">
+                  <Briefcase size={18} className="text-accent shrink-0" />
                   {exp.company}
                 </h3>
-                <span className="text-sm font-semibold px-3 py-1 bg-accent/20 text-accent rounded-full w-fit mt-2 md:mt-0">
-                  {exp.period}
-                </span>
+                <span className="text-xs font-mono text-slate-400">{exp.period}</span>
               </div>
-              <h4 className="text-lg text-gray-300 font-medium mb-3">{exp.role}</h4>
-              <p className="text-gray-400 leading-relaxed">
+              <h4 className="text-base text-slate-300 font-medium mb-3">{exp.role}</h4>
+              <p className="text-slate-400 leading-relaxed text-sm">
                 {exp.description}
               </p>
             </div>

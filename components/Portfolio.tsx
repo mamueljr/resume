@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { Section } from './Section';
-import { WEB_PORTFOLIO } from '../constants';
 import { Project } from '../types';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, X, Globe, Eye } from 'lucide-react';
+import { useLang } from '../i18n';
 
 const MotionDiv = motion.div as any;
 
 export const Portfolio: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const { t, portfolio } = useLang();
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Escape') {
@@ -17,47 +18,59 @@ export const Portfolio: React.FC = () => {
   };
 
   return (
-    <Section id="portfolio" title="Portafolio Web" className="bg-slate-100">
+    <Section id="portfolio" kicker={t('portfolioKicker')} title={t('portfolioTitle')}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-        {WEB_PORTFOLIO.map((project, index) => (
-          <MotionDiv
-            key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            onClick={() => setSelectedProject(project)}
-            className="group bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col cursor-pointer border border-slate-200/50"
-          >
-            <div className="relative h-56 overflow-hidden bg-slate-900">
-              <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/20 transition-colors z-10 flex items-center justify-center">
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/95 text-slate-800 px-4 py-2 rounded-full font-semibold text-sm flex items-center gap-1.5 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
-                  <Eye size={16} /> Ver detalles
-                </span>
-              </div>
-              <img 
-                src={project.imageUrl} 
-                alt={project.title} 
-                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <div className="p-6 flex flex-col flex-1">
-              <h3 className="text-xl font-bold text-slate-800 group-hover:text-accent transition-colors mb-2">
-                {project.title}
-              </h3>
-              <p className="text-slate-600 mb-6 text-sm leading-relaxed line-clamp-2">
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-2 mt-auto">
-                {project.tags.map((tag, tIdx) => (
-                  <span key={tIdx} className="text-xs font-semibold px-2 py-1 bg-blue-50 text-blue-600 rounded">
-                    #{tag}
+        {portfolio.map((project, index) => {
+          const featured = index === 0;
+          return (
+            <MotionDiv
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              onClick={() => setSelectedProject(project)}
+              className={`group bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer border border-slate-200/50 flex flex-col ${
+                featured ? 'md:col-span-2 md:grid md:grid-cols-[3fr_2fr]' : ''
+              }`}
+            >
+              <div className={`relative overflow-hidden bg-slate-900 ${featured ? 'h-56 md:h-full md:min-h-[320px]' : 'h-56'}`}>
+                <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/20 transition-colors z-10 flex items-center justify-center">
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/95 text-slate-800 px-4 py-2 rounded-full font-semibold text-sm flex items-center gap-1.5 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                    <Eye size={16} /> {t('portfolioView')}
                   </span>
-                ))}
+                </div>
+                <img
+                  src={project.imageUrl}
+                  alt={project.title}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                />
               </div>
-            </div>
-          </MotionDiv>
-        ))}
+              <div className={`p-6 flex flex-col flex-1 ${featured ? 'md:p-9 md:justify-center' : ''}`}>
+                {featured && (
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent mb-3">
+                    {t('portfolioFeatured')}
+                  </span>
+                )}
+                <h3 className={`font-bold text-slate-800 group-hover:text-accent transition-colors mb-2 font-display ${featured ? 'text-2xl md:text-3xl' : 'text-xl'}`}>
+                  {project.title}
+                </h3>
+                <p className={`text-slate-600 mb-6 text-sm leading-relaxed ${featured ? '' : 'line-clamp-2'}`}>
+                  {project.description}
+                </p>
+                <div className={`flex flex-wrap gap-2 ${featured ? '' : 'mt-auto'}`}>
+                  {project.tags.map((tag, tIdx) => (
+                    <span key={tIdx} className="text-xs font-mono font-medium px-2 py-1 bg-teal-50 text-teal-700 rounded-md">
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </MotionDiv>
+          );
+        })}
       </div>
 
       {/* Project Details Modal */}
@@ -90,7 +103,7 @@ export const Portfolio: React.FC = () => {
               <div className="md:w-1/2 p-8 flex flex-col justify-between overflow-y-auto">
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-2xl font-bold text-slate-800">{selectedProject.title}</h3>
+                    <h3 className="text-2xl font-bold text-slate-800 font-display">{selectedProject.title}</h3>
                     <button
                       onClick={() => setSelectedProject(null)}
                       className="p-1.5 text-slate-400 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors"
@@ -106,7 +119,7 @@ export const Portfolio: React.FC = () => {
 
                   <div className="flex flex-wrap gap-2 mb-6">
                     {selectedProject.tags.map((tag, tIdx) => (
-                      <span key={tIdx} className="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-600 rounded">
+                      <span key={tIdx} className="text-xs font-mono font-medium px-2.5 py-1 bg-slate-100 text-slate-600 rounded-md">
                         #{tag}
                       </span>
                     ))}
@@ -115,23 +128,25 @@ export const Portfolio: React.FC = () => {
 
                 <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-slate-100">
                   {selectedProject.link && (
-                    <a
+                    <motion.a
+                      whileTap={{ scale: 0.97 }}
                       href={selectedProject.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 px-5 py-2.5 bg-accent hover:bg-blue-600 text-white text-sm font-semibold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-accent/20 transition-all text-center"
+                      className="flex-1 px-5 py-2.5 bg-accent hover:bg-teal-600 text-white text-sm font-semibold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-accent/20 transition-all text-center"
                     >
                       <Globe size={16} />
-                      Visitar Sitio
+                      {t('portfolioVisit')}
                       <ExternalLink size={14} />
-                    </a>
+                    </motion.a>
                   )}
-                  <button
+                  <motion.button
+                    whileTap={{ scale: 0.97 }}
                     onClick={() => setSelectedProject(null)}
                     className="flex-1 px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-semibold rounded-xl transition-colors text-center"
                   >
-                    Cerrar
-                  </button>
+                    {t('portfolioClose')}
+                  </motion.button>
                 </div>
               </div>
             </MotionDiv>

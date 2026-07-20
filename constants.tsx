@@ -10,10 +10,10 @@ import { Github, Linkedin, Mail, Phone } from "lucide-react";
 
 export const PROFILE = {
   name: "Ing. Adalberto Emmanuel Rojas",
-  title: "Ingeniero en Computación & Data Specialist",
+  title: "Ingeniero en Sistemas & Data Specialist",
   about:
-    "Ingeniero en Computación con amplia experiencia en desarrollo de software e implementación de soluciones basadas en ciencia de datos e inteligencia artificial. Maestría en Ingeniería en Computación (en proceso de titulación), con enfoque en machine learning aplicado. Más de una década de experiencia como docente universitario, combinando la teoría con la práctica en proyectos reales de análisis de datos, automatización y soporte tecnológico.",
-  photoUrl: "assets/18875.jpg",
+    "Ingeniero en Sistemas con amplia experiencia en desarrollo de software e implementación de soluciones basadas en ciencia de datos e inteligencia artificial. Maestría en Ingeniería en Ciencias Computacionales (en proceso de titulación), con enfoque en machine learning aplicado. Más de una década de experiencia como docente universitario, combinando la teoría con la práctica en proyectos reales de análisis de datos, automatización y soporte tecnológico.",
+  photoUrl: "assets/18875.webp",
 };
 
 export const EXPERIENCES: ExperienceItem[] = [
@@ -127,28 +127,28 @@ export const WEB_PORTFOLIO: Project[] = [
     title: "SciDifusión UACH",
     description: "Plataforma de divulgación científica y académica para la FCCF UACH, con sistema de publicaciones, panel de administración y diseño interactivo.",
     link: "https://investigacioneducativafccf.net/scidifusion/",
-    imageUrl: "assets/scidifusion.png",
+    imageUrl: "assets/scidifusion.webp",
     tags: ["React", "Tailwind CSS", "PHP / MySQL", "Academic"],
   },
   {
     title: "Doctorado FCCF UACH",
     description: "Plataforma web para el programa de investigación educativa.",
     link: "https://investigacioneducativafccf.net/met_avanzada/v2/",
-    imageUrl: "assets/pagina_doctorado.png",
+    imageUrl: "assets/pagina_doctorado.webp",
     tags: ["Web", "Academic", "Portal"],
   },
   {
     title: "ESISCOM",
     description: "Sitio web corporativo para servicios de cómputo.",
     link: "https://mamueljr.github.io/esiscom/",
-    imageUrl: "assets/esiscom.png",
+    imageUrl: "assets/esiscom.webp",
     tags: ["Services", "Landing Page"],
   },
   {
     title: "App de Clima",
     description: "Aplicación móvil y web del clima básica, sencilla de entender, ideal para consulta meteorológica en tiempo real.",
     link: "https://mamueljr.github.io/App_Clima/",
-    imageUrl: "assets/weather_app.jpg",
+    imageUrl: "assets/weather_app.webp",
     tags: ["JavaScript", "Weather API", "HTML5 / CSS3"],
   },
 ];
@@ -157,32 +157,32 @@ export const CERTIFICATIONS: Certification[] = [
   {
     title: "Diplomado de Inglés",
     issuer: "Facultad de Filosofía y Letras UACH",
-    imageUrl: "assets/ingles.png",
+    imageUrl: "assets/ingles.webp",
   },
   {
     title: "Cableado Estructurado",
     issuer: "CONDUNET",
-    imageUrl: "assets/condunet.png",
+    imageUrl: "assets/condunet.webp",
   },
   {
     title: "Seguridad Informática HAURI",
     issuer: "HAURI Antivirus",
-    imageUrl: "assets/hauri.png",
+    imageUrl: "assets/hauri.webp",
   },
   {
     title: "Java Intermedio",
     issuer: "Museo Semilla",
-    imageUrl: "assets/java.png",
+    imageUrl: "assets/java.webp",
   },
   {
     title: "Seguridad Informática",
     issuer: "UACH",
-    imageUrl: "assets/seguridad_informatica.png",
+    imageUrl: "assets/seguridad_informatica.webp",
   },
   {
     title: "Constancia Semana Investigación",
     issuer: "Secretaría de Posgrado FCCF",
-    imageUrl: "assets/semana_investigacion20.png",
+    imageUrl: "assets/semana_investigacion20.webp",
   },
 ];
 
@@ -209,15 +209,15 @@ export const SOCIALS = [
 export const EDUCATIONS: EducationItem[] = [
   {
     institution: "Universidad Autónoma de Chihuahua",
-    degree: "Maestría en Ingeniería en Computación",
+    degree: "Maestría en Ingeniería en Ciencias Computacionales",
     period: "2023 - En proceso de titulación",
     description: "Enfoque y especialización en Machine Learning aplicado, ciencia de datos y redes neuronales.",
     current: true,
   },
   {
     institution: "Universidad Autónoma de Chihuahua",
-    degree: "Ingeniería en Computación",
-    period: "Graduado",
+    degree: "Ingeniería en Sistemas",
+    period: "Titulado",
     description: "Formación sólida en desarrollo de software, administración de bases de datos, redes de computadoras y sistemas embebidos.",
   },
 ];

@@ -2,48 +2,51 @@ import React, { useState } from 'react';
 import { Section } from './Section';
 import { SKILLS } from '../constants';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLang } from '../i18n';
 
 const MotionDiv = motion.div as any;
 
 export const Skills: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'all' | 'development' | 'data' | 'hardware'>('all');
+  const { t } = useLang();
 
   const tabs = [
-    { id: 'all', label: 'Todas' },
-    { id: 'development', label: 'Desarrollo de Software' },
-    { id: 'data', label: 'Ciencia de Datos & IA' },
-    { id: 'hardware', label: 'Infraestructura & Hardware' },
+    { id: 'all', label: t('skillsTabAll') },
+    { id: 'development', label: t('skillsTabDev') },
+    { id: 'data', label: t('skillsTabData') },
+    { id: 'hardware', label: t('skillsTabHardware') },
   ] as const;
 
-  const filteredSkills = activeTab === 'all' 
-    ? SKILLS 
+  const filteredSkills = activeTab === 'all'
+    ? SKILLS
     : SKILLS.filter(skill => skill.category === activeTab);
 
   const getCategoryTitle = (category: string) => {
     switch (category) {
-      case 'development': return 'Desarrollo de Software';
-      case 'data': return 'Ciencia de Datos & IA';
-      case 'hardware': return 'Infraestructura & Hardware';
+      case 'development': return t('skillsTabDev');
+      case 'data': return t('skillsTabData');
+      case 'hardware': return t('skillsTabHardware');
       default: return '';
     }
   };
 
   return (
-    <Section id="skills" title="Habilidades Técnicas">
+    <Section id="skills" kicker={t('skillsKicker')} title={t('skillsTitle')}>
       {/* Tab Filter Buttons */}
       <div className="flex flex-wrap justify-center gap-2 mb-12">
         {tabs.map((tab) => (
-          <button
+          <motion.button
             key={tab.id}
+            whileTap={{ scale: 0.96 }}
             onClick={() => setActiveTab(tab.id)}
             className={`px-5 py-2.5 rounded-full font-medium text-sm transition-all duration-300 relative ${
               activeTab === tab.id
                 ? 'bg-accent text-white shadow-lg shadow-accent/25'
-                : 'bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900'
+                : 'bg-white hover:bg-slate-100 text-slate-600 hover:text-slate-900 border border-slate-200/80'
             }`}
           >
             {tab.label}
-          </button>
+          </motion.button>
         ))}
       </div>
 
@@ -60,10 +63,11 @@ export const Skills: React.FC = () => {
               initial={{ opacity: 0, scale: 0.9, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: -15 }}
+              whileHover={{ y: -4 }}
               transition={{ duration: 0.3 }}
-              className="p-4 bg-white border border-slate-200/80 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+              className="p-4 bg-white border border-slate-200/80 rounded-2xl shadow-sm hover:shadow-md transition-shadow"
             >
-              <div className="flex justify-between items-center mb-2">
+              <div className="flex justify-between items-center mb-3">
                 <span className="font-semibold text-slate-800">{skill.name}</span>
                 <div className="flex items-center gap-2">
                   {activeTab === 'all' && (
@@ -71,16 +75,22 @@ export const Skills: React.FC = () => {
                       {getCategoryTitle(skill.category)}
                     </span>
                   )}
-                  <span className="text-sm font-bold text-accent">{skill.level}%</span>
+                  <span className="text-sm font-bold text-accent font-mono tabular-nums">{skill.level}%</span>
                 </div>
               </div>
-              <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
-                <MotionDiv
-                  initial={{ width: 0 }}
-                  animate={{ width: `${skill.level}%` }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                  className="bg-accent h-2.5 rounded-full"
-                />
+              {/* Segmented meter: 10 blocks, reads more technical than a progress bar */}
+              <div className="flex gap-1" role="img" aria-label={`${t('skillsLevel')}: ${skill.level}/100`}>
+                {Array.from({ length: 10 }).map((_, i) => (
+                  <MotionDiv
+                    key={i}
+                    initial={{ opacity: 0, scaleY: 0.3 }}
+                    animate={{ opacity: 1, scaleY: 1 }}
+                    transition={{ duration: 0.25, delay: i * 0.035 }}
+                    className={`h-2.5 flex-1 rounded-[3px] ${
+                      i < Math.round(skill.level / 10) ? 'bg-accent' : 'bg-slate-200'
+                    }`}
+                  />
+                ))}
               </div>
             </MotionDiv>
           ))}
@@ -89,10 +99,10 @@ export const Skills: React.FC = () => {
       
       {/* Tools Pills */}
       <div className="mt-16 max-w-6xl mx-auto border-t border-slate-200 pt-10">
-        <h3 className="text-2xl font-bold mb-6 text-slate-800 border-b pb-2">Herramientas & Entornos</h3>
+        <h3 className="text-2xl font-bold mb-6 text-slate-800 border-b pb-2 font-display">{t('skillsTools')}</h3>
         <div className="flex flex-wrap gap-3">
           {['Visual Studio Code', 'Jupyter Notebook', 'Google Colab', 'RStudio', 'Git / GitHub', 'Docker', 'MySQL Workbench', 'DBeaver', 'Postman', 'Tableau', 'PowerBI', 'Jira / Confluence', 'Linux CLI / Bash', 'Windows Server', 'Microsip ERP', 'Anaconda'].map((tool, i) => (
-             <span key={i} className="px-4 py-2 bg-slate-50 text-slate-700 rounded-lg font-medium border border-slate-200 hover:border-accent hover:text-accent transition-all duration-300 cursor-default shadow-sm">
+             <span key={i} className="px-4 py-2 bg-white text-slate-700 rounded-lg font-medium border border-slate-200/80 hover:border-accent hover:text-accent transition-all duration-300 cursor-default shadow-sm">
                {tool}
              </span>
           ))}

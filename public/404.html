@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 | Ing. Adalberto Emmanuel Rojas</title>
+  <meta name="robots" content="noindex" />
+  <link rel="shortcut icon" href="/resume/assets/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      background-color: #090b10;
+      color: #f7f7f5;
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+    .glow {
+      position: absolute;
+      top: 10%;
+      right: 10%;
+      width: 480px;
+      height: 480px;
+      background: rgba(20, 184, 166, 0.14);
+      border-radius: 50%;
+      filter: blur(130px);
+      pointer-events: none;
+    }
+    main { text-align: center; padding: 2rem; position: relative; z-index: 1; }
+    .logo {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 3rem;
+    }
+    .logo span { color: #14b8a6; }
+    h1 {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: clamp(6rem, 22vw, 12rem);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      -webkit-text-stroke: 2px rgba(94, 234, 212, 0.65);
+      color: transparent;
+      margin-bottom: 1.5rem;
+    }
+    p.msg { font-size: 0.95rem; color: #94a3b8; margin-bottom: 0.4rem; }
+    p.msg-en { font-size: 0.8rem; color: #475569; margin-bottom: 2.5rem; }
+    a.btn {
+      display: inline-block;
+      padding: 0.85rem 2.2rem;
+      background: #14b8a6;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 9999px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: background 0.25s, transform 0.15s;
+    }
+    a.btn:hover { background: #0d9488; }
+    a.btn:active { transform: scale(0.97); }
+  </style>
+</head>
+<body>
+  <div class="glow"></div>
+  <main>
+    <div class="logo">ER<span>.</span></div>
+    <h1>404</h1>
+    <p class="msg">Esta página no existe o fue movida.</p>
+    <p class="msg-en">This page does not exist or has been moved.</p>
+    <a class="btn" href="/resume/">Volver al inicio</a>
+  </main>
+</body>
+</html>
