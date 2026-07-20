@@ -103,27 +103,6 @@ export const SKILLS: Skill[] = [
 
 export const WEB_PORTFOLIO: Project[] = [
   {
-    title: "PitchPredictor AI (Tesis & World Cup)",
-    description: "Aplicación web interactiva que lleva a producción el modelo de mi tesis. Predice resultados (Victoria/Empate/Derrota) para la Premier League y la Copa del Mundo 2026 (con lógica de localía para co-anfitriones y sedes neutrales).",
-    link: "https://mamueljr.github.io/premier-predictor/",
-    imageUrl: "assets/premier_predictor.jpg",
-    tags: ["React", "TypeScript", "Machine Learning", "Data Science"],
-  },
-  {
-    title: "SportMetrics AI",
-    description: "Dashboard clínico de evaluación física e inferencia fisiológica para atletas. Calcula IMC, VO2Max y potencia anaeróbica generando recomendaciones automatizadas.",
-    link: "https://mamueljr.github.io/sport-metrics/",
-    imageUrl: "assets/sport_metrics.jpg",
-    tags: ["React", "TypeScript", "Sports Science", "Dashboard"],
-  },
-  {
-    title: "EduPlan CoPilot",
-    description: "Asistente inteligente de planeación didáctica y rúbricas estructuradas para docentes universitarios utilizando la API de Gemini y modelado estructurado JSON.",
-    link: "https://mamueljr.github.io/edu-plan-copilot/",
-    imageUrl: "assets/edu_plan_copilot.jpg",
-    tags: ["React", "TypeScript", "Generative AI", "Gemini API"],
-  },
-  {
     title: "SciDifusión UACH",
     description: "Plataforma de divulgación científica y académica para la FCCF UACH, con sistema de publicaciones, panel de administración y diseño interactivo.",
     link: "https://investigacioneducativafccf.net/scidifusion/",
@@ -155,15 +134,36 @@ export const WEB_PORTFOLIO: Project[] = [
     title: "Aura Inventory",
     description: "App de inventario personal offline-first del ecosistema Aura. Organiza y consulta tus objetos desde cualquier lugar, sin depender de conexión a internet.",
     link: "https://mamueljr.github.io/AuraInventory/",
-    imageUrl: "assets/aura_inventory.webp",
+    imageUrl: "assets/aura_inventory.svg",
     tags: ["React", "PWA", "Offline-First"],
   },
   {
     title: "Aura Home",
     description: "Dashboard de administración del hogar del ecosistema Aura: pagos y servicios, tareas pendientes, calendario de eventos, compras, mantenimiento, contactos, mascotas y vehículos en un solo lugar.",
     link: "https://mamueljr.github.io/AuraHome/",
-    imageUrl: "assets/aura_home.webp",
+    imageUrl: "assets/aura_home.svg",
     tags: ["React", "PWA", "Dashboard"],
+  },
+  {
+    title: "PitchPredictor AI (Tesis & World Cup)",
+    description: "Aplicación web interactiva que lleva a producción el modelo de mi tesis. Predice resultados (Victoria/Empate/Derrota) para la Premier League y la Copa del Mundo 2026 (con lógica de localía para co-anfitriones y sedes neutrales).",
+    link: "https://mamueljr.github.io/premier-predictor/",
+    imageUrl: "assets/premier_predictor.jpg",
+    tags: ["React", "TypeScript", "Machine Learning", "Data Science"],
+  },
+  {
+    title: "SportMetrics AI",
+    description: "Dashboard clínico de evaluación física e inferencia fisiológica para atletas. Calcula IMC, VO2Max y potencia anaeróbica generando recomendaciones automatizadas.",
+    link: "https://mamueljr.github.io/sport-metrics/",
+    imageUrl: "assets/sport_metrics.jpg",
+    tags: ["React", "TypeScript", "Sports Science", "Dashboard"],
+  },
+  {
+    title: "EduPlan CoPilot",
+    description: "Asistente inteligente de planeación didáctica y rúbricas estructuradas para docentes universitarios utilizando la API de Gemini y modelado estructurado JSON.",
+    link: "https://mamueljr.github.io/edu-plan-copilot/",
+    imageUrl: "assets/edu_plan_copilot.jpg",
+    tags: ["React", "TypeScript", "Generative AI", "Gemini API"],
   },
 ];
 

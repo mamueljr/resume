@@ -1,0 +1,18 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgInv" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4c1d95"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bgInv)"/>
+  <circle cx="120" cy="90" r="140" fill="#ffffff" opacity="0.06"/>
+  <circle cx="700" cy="430" r="180" fill="#ffffff" opacity="0.06"/>
+  <g transform="translate(400,190)">
+    <rect x="-60" y="-60" width="120" height="120" rx="28" fill="#ffffff" opacity="0.14"/>
+    <path d="M -32 -8 L 0 -34 L 32 -8 L 32 30 Q 32 36 26 36 L -26 36 Q -32 36 -32 30 Z" fill="#ffffff" opacity="0.9"/>
+    <rect x="-10" y="8" width="20" height="28" rx="3" fill="#7c3aed"/>
+  </g>
+  <text x="400" y="320" font-family="'Segoe UI', Arial, sans-serif" font-size="42" font-weight="700" fill="#ffffff" text-anchor="middle">Aura Inventory</text>
+  <text x="400" y="360" font-family="'Segoe UI', Arial, sans-serif" font-size="18" fill="#e9d5ff" text-anchor="middle" letter-spacing="2">OFFLINE-FIRST · PWA</text>
+</svg>
