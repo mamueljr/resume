@@ -1,0 +1,17 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgMus" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4c1d95"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bgMus)"/>
+  <circle cx="120" cy="90" r="140" fill="#ffffff" opacity="0.06"/>
+  <circle cx="700" cy="430" r="180" fill="#ffffff" opacity="0.06"/>
+  <g transform="translate(400,190)">
+    <rect x="-60" y="-60" width="120" height="120" rx="28" fill="#ffffff" opacity="0.14"/>
+    <path d="M 6 -36 L 34 -30 Q 40 -28 40 -22 L 40 22 Q 40 38 24 38 Q 8 38 8 22 Q 8 6 24 6 Q 30 6 34 8 L 34 -14 L 6 -20 L 6 26 Q 6 42 -10 42 Q -26 42 -26 26 Q -26 10 -10 10 Q -4 10 0 12 L 0 -30 Q 0 -37 6 -36 Z" fill="#ffffff" opacity="0.9"/>
+  </g>
+  <text x="400" y="320" font-family="'Segoe UI', Arial, sans-serif" font-size="42" font-weight="700" fill="#ffffff" text-anchor="middle">Aura Music</text>
+  <text x="400" y="360" font-family="'Segoe UI', Arial, sans-serif" font-size="18" fill="#e9d5ff" text-anchor="middle" letter-spacing="2">MUSIC PLAYER · PWA</text>
+</svg>
