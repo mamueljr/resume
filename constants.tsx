@@ -124,6 +124,13 @@ export const WEB_PORTFOLIO: Project[] = [
     tags: ["Services", "Landing Page"],
   },
   {
+    title: "Aura Music",
+    description: "Reproductor de música del ecosistema Aura. Disfruta de tu música con una interfaz moderna y fluida desde cualquier dispositivo.",
+    link: "https://mamueljr.github.io/Aura-music/",
+    imageUrl: "assets/aura_music.svg",
+    tags: ["React", "PWA", "Music"],
+  },
+  {
     title: "App de Clima",
     description: "Aplicación móvil y web del clima básica, sencilla de entender, ideal para consulta meteorológica en tiempo real.",
     link: "https://mamueljr.github.io/App_Clima/",
