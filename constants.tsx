@@ -214,6 +214,7 @@ export const BADGE_IDS = [
   "c6880e13-40cd-4ef0-bb95-fe67b6c6e577",
   "246910c7-9012-42aa-ac6d-6753f545f5b2",
   "065a4912-6909-4e00-9427-82048d62a974",
+  "26ef9cd6-f40f-46fd-8bc0-4c7783c1643b",
 ];
 
 export const SOCIALS = [
