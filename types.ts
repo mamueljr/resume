@@ -1,3 +1,5 @@
+import type { LucideIcon } from 'lucide-react';
+
 export interface ExperienceItem {
   company: string;
   role: string;
@@ -38,5 +40,5 @@ export interface Certification {
 export interface SocialLink {
   name: string;
   url: string;
-  icon: string; // Lucide icon name
+  icon: LucideIcon;
 }

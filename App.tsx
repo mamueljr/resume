@@ -56,7 +56,7 @@ const App: React.FC = () => {
       <motion.button
         whileTap={{ scale: 0.94 }}
         onClick={scrollToTop}
-        className={`fixed bottom-24 right-8 p-3 bg-accent text-white rounded-full shadow-lg z-50 transition-all duration-300 hover:bg-teal-600 ${
+        className={`fixed bottom-6 left-6 p-3 bg-accent text-white rounded-full shadow-lg z-50 transition-all duration-300 hover:bg-teal-600 ${
           showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
         }`}
         aria-label={t('backToTop')}

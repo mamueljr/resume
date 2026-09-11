@@ -1,20 +1,25 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# CV — Ing. Adalberto Emmanuel Rojas
 
-# Run and deploy your AI Studio app
+Portafolio / currículum web personal (SPA) con asistente conversacional de IA integrado, bilingüe (ES/EN).
 
-This contains everything you need to run your app locally.
+- **Frontend**: React 19 + TypeScript + Vite + Tailwind CSS v4 + Framer Motion
+- **Backend IA**: proxy serverless en Vercel que oculta la API key de Gemini (`api/chat.ts`)
+- **Hosting**: GitHub Pages (frontend) + Vercel (backend)
 
-View your app in AI Studio: https://ai.studio/apps/drive/1G3j9qA-A0RDlF0Bqs9Tf-CiXioVs6Y3E
+Ver **[PROJECT.md](PROJECT.md)** para la documentación detallada (arquitectura, tecnologías y despliegue).
 
-## Run Locally
+## Desarrollo local
 
-**Prerequisites:**  Node.js
+```bash
+npm install
+npm run dev
+```
 
+El chatbot detecta `localhost` y enruta a `/api/chat` (requiere `vercel dev` con `GEMINI_API_KEY` en `.env.local`). En producción usa el endpoint público de Vercel.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Build y despliegue
+
+```bash
+npm run build        # build estático en dist/
+npm run deploy       # publica dist/ en GitHub Pages (gh-pages)
+```

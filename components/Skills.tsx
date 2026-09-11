@@ -4,8 +4,6 @@ import { SKILLS } from '../constants';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLang } from '../i18n';
 
-const MotionDiv = motion.div as any;
-
 export const Skills: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'all' | 'development' | 'data' | 'hardware'>('all');
   const { t } = useLang();
@@ -51,13 +49,13 @@ export const Skills: React.FC = () => {
       </div>
 
       {/* Skills Grid */}
-      <MotionDiv 
+      <motion.div 
         layout 
         className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 max-w-6xl mx-auto min-h-[300px]"
       >
         <AnimatePresence mode="popLayout">
           {filteredSkills.map((skill) => (
-            <MotionDiv
+            <motion.div
               key={skill.name}
               layout
               initial={{ opacity: 0, scale: 0.9, y: 15 }}
@@ -81,7 +79,7 @@ export const Skills: React.FC = () => {
               {/* Segmented meter: 10 blocks, reads more technical than a progress bar */}
               <div className="flex gap-1" role="img" aria-label={`${t('skillsLevel')}: ${skill.level}/100`}>
                 {Array.from({ length: 10 }).map((_, i) => (
-                  <MotionDiv
+                  <motion.div
                     key={i}
                     initial={{ opacity: 0, scaleY: 0.3 }}
                     animate={{ opacity: 1, scaleY: 1 }}
@@ -92,10 +90,10 @@ export const Skills: React.FC = () => {
                   />
                 ))}
               </div>
-            </MotionDiv>
+            </motion.div>
           ))}
         </AnimatePresence>
-      </MotionDiv>
+      </motion.div>
       
       {/* Tools Pills */}
       <div className="mt-16 max-w-6xl mx-auto border-t border-slate-200 pt-10">

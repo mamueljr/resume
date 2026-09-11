@@ -4,8 +4,6 @@ import { Briefcase } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLang } from '../i18n';
 
-const MotionDiv = motion.div as any;
-
 export const Experience: React.FC = () => {
   const { t, experiences } = useLang();
 
@@ -13,7 +11,7 @@ export const Experience: React.FC = () => {
     <Section id="experience" kicker={t('experienceKicker')} title={t('experienceTitle')} dark>
       <div className="max-w-4xl mx-auto divide-y divide-white/10">
         {experiences.map((exp, index) => (
-          <MotionDiv
+          <motion.div
             key={index}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -43,7 +41,7 @@ export const Experience: React.FC = () => {
                 {exp.description}
               </p>
             </div>
-          </MotionDiv>
+          </motion.div>
         ))}
       </div>
     </Section>

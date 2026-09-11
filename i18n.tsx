@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { PROFILE, EXPERIENCES, EDUCATIONS, WEB_PORTFOLIO } from './constants';
-import { ExperienceItem, EducationItem, Project } from './types';
+import { PROFILE, EXPERIENCES, EDUCATIONS, WEB_PORTFOLIO, CERTIFICATIONS } from './constants';
+import { ExperienceItem, EducationItem, Project, Certification } from './types';
 
 export type Lang = 'es' | 'en';
 
@@ -74,6 +74,30 @@ const UI = {
     // App
     skipToContent: 'Saltar al contenido principal',
     backToTop: 'Volver arriba',
+    // AI Assistant
+    assistantTitle: 'Asistente de Emmanuel',
+    assistantOnline: 'En línea | Gemini 2.5 Flash',
+    assistantGreeting: '¡Hola! Soy el asistente virtual del Ing. Emmanuel Rojas. ✨\n\nPuedes preguntarme sobre su experiencia laboral, proyectos, habilidades técnicas o formación académica. ¿En qué te puedo ayudar hoy?',
+    assistantPlaceholder: 'Escribe una pregunta...',
+    assistantSuggested: 'Preguntas sugeridas:',
+    assistantSug1: '¿Cuál es su experiencia en Inteligencia Artificial?',
+    assistantSug2: '¿Qué materias imparte como profesor?',
+    assistantSug3: '¿En qué proyectos ha trabajado?',
+    assistantSug4: '¿Cuáles son sus datos de contacto?',
+    assistantKeyTitle: 'Configuración de API Key',
+    assistantKeyDesc: 'Para habilitar las respuestas en tiempo real, ingresa una llave de Gemini. Es 100% gratuita y se almacena únicamente en tu navegador.',
+    assistantSave: 'Guardar',
+    assistantRemoveKey: 'Eliminar llave guardada',
+    assistantGetKey: 'Obtener API Key gratis en Google AI Studio →',
+    assistantKeySaved: '✓ Llave de API configurada correctamente en tu navegador. ¡Ahora puedes chatear conmigo!',
+    assistantKeyRemoved: 'La llave de API local ha sido eliminada.',
+    assistantError: '❌ Hubo un error al conectar con Gemini. Por favor verifica tu conexión a internet o configura una API Key válida.',
+    assistantFallback: 'No pude procesar la respuesta. Inténtalo de nuevo.',
+    assistantToggle: 'Asistente IA',
+    assistantToggleAria: 'Abrir asistente de IA',
+    // Meta / SEO
+    metaTitle: 'CV | Ing. Adalberto Emmanuel Rojas',
+    metaDescription: 'Ingeniero en Computación y especialista en datos e inteligencia artificial. Docente universitario, desarrollador de software y consultor en ciencia de datos.',
   },
   en: {
     // Navbar
@@ -138,6 +162,30 @@ const UI = {
     // App
     skipToContent: 'Skip to main content',
     backToTop: 'Back to top',
+    // AI Assistant
+    assistantTitle: "Emmanuel's Assistant",
+    assistantOnline: 'Online | Gemini 2.5 Flash',
+    assistantGreeting: "Hello! I'm the virtual assistant for Ing. Emmanuel Rojas. ✨\n\nYou can ask me about his work experience, projects, technical skills, or academic background. How can I help you today?",
+    assistantPlaceholder: 'Type a question...',
+    assistantSuggested: 'Suggested questions:',
+    assistantSug1: 'What is his experience in Artificial Intelligence?',
+    assistantSug2: 'What courses does he teach?',
+    assistantSug3: 'What projects has he worked on?',
+    assistantSug4: 'What are his contact details?',
+    assistantKeyTitle: 'API Key Settings',
+    assistantKeyDesc: 'To enable real-time responses, enter a Gemini key. It is 100% free and stored only in your browser.',
+    assistantSave: 'Save',
+    assistantRemoveKey: 'Remove saved key',
+    assistantGetKey: 'Get a free API Key at Google AI Studio →',
+    assistantKeySaved: '✓ API key configured correctly in your browser. You can now chat with me!',
+    assistantKeyRemoved: 'The local API key has been removed.',
+    assistantError: '❌ There was an error connecting to Gemini. Please check your internet connection or configure a valid API Key.',
+    assistantFallback: "I couldn't process the response. Please try again.",
+    assistantToggle: 'AI Assistant',
+    assistantToggleAria: 'Open AI assistant',
+    // Meta / SEO
+    metaTitle: 'CV | Adalberto Emmanuel Rojas',
+    metaDescription: 'Computer Engineer and specialist in data and artificial intelligence. University lecturer, software developer, and data science consultant.',
   },
 } as const;
 
@@ -152,7 +200,7 @@ const PROFILE_EN = {
   ...PROFILE,
   title: 'Systems Engineer & Data Specialist',
   about:
-    "Systems Engineer with extensive experience in software development and in implementing solutions based on data science and artificial intelligence. Master's degree in Computer Science Engineering (degree in progress), focused on applied machine learning. More than a decade of experience as a university lecturer, combining theory and practice in real-world projects involving data analysis, automation, and technology support.",
+    "Systems Engineer with extensive experience in software development and in implementing solutions based on data science and artificial intelligence. Master's degree in Computer Science Engineering, focused on applied machine learning. More than a decade of experience as a university lecturer, combining theory and practice in real-world projects involving data analysis, automation, and technology support.",
 };
 
 const EXPERIENCES_EN: ExperienceItem[] = [
@@ -219,9 +267,8 @@ const EDUCATIONS_EN: EducationItem[] = [
   {
     institution: 'Universidad Autónoma de Chihuahua',
     degree: "Master's in Computer Science Engineering (MIC)",
-    period: '2023 - Degree in progress',
+    period: '2021 - 2024',
     description: 'Specialization in applied Machine Learning, data science, and neural networks.',
-    current: true,
   },
   {
     institution: 'Universidad Autónoma de Chihuahua',
@@ -284,6 +331,39 @@ const PORTFOLIO_EN: Project[] = [
   },
 ];
 
+const CERTIFICATIONS_EN: Certification[] = [
+  {
+    title: 'English Diploma',
+    issuer: 'Faculty of Philosophy and Letters, UACH',
+    imageUrl: 'assets/ingles.webp',
+  },
+  {
+    title: 'Structured Cabling',
+    issuer: 'CONDUNET',
+    imageUrl: 'assets/condunet.webp',
+  },
+  {
+    title: 'HAURI Computer Security',
+    issuer: 'HAURI Antivirus',
+    imageUrl: 'assets/hauri.webp',
+  },
+  {
+    title: 'Intermediate Java',
+    issuer: 'Museo Semilla',
+    imageUrl: 'assets/java.webp',
+  },
+  {
+    title: 'Computer Security',
+    issuer: 'UACH',
+    imageUrl: 'assets/seguridad_informatica.webp',
+  },
+  {
+    title: 'Research Week Certificate',
+    issuer: 'FCCF Graduate Secretariat',
+    imageUrl: 'assets/semana_investigacion20.webp',
+  },
+];
+
 /* ------------------------------------------------------------------ */
 /* Contexto                                                            */
 /* ------------------------------------------------------------------ */
@@ -296,6 +376,7 @@ interface LangContextValue {
   experiences: ExperienceItem[];
   educations: EducationItem[];
   portfolio: Project[];
+  certifications: Certification[];
 }
 
 const LangContext = createContext<LangContextValue | null>(null);
@@ -313,6 +394,18 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   useEffect(() => {
     document.documentElement.lang = lang;
+    document.title = UI[lang].metaTitle;
+
+    const setMeta = (selector: string, content: string) => {
+      const el = document.querySelector<HTMLMetaElement>(selector);
+      if (el) el.setAttribute('content', content);
+    };
+
+    setMeta('meta[name="description"]', UI[lang].metaDescription);
+    setMeta('meta[property="og:title"]', UI[lang].metaTitle);
+    setMeta('meta[property="og:description"]', UI[lang].metaDescription);
+    setMeta('meta[name="twitter:title"]', UI[lang].metaTitle);
+    setMeta('meta[name="twitter:description"]', UI[lang].metaDescription);
   }, [lang]);
 
   const value: LangContextValue = {
@@ -323,6 +416,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     experiences: lang === 'es' ? EXPERIENCES : EXPERIENCES_EN,
     educations: lang === 'es' ? EDUCATIONS : EDUCATIONS_EN,
     portfolio: lang === 'es' ? WEB_PORTFOLIO : PORTFOLIO_EN,
+    certifications: lang === 'es' ? CERTIFICATIONS : CERTIFICATIONS_EN,
   };
 
   return <LangContext.Provider value={value}>{children}</LangContext.Provider>;

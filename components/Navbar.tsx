@@ -3,9 +3,6 @@ import { Menu, X, Code, Database, GraduationCap, Briefcase, Award, Home, User, M
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { useLang, Lang } from '../i18n';
 
-const MotionNav = motion.nav as any;
-const MotionDiv = motion.div as any;
-
 const LangToggle: React.FC<{ className?: string }> = ({ className = '' }) => {
   const { lang, setLang } = useLang();
   return (
@@ -71,7 +68,7 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-      <MotionNav
+      <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
@@ -119,12 +116,12 @@ export const Navbar: React.FC = () => {
             </button>
           </div>
         </div>
-      </MotionNav>
+      </motion.nav>
 
       {/* Mobile Nav Dropdown */}
       <AnimatePresence>
         {isOpen && (
-          <MotionDiv
+          <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -150,7 +147,7 @@ export const Navbar: React.FC = () => {
                 );
               })}
             </div>
-          </MotionDiv>
+          </motion.div>
         )}
       </AnimatePresence>
     </>

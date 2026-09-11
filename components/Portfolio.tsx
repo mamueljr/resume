@@ -5,8 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, X, Globe, Eye } from 'lucide-react';
 import { useLang } from '../i18n';
 
-const MotionDiv = motion.div as any;
-
 export const Portfolio: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const { t, portfolio } = useLang();
@@ -23,7 +21,7 @@ export const Portfolio: React.FC = () => {
         {portfolio.map((project, index) => {
           const featured = index === 0;
           return (
-            <MotionDiv
+            <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -68,7 +66,7 @@ export const Portfolio: React.FC = () => {
                   ))}
                 </div>
               </div>
-            </MotionDiv>
+            </motion.div>
           );
         })}
       </div>
@@ -82,7 +80,7 @@ export const Portfolio: React.FC = () => {
             onKeyDown={handleKeyDown}
             tabIndex={0}
           >
-            <MotionDiv
+            <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -149,7 +147,7 @@ export const Portfolio: React.FC = () => {
                   </motion.button>
                 </div>
               </div>
-            </MotionDiv>
+            </motion.div>
           </div>
         )}
       </AnimatePresence>

@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Section } from './Section';
-import { CERTIFICATIONS, BADGE_IDS } from '../constants';
+import { BADGE_IDS } from '../constants';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { useLang } from '../i18n';
 
-const MotionDiv = motion.div as any;
-
 export const Certifications: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const { t } = useLang();
+  const { t, certifications } = useLang();
 
   // Load Credly script dynamically
   useEffect(() => {
@@ -38,8 +36,8 @@ export const Certifications: React.FC = () => {
     <Section id="certifications" kicker={t('certsKicker')} title={t('certsTitle')} dark>
       {/* Diplomas Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-20">
-        {CERTIFICATIONS.map((cert, idx) => (
-          <MotionDiv
+        {certifications.map((cert, idx) => (
+          <motion.div
             key={idx}
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -61,7 +59,7 @@ export const Certifications: React.FC = () => {
             </div>
             <h4 className="text-sm font-bold text-white leading-tight mb-1 select-none">{cert.title}</h4>
             <p className="text-xs text-gray-400 select-none">{cert.issuer}</p>
-          </MotionDiv>
+          </motion.div>
         ))}
       </div>
 

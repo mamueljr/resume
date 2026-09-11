@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, X, Send, Bot, User, Sparkles, Key, AlertCircle, RefreshCw } from 'lucide-react';
-import { PROFILE, EXPERIENCES, SKILLS, WEB_PORTFOLIO, EDUCATIONS, CERTIFICATIONS } from '../constants';
-
-const MotionDiv = motion.div as any;
+import { MessageSquare, X, Send, Bot, User, Sparkles, AlertCircle } from 'lucide-react';
+import { SKILLS } from '../constants';
+import { useLang } from '../i18n';
 
 interface Message {
   sender: 'user' | 'bot';
@@ -20,33 +19,33 @@ export const AIAssistant: React.FC = () => {
   const [apiKey, setApiKey] = useState('');
   const [apiKeyError, setApiKeyError] = useState(false);
 
+  const { t, lang, profile, experiences, educations, portfolio, certifications } = useLang();
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Suggested questions
   const suggestions = [
-    "¿Cuál es su experiencia en Inteligencia Artificial?",
-    "¿Qué materias imparte como profesor?",
-    "¿En qué proyectos ha trabajado?",
-    "¿Cuáles son sus datos de contacto?"
+    t('assistantSug1'),
+    t('assistantSug2'),
+    t('assistantSug3'),
+    t('assistantSug4'),
   ];
 
-  // Load API Key
+  // Load API Key + initial greeting
   useEffect(() => {
-    // Try localStorage for custom user key
     const savedKey = (localStorage.getItem('user_gemini_api_key') || '').trim();
 
     if (savedKey) {
       setApiKey(savedKey);
     }
 
-    // Add initial bot greeting
     setMessages([
       {
         sender: 'bot',
-        text: `¡Hola! Soy el asistente virtual del Ing. Emmanuel Rojas. ✨\n\nPuedes preguntarme sobre su experiencia laboral, proyectos, habilidades técnicas o formación académica. ¿En qué te puedo ayudar hoy?`,
+        text: t('assistantGreeting'),
         timestamp: new Date()
       }
     ]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Scroll to bottom on new messages
@@ -61,12 +60,12 @@ export const AIAssistant: React.FC = () => {
       setApiKey(trimmedKey);
       setShowKeyInput(false);
       setApiKeyError(false);
-      
+
       setMessages(prev => [
         ...prev,
         {
           sender: 'bot',
-          text: '✓ Llave de API configurada correctamente en tu navegador. ¡Ahora puedes chatear conmigo!',
+          text: t('assistantKeySaved'),
           timestamp: new Date()
         }
       ]);
@@ -81,25 +80,56 @@ export const AIAssistant: React.FC = () => {
       ...prev,
       {
         sender: 'bot',
-        text: 'La llave de API local ha sido eliminada.',
+        text: t('assistantKeyRemoved'),
         timestamp: new Date()
       }
     ]);
   };
 
-  const getSystemInstruction = () => {
-    const experiencesStr = EXPERIENCES.map(e => `- ${e.role} en ${e.company} (${e.period}): ${e.description}`).join('\n');
-    const educationsStr = EDUCATIONS.map(e => `- ${e.degree} en ${e.institution} (${e.period}): ${e.description || ''}`).join('\n');
+  const buildSystemInstruction = () => {
+    const experiencesStr = experiences.map(e => `- ${e.role} en ${e.company} (${e.period}): ${e.description}`).join('\n');
+    const educationsStr = educations.map(e => `- ${e.degree} en ${e.institution} (${e.period}): ${e.description || ''}`).join('\n');
     const skillsStr = SKILLS.map(s => `- ${s.name} (${s.category})`).join('\n');
-    const portfolioStr = WEB_PORTFOLIO.map(p => `- ${p.title}: ${p.description} (Link: ${p.link || 'N/A'}, Tags: ${p.tags.join(', ')})`).join('\n');
-    const certsStr = CERTIFICATIONS.map(c => `- ${c.title} de ${c.issuer}`).join('\n');
+    const portfolioStr = portfolio.map(p => `- ${p.title}: ${p.description} (Link: ${p.link || 'N/A'}, Tags: ${p.tags.join(', ')})`).join('\n');
+    const certsStr = certifications.map(c => `- ${c.title} de ${c.issuer}`).join('\n');
+
+    if (lang === 'en') {
+      return `You are the interactive virtual assistant for Engineer Emmanuel Rojas (Adalberto Emmanuel Rojas). Your goal is to answer questions from recruiters, students, and colleagues about his professional career, based strictly on his resume.
+
+Here is Emmanuel's information:
+Name: ${profile.name}
+Title: ${profile.title}
+About: ${profile.about}
+
+Work experience:
+${experiencesStr}
+
+Education:
+${educationsStr}
+
+Technical Skills:
+${skillsStr}
+
+Projects / Web Portfolio:
+${portfolioStr}
+
+Certifications:
+${certsStr}
+
+Instructions for answering:
+1. Be professional, helpful, concise, and friendly. Always respond in English.
+2. Base your answers only on the information provided. If asked something not in the resume, politely respond that you do not have that information and that they can contact Emmanuel directly using the contact links in the footer.
+3. Do not invent experience, degrees, projects, or technologies that are not explicit.
+4. Keep answers short (at most 2 or 3 short paragraphs) so they fit well in the chat.
+5. Suggest ways to contact him, always providing the direct links if asked how to reach him (email: mamueljr@gmail.com, WhatsApp: +52 614 254 1066, or LinkedIn: https://www.linkedin.com/in/adalberto-emmanuel-rojas/).`;
+    }
 
     return `Eres el asistente virtual interactivo del Ingeniero Emmanuel Rojas (Adalberto Emmanuel Rojas). Tu objetivo es responder preguntas de reclutadores, alumnos y colegas sobre su trayectoria profesional basándote estrictamente en su currículum.
 
 Aquí está la información de Emmanuel:
-Nombre: ${PROFILE.name}
-Título: ${PROFILE.title}
-Acerca de: ${PROFILE.about}
+Nombre: ${profile.name}
+Título: ${profile.title}
+Acerca de: ${profile.about}
 
 Experiencia laboral:
 ${experiencesStr}
@@ -138,7 +168,7 @@ Instrucciones para responder:
     setIsLoading(true);
 
     try {
-      const systemInstruction = getSystemInstruction();
+      const systemInstruction = buildSystemInstruction();
       let response: Response;
 
       if (apiKey) {
@@ -172,8 +202,8 @@ Instrucciones para responder:
       } else {
         // En local busca /api/chat, en producción de GitHub Pages apunta a tu servidor backend en Vercel
         const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-        const backendUrl = isLocal 
-          ? '/api/chat' 
+        const backendUrl = isLocal
+          ? '/api/chat'
           : 'https://resume-ten-red-17.vercel.app/api/chat';
 
         response = await fetch(backendUrl, {
@@ -193,7 +223,7 @@ Instrucciones para responder:
       }
 
       const data = await response.json();
-      const botText = data.candidates?.[0]?.content?.parts?.[0]?.text || 'No pude procesar la respuesta. Inténtalo de nuevo.';
+      const botText = data.candidates?.[0]?.content?.parts?.[0]?.text || t('assistantFallback');
 
       setMessages(prev => [
         ...prev,
@@ -210,7 +240,7 @@ Instrucciones para responder:
         ...prev,
         {
           sender: 'bot',
-          text: '❌ Hubo un error al conectar con Gemini. Por favor verifica tu conexión a internet o configura una API Key válida.',
+          text: t('assistantError'),
           timestamp: new Date()
         }
       ]);
@@ -224,7 +254,7 @@ Instrucciones para responder:
       {/* Chat Window */}
       <AnimatePresence>
         {isOpen && (
-          <MotionDiv
+          <motion.div
             initial={{ opacity: 0, scale: 0.8, y: 50 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 50 }}
@@ -239,10 +269,10 @@ Instrucciones para responder:
                 </div>
                 <div>
                   <h3 className="font-bold text-sm flex items-center gap-1.5">
-                    Asistente de Emmanuel
+                    {t('assistantTitle')}
                     <Sparkles size={14} className="text-accent-soft fill-accent-soft" />
                   </h3>
-                  <p className="text-[11px] text-gray-400 font-light">En línea | Gemini 2.5 Flash</p>
+                  <p className="text-[11px] text-gray-400 font-light">{t('assistantOnline')}</p>
                 </div>
               </div>
               <div className="flex items-center gap-1">
@@ -257,16 +287,16 @@ Instrucciones para responder:
 
             {/* Chat Body */}
             <div className="flex-1 p-4 overflow-y-auto flex flex-col gap-4 text-sm text-slate-100">
-              
+
               {/* API Key settings panel */}
               {(showKeyInput || apiKeyError) && (
                 <div className="p-3 bg-secondary/80 rounded-xl border border-white/10 mb-2">
                   <div className="flex items-start gap-2.5 mb-2">
                     <AlertCircle size={18} className="text-accent shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-xs font-semibold text-white">Configuración de API Key</p>
+                      <p className="text-xs font-semibold text-white">{t('assistantKeyTitle')}</p>
                       <p className="text-[11px] text-gray-400 mt-1 leading-normal">
-                        Para habilitar las respuestas en tiempo real, ingresa una llave de Gemini. Es 100% gratuita y se almacena únicamente en tu navegador.
+                        {t('assistantKeyDesc')}
                       </p>
                     </div>
                   </div>
@@ -288,24 +318,24 @@ Instrucciones para responder:
                       }}
                       className="px-3 py-1.5 bg-accent hover:bg-blue-600 text-white text-xs font-medium rounded-lg transition-colors"
                     >
-                      Guardar
+                      {t('assistantSave')}
                     </button>
                   </div>
                   {apiKey && (
-                    <button 
+                    <button
                       onClick={handleClearKey}
                       className="text-[10px] text-red-400 hover:text-red-300 mt-2 block hover:underline"
                     >
-                      Eliminar llave guardada
+                      {t('assistantRemoveKey')}
                     </button>
                   )}
-                  <a 
-                    href="https://aistudio.google.com/" 
-                    target="_blank" 
+                  <a
+                    href="https://aistudio.google.com/"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="text-[10px] text-accent hover:underline mt-1.5 block"
                   >
-                    Obtener API Key gratis en Google AI Studio &rarr;
+                    {t('assistantGetKey')}
                   </a>
                 </div>
               )}
@@ -353,7 +383,7 @@ Instrucciones para responder:
             {/* Suggestions Chips */}
             {messages.length === 1 && !isLoading && (
               <div className="px-4 pb-2 pt-1 flex flex-col gap-1.5 border-t border-white/10 bg-primary/40">
-                <p className="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Preguntas sugeridas:</p>
+                <p className="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">{t('assistantSuggested')}</p>
                 <div className="flex flex-wrap gap-1.5 max-h-24 overflow-y-auto pb-1">
                   {suggestions.map((sug, i) => (
                     <button
@@ -372,7 +402,7 @@ Instrucciones para responder:
             <div className="p-3 bg-primary border-t border-white/10 flex gap-2">
               <input
                 type="text"
-                placeholder="Escribe una pregunta..."
+                placeholder={t('assistantPlaceholder')}
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={(e) => {
@@ -390,7 +420,7 @@ Instrucciones para responder:
                 <Send size={16} />
               </motion.button>
             </div>
-          </MotionDiv>
+          </motion.div>
         )}
       </AnimatePresence>
 
@@ -399,13 +429,13 @@ Instrucciones para responder:
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
         className="p-4 bg-accent hover:bg-teal-600 text-white rounded-full shadow-2xl transition-all hover:scale-110 flex items-center justify-center gap-2 group relative z-50 hover:shadow-accent/30"
-        aria-label="Abrir asistente de IA"
+        aria-label={t('assistantToggleAria')}
       >
         <MessageSquare size={24} className="group-hover:rotate-12 transition-transform" />
         <span className="max-w-0 overflow-hidden whitespace-nowrap text-sm font-semibold transition-all group-hover:max-w-xs group-hover:ml-1 hidden sm:inline-block">
-          Asistente IA
+          {t('assistantToggle')}
         </span>
-        
+
         {/* Glow pulsing ring around the button to make it look premium */}
         <span className="absolute inset-0 rounded-full border border-accent animate-ping opacity-75"></span>
       </motion.button>

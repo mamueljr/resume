@@ -1,8 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const MotionDiv = motion.div as any;
-
 interface SectionProps {
   id?: string;
   title?: string;
@@ -26,7 +24,7 @@ export const Section: React.FC<SectionProps> = ({ id, title, kicker, className =
       )}
       <div className="relative z-10 max-w-6xl mx-auto">
         {title && (
-          <MotionDiv
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -41,7 +39,7 @@ export const Section: React.FC<SectionProps> = ({ id, title, kicker, className =
             <h2 className={`text-3xl md:text-5xl font-bold font-display tracking-tight leading-[1.05] text-balance ${dark ? 'text-white' : 'text-primary'}`}>
               {title}
             </h2>
-          </MotionDiv>
+          </motion.div>
         )}
         {children}
       </div>

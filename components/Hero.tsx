@@ -3,12 +3,10 @@ import { motion, animate, useReducedMotion } from 'framer-motion';
 import { Download } from 'lucide-react';
 import { useLang, UIKey } from '../i18n';
 
-const MotionDiv = motion.div as any;
-
 const STATS: { value: number; suffix: string; pad: number; labelKey: UIKey }[] = [
   { value: 15, suffix: '+', pad: 0, labelKey: 'statYears' },
   { value: 3, suffix: '', pad: 2, labelKey: 'statUniversities' },
-  { value: 11, suffix: '', pad: 0, labelKey: 'statCerts' },
+  { value: 12, suffix: '', pad: 0, labelKey: 'statCerts' },
 ];
 
 const CountUp: React.FC<{ value: number; pad: number; suffix: string; reduce: boolean }> = ({ value, pad, suffix, reduce }) => {
@@ -50,7 +48,7 @@ export const Hero: React.FC = () => {
       {/* Backdrop: blueprint grid + breathing teal glow */}
       <div className="bg-grid absolute inset-0 pointer-events-none z-0" />
       <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
-        <MotionDiv
+        <motion.div
           className="absolute top-[8%] right-[6%] w-[560px] h-[560px] bg-accent/15 rounded-full blur-[140px]"
           animate={reduce ? undefined : { opacity: [0.3, 0.55, 0.3], scale: [1, 1.12, 1] }}
           transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
@@ -63,7 +61,7 @@ export const Hero: React.FC = () => {
       <div className="relative z-10 flex-1 flex items-center max-w-6xl w-full mx-auto px-4 pt-32 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-14 md:gap-10 items-center w-full">
           {/* Text column */}
-          <MotionDiv
+          <motion.div
             initial={{ y: 28, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -102,10 +100,10 @@ export const Hero: React.FC = () => {
                 {t('heroCtaCV')}
               </motion.a>
             </div>
-          </MotionDiv>
+          </motion.div>
 
           {/* Portrait card */}
-          <MotionDiv
+          <motion.div
             initial={{ opacity: 0, y: 24, rotate: 2 }}
             animate={{ opacity: 1, y: 0, rotate: 2 }}
             whileHover={{ rotate: 0 }}
@@ -134,12 +132,12 @@ export const Hero: React.FC = () => {
             {/* Corner accent, like a technical drawing callout */}
             <div className="absolute -top-3 -right-3 w-16 h-16 border-t-2 border-r-2 border-accent rounded-tr-3xl pointer-events-none" />
             <div className="absolute -bottom-3 -left-3 w-16 h-16 border-b-2 border-l-2 border-accent/40 rounded-bl-3xl pointer-events-none" />
-          </MotionDiv>
+          </motion.div>
         </div>
       </div>
 
       {/* Stats bar */}
-      <MotionDiv
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.4, duration: 0.8 }}
@@ -157,7 +155,7 @@ export const Hero: React.FC = () => {
             </div>
           ))}
         </div>
-      </MotionDiv>
+      </motion.div>
 
       {/* Tech-stack marquee */}
       <div className="relative z-10 border-t border-white/10 overflow-hidden py-3.5">

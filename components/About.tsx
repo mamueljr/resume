@@ -4,8 +4,6 @@ import { Code2, Brain, Users } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLang } from '../i18n';
 
-const MotionDiv = motion.div as any;
-
 export const About: React.FC = () => {
   const { t, profile } = useLang();
 
@@ -17,7 +15,7 @@ export const About: React.FC = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-6xl mx-auto">
         {/* Featured tile: wide, dark, sets the anchor for the bento */}
-        <MotionDiv
+        <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           whileHover={{ y: -6 }}
@@ -32,9 +30,9 @@ export const About: React.FC = () => {
             <h4 className="text-xl font-bold mb-2 font-display">{t('aboutCard1Title')}</h4>
             <p className="text-slate-300 leading-relaxed max-w-xl">{t('aboutCard1Text')}</p>
           </div>
-        </MotionDiv>
+        </motion.div>
 
-        <MotionDiv
+        <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           whileHover={{ y: -6 }}
@@ -47,9 +45,9 @@ export const About: React.FC = () => {
           </div>
           <h4 className="text-lg font-bold text-slate-800 mb-2 font-display">{t('aboutCard2Title')}</h4>
           <p className="text-slate-600 text-sm leading-relaxed">{t('aboutCard2Text')}</p>
-        </MotionDiv>
+        </motion.div>
 
-        <MotionDiv
+        <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           whileHover={{ y: -6 }}
@@ -62,7 +60,7 @@ export const About: React.FC = () => {
           </div>
           <h4 className="text-lg font-bold text-slate-800 mb-2 font-display">{t('aboutCard3Title')}</h4>
           <p className="text-slate-600 text-sm leading-relaxed">{t('aboutCard3Text')}</p>
-        </MotionDiv>
+        </motion.div>
       </div>
     </Section>
   );
