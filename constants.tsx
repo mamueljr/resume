@@ -232,7 +232,7 @@ export const EDUCATIONS: EducationItem[] = [
   {
     institution: "Universidad Autónoma de Chihuahua",
     degree: "Maestría en Ingeniería en Ciencias Computacionales",
-    period: "2021 - 2024",
+    period: "Titulado",
     description: "Enfoque y especialización en Machine Learning aplicado, ciencia de datos y redes neuronales.",
   },
   {

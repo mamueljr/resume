@@ -267,7 +267,7 @@ const EDUCATIONS_EN: EducationItem[] = [
   {
     institution: 'Universidad Autónoma de Chihuahua',
     degree: "Master's in Computer Science Engineering (MIC)",
-    period: '2021 - 2024',
+    period: 'Graduated',
     description: 'Specialization in applied Machine Learning, data science, and neural networks.',
   },
   {
