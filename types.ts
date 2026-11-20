@@ -18,7 +18,11 @@ export interface EducationItem {
 
 export interface Skill {
   name: string;
-  level: number; // 0 to 100
+  level?: number; // deprecated: kept optional for compatibility
+  context?: string;
+  contextEn?: string;
+  depth?: 1 | 2 | 3;
+  featured?: boolean;
   category: 'development' | 'data' | 'hardware' | 'tools';
 }
 

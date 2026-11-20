@@ -78,27 +78,29 @@ export const EXPERIENCES: ExperienceItem[] = [
 
 export const SKILLS: Skill[] = [
   // Development
-  { name: "HTML5 / CSS3", level: 95, category: "development" },
-  { name: "JavaScript / TypeScript", level: 80, category: "development" },
-  { name: "PHP", level: 75, category: "development" },
-  { name: "Node.js & React", level: 75, category: "development" },
-  { name: "Docker & CI/CD", level: 70, category: "development" },
-  { name: "Git & GitHub", level: 85, category: "development" },
+  { name: "JavaScript & TypeScript", context: "React · Node.js", contextEn: "React · Node.js", depth: 3, featured: true, category: "development" },
+  { name: "React & Tailwind CSS", context: "UI · SPA", contextEn: "UI · SPA", depth: 3, category: "development" },
+  { name: "Node.js", context: "APIs · Backend", contextEn: "APIs · Backend", depth: 2, category: "development" },
+  { name: "PHP", context: "Sistemas web", contextEn: "Web systems", depth: 3, category: "development" },
+  { name: "Java", context: "POO · Aplicaciones", contextEn: "OOP · Applications", depth: 3, category: "development" },
+  { name: "C / C++", context: "Sistemas · Algoritmos", contextEn: "Systems · Algorithms", depth: 3, category: "development" },
+  { name: "HTML5 & CSS3", context: "Estándares web", contextEn: "Web standards", depth: 3, category: "development" },
 
-  // Data
-  { name: "Python", level: 85, category: "data" },
-  { name: "R", level: 70, category: "data" },
-  { name: "SQL (MySQL / PostgreSQL)", level: 85, category: "data" },
-  { name: "Pandas & NumPy", level: 85, category: "data" },
-  { name: "Scikit-Learn & TensorFlow", level: 75, category: "data" },
-  { name: "APIs de IA (Gemini / OpenAI)", level: 80, category: "data" },
-  { name: "Excel / Google Sheets Avanzado", level: 95, category: "data" },
+  // Data & AI
+  { name: "Python", context: "5 años", contextEn: "5 years", depth: 3, featured: true, category: "data" },
+  { name: "SQL (MySQL / PostgreSQL)", context: "Modelado · Consultas", contextEn: "Modeling · Queries", depth: 3, category: "data" },
+  { name: "Pandas & NumPy", context: "Análisis de datos", contextEn: "Data analysis", depth: 3, category: "data" },
+  { name: "Scikit-Learn & TensorFlow", context: "Machine Learning", contextEn: "Machine Learning", depth: 2, category: "data" },
+  { name: "APIs de IA (OpenAI / Gemini)", context: "Integración LLM", contextEn: "LLM integration", depth: 3, category: "data" },
+  { name: "R & Excel Avanzado", context: "Estadística · Reportes", contextEn: "Statistics · Reporting", depth: 2, category: "data" },
 
-  // Hardware/Support
-  { name: "Linux / Windows / macOS", level: 95, category: "hardware" },
-  { name: "Cableado Estructurado", level: 85, category: "hardware" },
-  { name: "Videovigilancia IP", level: 80, category: "hardware" },
-  { name: "Telefonía IP (Asterisk)", level: 65, category: "hardware" },
+  // DevOps & Infrastructure
+  { name: "Docker", context: "Contenedores", contextEn: "Containers", depth: 3, featured: true, category: "hardware" },
+  { name: "Pipelines CI/CD", context: "Automatización", contextEn: "Automation", depth: 2, category: "hardware" },
+  { name: "Git & GitHub", context: "Control de versiones", contextEn: "Version control", depth: 3, category: "hardware" },
+  { name: "Linux / Windows", context: "SysAdmin", contextEn: "SysAdmin", depth: 3, category: "hardware" },
+  { name: "Cloud", context: "Despliegue · Servicios", contextEn: "Deployment · Services", depth: 2, category: "hardware" },
+  { name: "Redes e infraestructura IP", context: "Cableado · Seguridad", contextEn: "Cabling · Security", depth: 3, category: "hardware" },
 ];
 
 export const WEB_PORTFOLIO: Project[] = [

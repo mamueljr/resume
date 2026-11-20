@@ -37,8 +37,8 @@ const CountUp: React.FC<{ value: number; suffix: string; reduce: boolean }> = ({
 };
 
 const STACK = [
-  'Python', 'Machine Learning', 'React', 'TypeScript', 'SQL', 'Docker',
-  'TensorFlow', 'Big Data', 'DevOps', 'APIs de IA', 'Ciencia de Datos', 'PHP', 'R',
+  'Python', 'Machine Learning', 'React', 'TypeScript', 'SQL',
+  'Docker', 'TensorFlow', 'CI/CD', 'PHP',
 ];
 
 export const Hero: React.FC = () => {
