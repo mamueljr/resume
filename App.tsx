@@ -53,16 +53,15 @@ const App: React.FC = () => {
       <AIAssistant />
 
       {/* Scroll to top button */}
-      <motion.button
-        whileTap={{ scale: 0.94 }}
+      <button
         onClick={scrollToTop}
-        className={`fixed bottom-6 left-6 p-3 bg-accent text-white rounded-full shadow-lg z-50 transition-all duration-300 hover:bg-teal-600 ${
-          showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
+        className={`fixed bottom-6 left-6 w-10 h-10 flex items-center justify-center bg-raised border border-white/10 text-[#eef0f5] rounded-lg z-50 transition-[transform,opacity] duration-200 hover:bg-secondary ${
+          showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
         }`}
         aria-label={t('backToTop')}
       >
-        <ArrowUp size={24} />
-      </motion.button>
+        <ArrowUp size={18} strokeWidth={1.5} />
+      </button>
     </div>
   );
 };

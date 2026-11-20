@@ -9,36 +9,36 @@ export const Education: React.FC = () => {
 
   return (
     <Section id="education" kicker={t('educationKicker')} title={t('educationTitle')}>
-      <div className="relative border-l-4 border-accent ml-4 md:ml-12 space-y-12">
+      <div className="relative border-l-2 border-[#111827]/15 ml-3 md:ml-8 space-y-8">
         {educations.map((edu, index) => (
-          <motion.div 
+          <motion.div
             key={index}
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            className="relative pl-8 md:pl-12"
+            transition={{ delay: index * 0.06, duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="relative pl-6 md:pl-10"
           >
             {/* Dot on timeline */}
-            <div className={`absolute -left-[14px] top-1 w-6 h-6 rounded-full border-4 border-paper ${edu.current ? 'bg-emerald-500' : 'bg-accent'}`}></div>
+            <div className={`absolute -left-2 top-6 w-3.5 h-3.5 rounded-full border-2 border-paper ${edu.current ? 'bg-[#16a34a]' : 'bg-accent'}`} />
 
-            <motion.div whileHover={{ y: -4 }} className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg hover:shadow-accent/5 transition-shadow border border-slate-200/80">
-              <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
-                <h3 className="text-xl font-bold text-slate-800 flex items-center gap-2 font-display">
-                  <GraduationCap size={22} className="text-accent" />
+            <div className="bg-white p-6 rounded-2xl border border-[#111827]/10">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
+                <h3 className="text-lg font-medium text-[#111827] flex items-center gap-2.5 font-display">
+                  <GraduationCap size={18} strokeWidth={1.5} className="text-[#4b5565] shrink-0" />
                   {edu.degree}
                 </h3>
-                <span className="text-xs font-mono font-semibold px-3 py-1 bg-accent/15 text-accent rounded-full w-fit mt-2 md:mt-0">
+                <span className="text-xs font-mono font-normal px-2.5 py-1 bg-[#eceff4] text-[#4b5565] rounded-md w-fit">
                   {edu.period}
                 </span>
               </div>
-              <h4 className="text-lg text-slate-600 font-medium mb-3">{edu.institution}</h4>
+              <h4 className="text-sm text-[#4b5565] font-medium mb-2">{edu.institution}</h4>
               {edu.description && (
-                <p className="text-slate-500 leading-relaxed">
+                <p className="text-sm text-[#6b7487] leading-relaxed">
                   {edu.description}
                 </p>
               )}
-            </motion.div>
+            </div>
           </motion.div>
         ))}
       </div>

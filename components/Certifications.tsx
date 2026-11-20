@@ -35,18 +35,18 @@ export const Certifications: React.FC = () => {
   return (
     <Section id="certifications" kicker={t('certsKicker')} title={t('certsTitle')} dark>
       {/* Diplomas Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-20">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-16">
         {certifications.map((cert, idx) => (
           <motion.div
             key={idx}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            whileHover={{ y: -4 }}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-secondary rounded-2xl p-3 text-center hover:bg-white/10 transition-colors cursor-pointer"
+            transition={{ delay: idx * 0.04, duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="bg-primary border border-white/10 rounded-xl p-3 text-center hover:bg-raised transition-colors duration-150 cursor-pointer"
             onClick={() => handleImageClick(cert.imageUrl)}
           >
-            <div className="h-32 mb-3 overflow-hidden rounded-lg bg-primary flex items-center justify-center">
+            <div className="h-28 mb-3 overflow-hidden rounded-lg bg-secondary flex items-center justify-center p-2">
               <img
                 src={cert.imageUrl}
                 alt={cert.title}
@@ -57,23 +57,23 @@ export const Certifications: React.FC = () => {
                 onDragStart={(e) => e.preventDefault()}
               />
             </div>
-            <h4 className="text-sm font-bold text-white leading-tight mb-1 select-none">{cert.title}</h4>
-            <p className="text-xs text-gray-400 select-none">{cert.issuer}</p>
+            <h4 className="text-sm font-medium text-[#eef0f5] leading-tight mb-1 select-none">{cert.title}</h4>
+            <p className="text-xs text-[#7a8296] select-none">{cert.issuer}</p>
           </motion.div>
         ))}
       </div>
 
       {/* Credly Badges */}
-      <h3 className="text-2xl font-bold text-center text-white mb-10 font-display">{t('certsBadges')}</h3>
-      <div className="flex flex-wrap justify-center gap-6">
+      <h3 className="text-xl font-medium text-center text-[#eef0f5] mb-8 font-display">{t('certsBadges')}</h3>
+      <div className="flex flex-wrap justify-center gap-4">
         {BADGE_IDS.map((id, idx) => (
-          <div 
+          <div
             key={idx}
-            data-iframe-width="150" 
-            data-iframe-height="270" 
-            data-share-badge-id={id} 
+            data-iframe-width="150"
+            data-iframe-height="270"
+            data-share-badge-id={id}
             data-share-badge-host="https://www.credly.com"
-            className="bg-white rounded-lg"
+            className="bg-white rounded-xl overflow-hidden"
           ></div>
         ))}
       </div>
@@ -85,20 +85,22 @@ export const Certifications: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black bg-opacity-90 p-4"
+            transition={{ duration: 0.18 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#0b0d14]/90 p-4"
             onClick={closeLightbox}
           >
             <button
               onClick={closeLightbox}
-              className="absolute top-4 right-4 text-white hover:text-gray-300 focus:outline-none"
+              className="absolute top-4 right-4 p-2 text-[#a3a9b8] hover:text-[#eef0f5] rounded-lg focus:outline-none"
+              aria-label="Close"
             >
-              <X size={32} />
+              <X size={24} strokeWidth={1.5} />
             </button>
             <img
               src={selectedImage}
               alt="Certificate Fullscreen"
-              className="max-w-full max-h-full object-contain select-none shadow-2xl"
-              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the image itself
+              className="max-w-full max-h-full object-contain select-none rounded-lg"
+              onClick={(e) => e.stopPropagation()}
               onContextMenu={handleContextMenu}
               onDragStart={(e) => e.preventDefault()}
             />

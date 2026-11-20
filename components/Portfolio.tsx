@@ -17,25 +17,25 @@ export const Portfolio: React.FC = () => {
 
   return (
     <Section id="portfolio" kicker={t('portfolioKicker')} title={t('portfolioTitle')}>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
         {portfolio.map((project, index) => {
           const featured = index === 0;
           return (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.05, duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               onClick={() => setSelectedProject(project)}
-              className={`group bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer border border-slate-200/50 flex flex-col ${
+              className={`group bg-white rounded-2xl overflow-hidden hover:border-[#111827]/25 transition-colors duration-150 cursor-pointer border border-[#111827]/10 flex flex-col ${
                 featured ? 'md:col-span-2 md:grid md:grid-cols-[3fr_2fr]' : ''
               }`}
             >
-              <div className={`relative overflow-hidden bg-slate-900 ${featured ? 'h-56 md:h-full md:min-h-[320px]' : 'h-56'}`}>
-                <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/20 transition-colors z-10 flex items-center justify-center">
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/95 text-slate-800 px-4 py-2 rounded-full font-semibold text-sm flex items-center gap-1.5 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
-                    <Eye size={16} /> {t('portfolioView')}
+              <div className={`relative overflow-hidden bg-secondary ${featured ? 'h-56 md:h-full md:min-h-[300px]' : 'h-56'}`}>
+                <div className="absolute inset-0 bg-[#0b0d14]/35 group-hover:bg-[#0b0d14]/15 transition-colors duration-150 z-10 flex items-center justify-center">
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-150 bg-white text-[#111827] px-3.5 py-2 rounded-lg font-medium text-xs flex items-center gap-1.5 border border-[#111827]/10">
+                    <Eye size={14} strokeWidth={1.5} /> {t('portfolioView')}
                   </span>
                 </div>
                 <img
@@ -43,25 +43,30 @@ export const Portfolio: React.FC = () => {
                   alt={project.title}
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover"
                 />
               </div>
-              <div className={`p-6 flex flex-col flex-1 ${featured ? 'md:p-9 md:justify-center' : ''}`}>
-                {featured && (
-                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent mb-3">
-                    {t('portfolioFeatured')}
+              <div className={`p-6 flex flex-col flex-1 ${featured ? 'md:p-8 md:justify-center' : ''}`}>
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="font-mono text-xs text-[#6b7487] tabular-nums">
+                    {String(index + 1).padStart(2, '0')}
                   </span>
-                )}
-                <h3 className={`font-bold text-slate-800 group-hover:text-accent transition-colors mb-2 font-display ${featured ? 'text-2xl md:text-3xl' : 'text-xl'}`}>
+                  {featured && (
+                    <span className="font-mono text-xs text-accent">
+                      {t('portfolioFeatured')}
+                    </span>
+                  )}
+                </div>
+                <h3 className={`font-medium text-[#111827] group-hover:text-accent transition-colors duration-150 mb-2 font-display ${featured ? 'text-2xl' : 'text-lg'}`}>
                   {project.title}
                 </h3>
-                <p className={`text-slate-600 mb-6 text-sm leading-relaxed ${featured ? '' : 'line-clamp-2'}`}>
+                <p className={`text-[#4b5565] mb-6 text-sm leading-relaxed ${featured ? '' : 'line-clamp-2'}`}>
                   {project.description}
                 </p>
                 <div className={`flex flex-wrap gap-2 ${featured ? '' : 'mt-auto'}`}>
                   {project.tags.map((tag, tIdx) => (
-                    <span key={tIdx} className="text-xs font-mono font-medium px-2 py-1 bg-teal-50 text-teal-700 rounded-md">
-                      #{tag}
+                    <span key={tIdx} className="text-xs font-mono font-normal px-2 py-0.5 bg-[#eceff4] text-[#4b5565] rounded">
+                      {tag}
                     </span>
                   ))}
                 </div>
@@ -74,77 +79,75 @@ export const Portfolio: React.FC = () => {
       {/* Project Details Modal */}
       <AnimatePresence>
         {selectedProject && (
-          <div 
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-sm"
+          <div
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#0b0d14]/80 backdrop-blur-sm"
             onClick={() => setSelectedProject(null)}
             onKeyDown={handleKeyDown}
             tabIndex={0}
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ duration: 0.3, type: "spring", damping: 25 }}
-              onClick={(e) => e.stopPropagation()} // Prevent close on clicking content
-              className="bg-white rounded-2xl shadow-2xl overflow-hidden max-w-3xl w-full flex flex-col md:flex-row max-h-[90vh] md:max-h-[80vh] border border-slate-200"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 12 }}
+              transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white rounded-2xl overflow-hidden max-w-3xl w-full flex flex-col md:flex-row max-h-[90vh] md:max-h-[80vh] border border-[#111827]/10"
             >
               {/* Image Column */}
-              <div className="md:w-1/2 relative bg-slate-900 h-64 md:h-auto min-h-[250px]">
-                <img 
-                  src={selectedProject.imageUrl} 
-                  alt={selectedProject.title} 
+              <div className="md:w-1/2 relative bg-secondary h-64 md:h-auto min-h-[240px]">
+                <img
+                  src={selectedProject.imageUrl}
+                  alt={selectedProject.title}
                   className="w-full h-full object-cover"
                 />
               </div>
 
               {/* Info Column */}
-              <div className="md:w-1/2 p-8 flex flex-col justify-between overflow-y-auto">
+              <div className="md:w-1/2 p-6 md:p-8 flex flex-col justify-between overflow-y-auto">
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-2xl font-bold text-slate-800 font-display">{selectedProject.title}</h3>
+                    <h3 className="text-xl font-medium text-[#111827] font-display">{selectedProject.title}</h3>
                     <button
                       onClick={() => setSelectedProject(null)}
-                      className="p-1.5 text-slate-400 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors"
-                      aria-label="Cerrar modal"
+                      className="p-1.5 text-[#6b7487] hover:text-[#111827] hover:bg-[#eceff4] rounded-lg transition-colors duration-150"
+                      aria-label={t('portfolioClose')}
                     >
-                      <X size={20} />
+                      <X size={18} strokeWidth={1.5} />
                     </button>
                   </div>
 
-                  <p className="text-slate-600 text-sm leading-relaxed mb-6 whitespace-pre-line">
+                  <p className="text-[#4b5565] text-sm leading-relaxed mb-6 whitespace-pre-line">
                     {selectedProject.description}
                   </p>
 
                   <div className="flex flex-wrap gap-2 mb-6">
                     {selectedProject.tags.map((tag, tIdx) => (
-                      <span key={tIdx} className="text-xs font-mono font-medium px-2.5 py-1 bg-slate-100 text-slate-600 rounded-md">
-                        #{tag}
+                      <span key={tIdx} className="text-xs font-mono font-normal px-2 py-0.5 bg-[#eceff4] text-[#4b5565] rounded">
+                        {tag}
                       </span>
                     ))}
                   </div>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-slate-100">
+                <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-[#111827]/10">
                   {selectedProject.link && (
-                    <motion.a
-                      whileTap={{ scale: 0.97 }}
+                    <a
                       href={selectedProject.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 px-5 py-2.5 bg-accent hover:bg-teal-600 text-white text-sm font-semibold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-accent/20 transition-all text-center"
+                      className="flex-1 h-10 px-4 bg-[#111827] hover:bg-[#1f2937] text-white text-sm font-medium rounded-lg flex items-center justify-center gap-2 transition-colors duration-150"
                     >
-                      <Globe size={16} />
+                      <Globe size={16} strokeWidth={1.5} />
                       {t('portfolioVisit')}
-                      <ExternalLink size={14} />
-                    </motion.a>
+                      <ExternalLink size={14} strokeWidth={1.5} />
+                    </a>
                   )}
-                  <motion.button
-                    whileTap={{ scale: 0.97 }}
+                  <button
                     onClick={() => setSelectedProject(null)}
-                    className="flex-1 px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-semibold rounded-xl transition-colors text-center"
+                    className="flex-1 h-10 px-4 bg-[#eceff4] hover:bg-[#e2e8f0] text-[#111827] text-sm font-medium rounded-lg transition-colors duration-150"
                   >
                     {t('portfolioClose')}
-                  </motion.button>
+                  </button>
                 </div>
               </div>
             </motion.div>

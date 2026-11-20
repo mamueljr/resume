@@ -3,13 +3,15 @@ import { motion, animate, useReducedMotion } from 'framer-motion';
 import { Download } from 'lucide-react';
 import { useLang, UIKey } from '../i18n';
 
-const STATS: { value: number; suffix: string; pad: number; labelKey: UIKey }[] = [
-  { value: 15, suffix: '+', pad: 0, labelKey: 'statYears' },
-  { value: 3, suffix: '', pad: 2, labelKey: 'statUniversities' },
-  { value: 12, suffix: '', pad: 0, labelKey: 'statCerts' },
+const EASE = [0.22, 1, 0.36, 1] as const;
+
+const STATS: { value: number; suffix: string; labelKey: UIKey }[] = [
+  { value: 15, suffix: '+', labelKey: 'statYears' },
+  { value: 3, suffix: '', labelKey: 'statUniversities' },
+  { value: 12, suffix: '', labelKey: 'statCerts' },
 ];
 
-const CountUp: React.FC<{ value: number; pad: number; suffix: string; reduce: boolean }> = ({ value, pad, suffix, reduce }) => {
+const CountUp: React.FC<{ value: number; suffix: string; reduce: boolean }> = ({ value, suffix, reduce }) => {
   const [display, setDisplay] = useState(reduce ? value : 0);
 
   useEffect(() => {
@@ -18,9 +20,9 @@ const CountUp: React.FC<{ value: number; pad: number; suffix: string; reduce: bo
       return;
     }
     const controls = animate(0, value, {
-      duration: 1.8,
-      delay: 0.5,
-      ease: [0.16, 1, 0.3, 1],
+      duration: 1.2,
+      delay: 0.2,
+      ease: EASE,
       onUpdate: (v: number) => setDisplay(Math.round(v)),
     });
     return () => controls.stop();
@@ -28,7 +30,7 @@ const CountUp: React.FC<{ value: number; pad: number; suffix: string; reduce: bo
 
   return (
     <>
-      {String(display).padStart(pad, '0')}
+      {display}
       {suffix}
     </>
   );
@@ -41,76 +43,62 @@ const STACK = [
 
 export const Hero: React.FC = () => {
   const reduce = useReducedMotion();
-  const { t, profile } = useLang();
+  const { t, lang, profile } = useLang();
+
+  const cvHref = lang === 'es' ? 'assets/cvSP.pdf' : 'assets/cvEN.pdf';
+  const cvFilename =
+    lang === 'es'
+      ? 'CV_Adalberto_Emmanuel_Rojas_ES.pdf'
+      : 'CV_Adalberto_Emmanuel_Rojas_EN.pdf';
 
   return (
     <div id="home" className="relative min-h-[100dvh] flex flex-col bg-primary overflow-hidden">
-      {/* Backdrop: blueprint grid + breathing teal glow */}
+      {/* Subtle engineering grid */}
       <div className="bg-grid absolute inset-0 pointer-events-none z-0" />
-      <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
-        <motion.div
-          className="absolute top-[8%] right-[6%] w-[560px] h-[560px] bg-accent/15 rounded-full blur-[140px]"
-          animate={reduce ? undefined : { opacity: [0.3, 0.55, 0.3], scale: [1, 1.12, 1] }}
-          transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <div className="absolute -bottom-40 -left-24 w-[420px] h-[420px] bg-accent/10 rounded-full blur-[120px]" />
-      </div>
-      <div className="grain-overlay fixed inset-0 z-0 pointer-events-none" />
 
       {/* Main hero content */}
-      <div className="relative z-10 flex-1 flex items-center max-w-6xl w-full mx-auto px-4 pt-32 pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-14 md:gap-10 items-center w-full">
+      <div className="relative z-10 flex-1 flex items-center max-w-6xl w-full mx-auto px-6 pt-28 pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-12 md:gap-12 items-center w-full">
           {/* Text column */}
-          <motion.div
-            initial={{ y: 28, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="order-2 md:order-1 text-center md:text-left"
-          >
-            <p className="font-mono text-xs md:text-sm text-accent-soft tracking-[0.18em] uppercase mb-6 flex items-center justify-center md:justify-start gap-3">
-              <span className="hidden md:inline-block w-8 h-px bg-accent-soft/60" />
+          <div className="order-2 md:order-1 text-center md:text-left">
+            <p className="font-mono text-xs md:text-sm text-accent-soft mb-6 flex items-center justify-center md:justify-start gap-3">
+              <span className="hidden md:inline-block w-8 h-px bg-accent-soft/50" />
               {t('heroEyebrow')}
             </p>
 
-            <h1 className="font-display font-bold tracking-tight leading-[0.95] text-white mb-6">
-              <span className="block text-[clamp(2.6rem,6.5vw,4.9rem)]">Adalberto</span>
-              <span className="block text-[clamp(2.6rem,6.5vw,4.9rem)]">Emmanuel</span>
-              <span className="block text-[clamp(2.6rem,6.5vw,4.9rem)] text-outline">Rojas</span>
+            <h1 className="font-display font-medium tracking-[-0.03em] leading-[1.02] text-[#eef0f5] mb-6">
+              <span className="block text-[clamp(2.5rem,6vw,4.5rem)]">Adalberto</span>
+              <span className="block text-[clamp(2.5rem,6vw,4.5rem)]">Emmanuel</span>
+              <span className="block text-[clamp(2.5rem,6vw,4.5rem)] text-accent-soft">Rojas</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-slate-300 font-light max-w-md mx-auto md:mx-0 mb-10 text-pretty">
+            <p className="text-lg md:text-xl text-[#a3a9b8] font-normal max-w-md mx-auto md:mx-0 mb-8 text-pretty leading-relaxed">
               {profile.title}. {t('heroSubtitle')}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-              <motion.a
-                whileTap={{ scale: 0.97 }}
+            <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+              <a
                 href="#about"
-                className="px-8 py-3 bg-accent hover:bg-teal-600 text-white font-semibold rounded-full transition-all shadow-lg hover:shadow-accent/30"
+                className="h-12 px-6 bg-[#eef0f5] hover:bg-white text-primary font-medium text-sm rounded-lg transition-colors duration-150 inline-flex items-center justify-center"
               >
                 {t('heroCtaAbout')}
-              </motion.a>
-              <motion.a
-                whileTap={{ scale: 0.97 }}
-                href="assets/Curriculum_Adalberto_Rojas.pdf"
+              </a>
+              <a
+                href={cvHref}
+                download={cvFilename}
                 target="_blank"
-                className="px-8 py-3 bg-transparent border-2 border-white/70 hover:bg-white hover:text-primary text-white font-semibold rounded-full transition-all flex items-center justify-center gap-2"
+                rel="noopener noreferrer"
+                className="h-12 px-6 bg-raised hover:bg-white/10 border border-white/10 text-[#eef0f5] font-medium text-sm rounded-lg transition-colors duration-150 inline-flex items-center justify-center gap-2"
               >
-                <Download size={20} />
+                <Download size={16} strokeWidth={1.5} className="text-[#a3a9b8]" />
                 {t('heroCtaCV')}
-              </motion.a>
+              </a>
             </div>
-          </motion.div>
+          </div>
 
           {/* Portrait card */}
-          <motion.div
-            initial={{ opacity: 0, y: 24, rotate: 2 }}
-            animate={{ opacity: 1, y: 0, rotate: 2 }}
-            whileHover={{ rotate: 0 }}
-            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="order-1 md:order-2 relative w-56 sm:w-64 md:w-full max-w-[19rem] mx-auto md:justify-self-end"
-          >
-            <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-secondary shadow-2xl shadow-black/50">
+          <div className="order-1 md:order-2 relative w-56 sm:w-64 md:w-full max-w-[19rem] mx-auto md:justify-self-end">
+            <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-secondary">
               <img
                 src={profile.photoUrl}
                 alt={profile.name}
@@ -120,54 +108,43 @@ export const Hero: React.FC = () => {
                 height={380}
                 className="w-full aspect-[4/5] object-cover"
               />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/95 via-primary/60 to-transparent p-4 pt-12">
-                <p className="font-mono text-[11px] text-accent-soft tracking-wider">
+              <div className="inset-x-0 bottom-0 bg-secondary/95 border-t border-white/10 p-4">
+                <p className="font-mono text-xs text-accent-soft">
                   {t('heroCardCredential')}
                 </p>
-                <p className="font-mono text-[11px] text-slate-400 tracking-wider mt-1">
+                <p className="font-mono text-xs text-[#7a8296] mt-1">
                   {t('heroCardLocation')}
                 </p>
               </div>
             </div>
-            {/* Corner accent, like a technical drawing callout */}
-            <div className="absolute -top-3 -right-3 w-16 h-16 border-t-2 border-r-2 border-accent rounded-tr-3xl pointer-events-none" />
-            <div className="absolute -bottom-3 -left-3 w-16 h-16 border-b-2 border-l-2 border-accent/40 rounded-bl-3xl pointer-events-none" />
-          </motion.div>
+          </div>
         </div>
       </div>
 
       {/* Stats bar */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.4, duration: 0.8 }}
-        className="relative z-10 border-t border-white/10"
-      >
-        <div className="max-w-6xl mx-auto px-4 py-6 grid grid-cols-3 gap-4">
+      <div className="relative z-10 border-t border-white/10">
+        <div className="max-w-6xl mx-auto px-6 py-6 grid grid-cols-3 gap-4">
           {STATS.map((stat) => (
             <div key={stat.labelKey} className="text-center md:text-left md:flex md:items-baseline md:gap-3">
-              <span className="block font-display font-bold text-2xl md:text-3xl text-white tabular-nums">
-                <CountUp value={stat.value} pad={stat.pad} suffix={stat.suffix} reduce={!!reduce} />
+              <span className="block font-display font-medium text-2xl md:text-3xl text-[#eef0f5] tabular-nums">
+                <CountUp value={stat.value} suffix={stat.suffix} reduce={!!reduce} />
               </span>
-              <span className="block font-mono text-[10px] md:text-xs uppercase tracking-[0.15em] text-slate-500 mt-1 md:mt-0">
+              <span className="block font-mono text-xs text-[#7a8296] mt-1 md:mt-0">
                 {t(stat.labelKey)}
               </span>
             </div>
           ))}
         </div>
-      </motion.div>
+      </div>
 
-      {/* Tech-stack marquee */}
-      <div className="relative z-10 border-t border-white/10 overflow-hidden py-3.5">
-        <div className="flex w-max animate-marquee">
-          {[...STACK, ...STACK].map((item, i) => (
-            <span
-              key={i}
-              className="flex items-center font-mono text-[11px] uppercase tracking-[0.2em] text-slate-500 whitespace-nowrap"
-            >
-              <span className="px-5">{item}</span>
-              <span className="text-accent">·</span>
-            </span>
+      {/* Tech-stack strip */}
+      <div className="relative z-10 border-t border-white/10 py-4">
+        <div className="max-w-6xl mx-auto px-6 md:pr-44 flex flex-wrap items-center justify-center md:justify-start gap-x-3 gap-y-2 font-mono text-xs text-[#7a8296]">
+          {STACK.map((item, i) => (
+            <React.Fragment key={item}>
+              <span>{item}</span>
+              {i < STACK.length - 1 && <span className="text-accent" aria-hidden="true">·</span>}
+            </React.Fragment>
           ))}
         </div>
       </div>

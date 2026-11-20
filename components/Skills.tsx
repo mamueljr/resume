@@ -31,61 +31,56 @@ export const Skills: React.FC = () => {
   return (
     <Section id="skills" kicker={t('skillsKicker')} title={t('skillsTitle')}>
       {/* Tab Filter Buttons */}
-      <div className="flex flex-wrap justify-center gap-2 mb-12">
+      <div className="flex flex-wrap justify-start gap-2 mb-10">
         {tabs.map((tab) => (
-          <motion.button
+          <button
             key={tab.id}
-            whileTap={{ scale: 0.96 }}
             onClick={() => setActiveTab(tab.id)}
-            className={`px-5 py-2.5 rounded-full font-medium text-sm transition-all duration-300 relative ${
+            className={`h-9 px-4 rounded-lg font-medium text-sm transition-colors duration-150 ${
               activeTab === tab.id
-                ? 'bg-accent text-white shadow-lg shadow-accent/25'
-                : 'bg-white hover:bg-slate-100 text-slate-600 hover:text-slate-900 border border-slate-200/80'
+                ? 'bg-[#111827] text-white'
+                : 'bg-white hover:bg-[#eceff4] text-[#4b5565] hover:text-[#111827] border border-[#111827]/10'
             }`}
           >
             {tab.label}
-          </motion.button>
+          </button>
         ))}
       </div>
 
       {/* Skills Grid */}
-      <motion.div 
-        layout 
-        className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 max-w-6xl mx-auto min-h-[300px]"
+      <motion.div
+        layout
+        className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto min-h-[280px]"
       >
         <AnimatePresence mode="popLayout">
           {filteredSkills.map((skill) => (
             <motion.div
               key={skill.name}
               layout
-              initial={{ opacity: 0, scale: 0.9, y: 15 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: -15 }}
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.3 }}
-              className="p-4 bg-white border border-slate-200/80 rounded-2xl shadow-sm hover:shadow-md transition-shadow"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="p-4 bg-white border border-[#111827]/10 rounded-xl"
             >
               <div className="flex justify-between items-center mb-3">
-                <span className="font-semibold text-slate-800">{skill.name}</span>
+                <span className="font-medium text-sm text-[#111827]">{skill.name}</span>
                 <div className="flex items-center gap-2">
                   {activeTab === 'all' && (
-                    <span className="text-[10px] px-2 py-0.5 bg-slate-100 text-slate-500 rounded font-medium">
+                    <span className="text-xs px-2 py-0.5 bg-[#eceff4] text-[#4b5565] rounded font-normal">
                       {getCategoryTitle(skill.category)}
                     </span>
                   )}
-                  <span className="text-sm font-bold text-accent font-mono tabular-nums">{skill.level}%</span>
+                  <span className="text-xs font-medium text-accent font-mono tabular-nums">{skill.level}%</span>
                 </div>
               </div>
-              {/* Segmented meter: 10 blocks, reads more technical than a progress bar */}
+              {/* Segmented meter: 10 blocks */}
               <div className="flex gap-1" role="img" aria-label={`${t('skillsLevel')}: ${skill.level}/100`}>
                 {Array.from({ length: 10 }).map((_, i) => (
-                  <motion.div
+                  <div
                     key={i}
-                    initial={{ opacity: 0, scaleY: 0.3 }}
-                    animate={{ opacity: 1, scaleY: 1 }}
-                    transition={{ duration: 0.25, delay: i * 0.035 }}
-                    className={`h-2.5 flex-1 rounded-[3px] ${
-                      i < Math.round(skill.level / 10) ? 'bg-accent' : 'bg-slate-200'
+                    className={`h-2 flex-1 rounded-sm ${
+                      i < Math.round(skill.level / 10) ? 'bg-accent' : 'bg-[#eceff4]'
                     }`}
                   />
                 ))}
@@ -94,13 +89,13 @@ export const Skills: React.FC = () => {
           ))}
         </AnimatePresence>
       </motion.div>
-      
-      {/* Tools Pills */}
-      <div className="mt-16 max-w-6xl mx-auto border-t border-slate-200 pt-10">
-        <h3 className="text-2xl font-bold mb-6 text-slate-800 border-b pb-2 font-display">{t('skillsTools')}</h3>
-        <div className="flex flex-wrap gap-3">
+
+      {/* Tools */}
+      <div className="mt-14 max-w-6xl mx-auto border-t border-[#111827]/10 pt-8">
+        <h3 className="text-lg font-medium mb-4 text-[#111827] font-display">{t('skillsTools')}</h3>
+        <div className="flex flex-wrap gap-2">
           {['Visual Studio Code', 'Jupyter Notebook', 'Google Colab', 'RStudio', 'Git / GitHub', 'Docker', 'MySQL Workbench', 'DBeaver', 'Postman', 'Tableau', 'PowerBI', 'Jira / Confluence', 'Linux CLI / Bash', 'Windows Server', 'Microsip ERP', 'Anaconda'].map((tool, i) => (
-             <span key={i} className="px-4 py-2 bg-white text-slate-700 rounded-lg font-medium border border-slate-200/80 hover:border-accent hover:text-accent transition-all duration-300 cursor-default shadow-sm">
+             <span key={i} className="px-3 py-1.5 bg-white text-[#4b5565] text-xs font-mono rounded-md border border-[#111827]/10">
                {tool}
              </span>
           ))}

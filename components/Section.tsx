@@ -14,29 +14,23 @@ export const Section: React.FC<SectionProps> = ({ id, title, kicker, className =
   return (
     <section
       id={id}
-      className={`relative overflow-hidden py-24 md:py-28 px-4 md:px-8 ${dark ? 'bg-secondary text-white' : 'bg-paper text-slate-800'} ${className}`}
+      className={`relative py-20 md:py-24 px-6 ${dark ? 'bg-secondary text-[#eef0f5]' : 'bg-paper text-[#111827]'} ${className}`}
     >
-      {dark && (
-        <>
-          <div className="absolute -top-32 -right-16 w-[420px] h-[420px] bg-accent/10 rounded-full blur-[130px] pointer-events-none z-0" />
-          <div className="grain-overlay absolute inset-0 opacity-60 pointer-events-none z-0" />
-        </>
-      )}
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         {title && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-14 md:mb-16 max-w-2xl"
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="mb-12 max-w-2xl"
           >
             {kicker && (
-              <span className={`block font-mono text-xs tracking-[0.2em] uppercase mb-3 ${dark ? 'text-accent-soft' : 'text-accent'}`}>
+              <span className={`block font-mono text-xs mb-3 ${dark ? 'text-accent-soft' : 'text-accent'}`}>
                 {kicker}
               </span>
             )}
-            <h2 className={`text-3xl md:text-5xl font-bold font-display tracking-tight leading-[1.05] text-balance ${dark ? 'text-white' : 'text-primary'}`}>
+            <h2 className={`text-3xl md:text-4xl font-medium font-display tracking-[-0.02em] leading-[1.12] text-balance ${dark ? 'text-[#eef0f5]' : 'text-[#111827]'}`}>
               {title}
             </h2>
           </motion.div>

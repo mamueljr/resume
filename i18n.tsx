@@ -77,21 +77,21 @@ const UI = {
     // AI Assistant
     assistantTitle: 'Asistente de Emmanuel',
     assistantOnline: 'En línea | Gemini 2.5 Flash',
-    assistantGreeting: '¡Hola! Soy el asistente virtual del Ing. Emmanuel Rojas. ✨\n\nPuedes preguntarme sobre su experiencia laboral, proyectos, habilidades técnicas o formación académica. ¿En qué te puedo ayudar hoy?',
-    assistantPlaceholder: 'Escribe una pregunta...',
-    assistantSuggested: 'Preguntas sugeridas:',
+    assistantGreeting: 'Hola. Soy el asistente virtual del Ing. Emmanuel Rojas.\n\nPuedes preguntarme sobre su experiencia laboral, proyectos, habilidades técnicas o formación académica.',
+    assistantPlaceholder: 'Escribe una pregunta',
+    assistantSuggested: 'Preguntas sugeridas',
     assistantSug1: '¿Cuál es su experiencia en Inteligencia Artificial?',
     assistantSug2: '¿Qué materias imparte como profesor?',
     assistantSug3: '¿En qué proyectos ha trabajado?',
     assistantSug4: '¿Cuáles son sus datos de contacto?',
     assistantKeyTitle: 'Configuración de API Key',
-    assistantKeyDesc: 'Para habilitar las respuestas en tiempo real, ingresa una llave de Gemini. Es 100% gratuita y se almacena únicamente en tu navegador.',
+    assistantKeyDesc: 'Para habilitar las respuestas en tiempo real, ingresa una llave de Gemini. Es gratuita y se almacena únicamente en tu navegador.',
     assistantSave: 'Guardar',
     assistantRemoveKey: 'Eliminar llave guardada',
     assistantGetKey: 'Obtener API Key gratis en Google AI Studio →',
-    assistantKeySaved: '✓ Llave de API configurada correctamente en tu navegador. ¡Ahora puedes chatear conmigo!',
+    assistantKeySaved: 'Llave de API configurada en tu navegador. Ya puedes iniciar la consulta.',
     assistantKeyRemoved: 'La llave de API local ha sido eliminada.',
-    assistantError: '❌ Hubo un error al conectar con Gemini. Por favor verifica tu conexión a internet o configura una API Key válida.',
+    assistantError: 'Hubo un error al conectar con Gemini. Verifica tu conexión a internet o configura una API Key válida.',
     assistantFallback: 'No pude procesar la respuesta. Inténtalo de nuevo.',
     assistantToggle: 'Asistente IA',
     assistantToggleAria: 'Abrir asistente de IA',
@@ -165,21 +165,21 @@ const UI = {
     // AI Assistant
     assistantTitle: "Emmanuel's Assistant",
     assistantOnline: 'Online | Gemini 2.5 Flash',
-    assistantGreeting: "Hello! I'm the virtual assistant for Ing. Emmanuel Rojas. ✨\n\nYou can ask me about his work experience, projects, technical skills, or academic background. How can I help you today?",
-    assistantPlaceholder: 'Type a question...',
-    assistantSuggested: 'Suggested questions:',
+    assistantGreeting: "Hello. I'm the virtual assistant for Ing. Emmanuel Rojas.\n\nYou can ask me about his work experience, projects, technical skills, or academic background.",
+    assistantPlaceholder: 'Type a question',
+    assistantSuggested: 'Suggested questions',
     assistantSug1: 'What is his experience in Artificial Intelligence?',
     assistantSug2: 'What courses does he teach?',
     assistantSug3: 'What projects has he worked on?',
     assistantSug4: 'What are his contact details?',
     assistantKeyTitle: 'API Key Settings',
-    assistantKeyDesc: 'To enable real-time responses, enter a Gemini key. It is 100% free and stored only in your browser.',
+    assistantKeyDesc: 'To enable real-time responses, enter a Gemini key. It is free and stored only in your browser.',
     assistantSave: 'Save',
     assistantRemoveKey: 'Remove saved key',
     assistantGetKey: 'Get a free API Key at Google AI Studio →',
-    assistantKeySaved: '✓ API key configured correctly in your browser. You can now chat with me!',
+    assistantKeySaved: 'API key configured in your browser. You can now start chatting.',
     assistantKeyRemoved: 'The local API key has been removed.',
-    assistantError: '❌ There was an error connecting to Gemini. Please check your internet connection or configure a valid API Key.',
+    assistantError: 'There was an error connecting to Gemini. Please check your internet connection or configure a valid API Key.',
     assistantFallback: "I couldn't process the response. Please try again.",
     assistantToggle: 'AI Assistant',
     assistantToggleAria: 'Open AI assistant',
@@ -296,38 +296,12 @@ const PORTFOLIO_EN: Project[] = [
   {
     ...WEB_PORTFOLIO[3],
     description:
-      'Music player from the Aura ecosystem. Enjoy your music with a modern, fluid interface on any device.',
+      'Medical clinic management system: clinical records, vital signs, ICD-10 diagnoses, PDF prescriptions, scheduling, and billing.',
   },
   {
     ...WEB_PORTFOLIO[4],
-    title: 'Weather App',
     description:
-      'Simple, easy-to-understand web and mobile weather app, ideal for real-time weather checks.',
-  },
-  {
-    ...WEB_PORTFOLIO[5],
-    description:
-      'Offline-first personal inventory app from the Aura ecosystem. Organize and check your belongings from anywhere, no internet connection required.',
-  },
-  {
-    ...WEB_PORTFOLIO[6],
-    description:
-      'Home management dashboard from the Aura ecosystem: bills and services, pending tasks, upcoming events, shopping, maintenance, contacts, pets, and vehicles in one place.',
-  },
-  {
-    ...WEB_PORTFOLIO[7],
-    description:
-      "Interactive web app bringing my thesis model to production. Predicts outcomes (Win/Draw/Loss) for the Premier League and the 2026 World Cup (with home-advantage logic for co-hosts and neutral venues).",
-  },
-  {
-    ...WEB_PORTFOLIO[8],
-    description:
-      'Clinical dashboard for physical assessment and physiological inference for athletes. Calculates BMI, VO2Max, and anaerobic power, generating automated recommendations.',
-  },
-  {
-    ...WEB_PORTFOLIO[9],
-    description:
-      'Intelligent lesson-planning assistant and structured rubric builder for university instructors, powered by the Gemini API and structured JSON modeling.',
+      'Shared per-barber calendar, online booking with no app download required, client history, and reports for barbershops.',
   },
 ];
 

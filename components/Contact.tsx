@@ -7,33 +7,31 @@ export const Contact: React.FC = () => {
   const { t } = useLang();
 
   return (
-    <footer id="contact" className="relative bg-primary text-white overflow-hidden">
-      <div className="absolute -top-32 left-1/4 w-[480px] h-[480px] bg-accent/10 rounded-full blur-[140px] pointer-events-none z-0" />
-      <div className="grain-overlay absolute inset-0 opacity-60 pointer-events-none z-0" />
-
-      <div className="relative z-10 max-w-6xl mx-auto px-4 pt-24 md:pt-28 pb-10">
-        <span className="block font-mono text-xs tracking-[0.2em] uppercase text-accent-soft mb-5">
+    <footer id="contact" className="relative bg-primary text-[#eef0f5] border-t border-white/10">
+      <div className="max-w-6xl mx-auto px-6 pt-20 md:pt-24 pb-10">
+        <span className="block font-mono text-xs text-accent-soft mb-4">
           {t('contactKicker')}
         </span>
 
-        <h2 className="font-display font-bold tracking-tight leading-none text-[clamp(3rem,10vw,7rem)] mb-10 text-balance">
-          {t('contactTitle')}<span className="text-accent">.</span>
+        <h2 className="font-display font-medium tracking-[-0.03em] leading-none text-[clamp(2.5rem,8vw,5.5rem)] mb-8 text-balance">
+          {t('contactTitle')}<span className="text-accent-soft">.</span>
         </h2>
 
         <a
           href="mailto:mamueljr@gmail.com"
-          className="group inline-flex items-center gap-3 text-xl md:text-3xl font-light text-slate-300 hover:text-white transition-colors"
+          className="group inline-flex items-center gap-3 text-xl md:text-2xl font-normal text-[#a3a9b8] hover:text-[#eef0f5] transition-colors duration-150"
         >
-          <span className="border-b border-slate-600 group-hover:border-accent transition-colors pb-1">
+          <span className="border-b border-white/15 group-hover:border-accent-soft transition-colors duration-150 pb-1">
             mamueljr@gmail.com
           </span>
           <ArrowUpRight
-            size={28}
-            className="text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform shrink-0"
+            size={24}
+            strokeWidth={1.5}
+            className="text-accent-soft shrink-0"
           />
         </a>
 
-        <div className="flex flex-wrap gap-3 mt-12">
+        <div className="flex flex-wrap gap-3 mt-10">
           {SOCIALS.map((social, idx) => {
             const Icon = social.icon;
             return (
@@ -42,11 +40,11 @@ export const Contact: React.FC = () => {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-2.5 px-5 py-3 bg-secondary border border-white/10 rounded-xl hover:border-accent/60 hover:bg-accent/10 transition-all duration-300"
+                className="group flex items-center gap-2.5 h-10 px-4 bg-secondary border border-white/10 rounded-lg hover:bg-raised transition-colors duration-150"
                 aria-label={social.name}
               >
-                <Icon size={18} className="text-slate-400 group-hover:text-accent transition-colors" />
-                <span className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors">
+                <Icon size={16} strokeWidth={1.5} className="text-[#7a8296] group-hover:text-[#eef0f5] transition-colors duration-150" />
+                <span className="text-sm font-normal text-[#a3a9b8] group-hover:text-[#eef0f5] transition-colors duration-150">
                   {social.name}
                 </span>
               </a>
@@ -54,7 +52,7 @@ export const Contact: React.FC = () => {
           })}
         </div>
 
-        <div className="border-t border-white/10 mt-16 pt-6 flex flex-col md:flex-row md:items-center justify-between gap-2 font-mono text-xs text-slate-500">
+        <div className="border-t border-white/10 mt-14 pt-6 flex flex-col md:flex-row md:items-center justify-between gap-2 font-mono text-xs text-[#7a8296]">
           <p>&copy; {new Date().getFullYear()} {t('contactRights')}</p>
           <p>React &middot; TypeScript &middot; Tailwind &middot; Gemini AI</p>
         </div>
