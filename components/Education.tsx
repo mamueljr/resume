@@ -1,6 +1,6 @@
 import React from 'react';
 import { Section } from './Section';
-import { GraduationCap } from 'lucide-react';
+import { GraduationCap, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLang } from '../i18n';
 
@@ -37,6 +37,17 @@ export const Education: React.FC = () => {
                 <p className="text-sm text-[#6b7487] leading-relaxed">
                   {edu.description}
                 </p>
+              )}
+              {edu.thesisTitle && edu.thesisUrl && (
+                <a
+                  href={edu.thesisUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-flex items-center gap-1.5 text-xs font-mono text-accent hover:underline"
+                >
+                  <span>{edu.thesisTitle}</span>
+                  <ExternalLink size={12} strokeWidth={1.5} className="shrink-0" />
+                </a>
               )}
             </div>
           </motion.div>

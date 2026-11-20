@@ -88,7 +88,7 @@ export const AIAssistant: React.FC = () => {
 
   const buildSystemInstruction = () => {
     const experiencesStr = experiences.map(e => `- ${e.role} en ${e.company} (${e.period}): ${e.description}`).join('\n');
-    const educationsStr = educations.map(e => `- ${e.degree} en ${e.institution} (${e.period}): ${e.description || ''}`).join('\n');
+    const educationsStr = educations.map(e => `- ${e.degree} en ${e.institution} (${e.period}): ${e.description || ''}${e.thesisTitle ? ` | ${e.thesisTitle} (${e.thesisUrl || ''})` : ''}`).join('\n');
     const skillsStr = SKILLS.map(s => `- ${s.name} (${s.category})`).join('\n');
     const portfolioStr = portfolio.map(p => `- ${p.title}: ${p.description} (Link: ${p.link || 'N/A'}, Tags: ${p.tags.join(', ')})`).join('\n');
     const certsStr = certifications.map(c => `- ${c.title} de ${c.issuer}`).join('\n');

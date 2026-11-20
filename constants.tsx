@@ -10,19 +10,19 @@ import { Github, Linkedin, Mail, Phone } from "lucide-react";
 
 export const PROFILE = {
   name: "Ing. Adalberto Emmanuel Rojas",
-  title: "Ingeniero en Sistemas & Data Specialist",
+  title: "Ingeniero en Computación · Full-Stack Developer / Data Specialist",
   about:
-    "Ingeniero en Sistemas con amplia experiencia en desarrollo de software e implementación de soluciones basadas en ciencia de datos e inteligencia artificial. Maestría en Ingeniería en Ciencias Computacionales, con enfoque en machine learning aplicado. Más de una década de experiencia como docente universitario, combinando la teoría con la práctica en proyectos reales de análisis de datos, automatización y soporte tecnológico.",
+    "Ingeniero en Computación con sólida experiencia en desarrollo de software Full-Stack, automatización de infraestructura y modelado de datos. Maestro en Ingeniería en Computación titulado, con especialización en Machine Learning aplicado. Combino el liderazgo de proyectos de software institucionales y productos SaaS propios (ESISCOM) con la docencia universitaria, la implementación de pipelines modernos de CI/CD, arquitecturas Cloud y soluciones basadas en Inteligencia Artificial.",
   photoUrl: "assets/18875.webp",
 };
 
 export const EXPERIENCES: ExperienceItem[] = [
   {
     company: "Universidad Tecmilenio",
-    role: "Profesor de Tiempo Parcial",
+    role: "Profesor de Tiempo Parcial (Ingeniería de Software y Nube)",
     period: "Junio 2024 - Actualidad",
     description:
-      "Docente universitario enfocado en guiar a los alumnos en el diseño e implementación de proyectos de software complejos utilizando arquitecturas en la nube, metodologías ágiles (Scrum), integración continua (CI/CD) y análisis de grandes volúmenes de datos (Big Data). Integrante activo del Proyecto Maestro Insignia.",
+      "Impartición de clases de programación utilizando Python y mentoría en diseño de arquitectura e implementación de proyectos complejos bajo metodologías ágiles (Scrum), arquitecturas Cloud, pipelines CI/CD y análisis de Big Data. Integrante activo del Proyecto Maestro Insignia.",
     current: true,
   },
   {
@@ -30,15 +30,15 @@ export const EXPERIENCES: ExperienceItem[] = [
     role: "Profesor de Tecnologías de Información",
     period: "2012 - Actualidad",
     description:
-      "Profesor de medio tiempo impartiendo materias de Tecnologías de Información y Cultura Digital, integrando metodologías de aprendizaje basado en proyectos y el uso de herramientas tecnológicas modernas para el desarrollo académico.",
+      "Cátedra universitaria en bases de datos, desarrollo web y cultura digital, integrando aprendizaje basado en proyectos y herramientas tecnológicas actuales para el desarrollo académico.",
     current: true,
   },
   {
     company: "Facultad de Ciencias de la Cultura Física - UACH",
-    role: "Jefe de Unidad de Sistemas",
+    role: "Jefe de Unidad de Sistemas / Desarrollador de Software Principal",
     period: "2012 - 2024",
     description:
-      "Lideré el diseño, desarrollo e implementación de sistemas web institucionales a la medida utilizando PHP, MySQL y arquitecturas modernas de red. Responsable del soporte técnico integral, administración de servidores locales, seguridad informática y sistemas de videovigilancia y control de accesos IP para toda la facultad.",
+      "Lideré el ciclo completo de vida del software en el diseño, desarrollo e implementación de sistemas web institucionales a la medida con PHP, MySQL y arquitecturas modernas. Administré y optimicé servidores locales y entornos de producción, reduciendo tiempos operativos mediante la digitalización y automatización de procesos académicos y administrativos.",
   },
   {
     company: "UNIDEP",
@@ -49,10 +49,10 @@ export const EXPERIENCES: ExperienceItem[] = [
   },
   {
     company: "Grupo Cimarron Chihuahua",
-    role: "Ingeniero de Soporte Técnico",
+    role: "Ingeniero de Soporte Técnico y Automatización",
     period: "2018 - 2020",
     description:
-      "Planificación e instalación de infraestructuras de redes cableadas/inalámbricas y videovigilancia corporativa. Soporte del ERP Microsip y desarrollo de herramientas de automatización y gestión interna.",
+      "Desarrollo e implementación de herramientas internas de software para la automatización de flujos de trabajo y gestión de datos. Soporte avanzado y administración del ERP Microsip, además de planificación e instalación de redes corporativas y seguridad de datos.",
   },
   {
     company: "COBACH PLANTEL 8",
@@ -65,7 +65,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     role: "Titular de Computación",
     period: "2008 - 2019",
     description:
-      "Diseño e implementación de currículo tecnológico adaptativo enfocado en cultura digital, programación básica y robótica para preescolar, primaria y secundaria.",
+      "Diseño de planes curriculares adaptativos en programación estructurada, bases de datos y robótica para preescolar, primaria y secundaria, promoviendo el pensamiento lógico-matemático.",
   },
   {
     company: "XNET",
@@ -197,15 +197,17 @@ export const SOCIALS = [
 
 export const EDUCATIONS: EducationItem[] = [
   {
-    institution: "Universidad Autónoma de Chihuahua",
-    degree: "Maestría en Ingeniería en Ciencias Computacionales",
-    period: "Titulado",
-    description: "Enfoque y especialización en Machine Learning aplicado, ciencia de datos y redes neuronales.",
+    institution: "Universidad Autónoma de Chihuahua (UACH)",
+    degree: "Maestría en Ingeniería en Computación",
+    period: "2023 – 2026 · Titulado",
+    description: "Enfoque en Machine Learning aplicado, Ciencia de Datos y Redes Neuronales artificiales.",
+    thesisTitle: "Tesis (2026): Modelos de Machine Learning para la predicción de resultados de fútbol — Repositorio UACH",
+    thesisUrl: "http://repositorio.uach.mx/1047/",
   },
   {
-    institution: "Universidad Autónoma de Chihuahua",
-    degree: "Ingeniería en Sistemas",
+    institution: "Universidad Autónoma de Chihuahua (UACH)",
+    degree: "Ingeniería en Computación",
     period: "Titulado",
-    description: "Formación sólida en desarrollo de software, administración de bases de datos, redes de computadoras y sistemas embebidos.",
+    description: "Formación sólida en desarrollo de software, administración de bases de datos relacionales, redes e infraestructura.",
   },
 ];

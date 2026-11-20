@@ -13,6 +13,8 @@ export interface EducationItem {
   degree: string;
   period: string;
   description?: string;
+  thesisTitle?: string;
+  thesisUrl?: string;
   current?: boolean;
 }
 

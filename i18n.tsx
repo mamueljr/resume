@@ -26,7 +26,7 @@ const UI = {
     heroSubtitle: 'Docente universitario y constructor de soluciones con datos, código e IA.',
     heroCtaAbout: 'Conóceme',
     heroCtaCV: 'Descargar CV',
-    heroCardCredential: 'MIC · Ingeniero en Sistemas',
+    heroCardCredential: 'MIC · Ingeniero en Computación',
     heroCardLocation: 'Chihuahua, México',
     statYears: 'Años en tecnología',
     statUniversities: 'Universidades',
@@ -34,12 +34,12 @@ const UI = {
     // About
     aboutKicker: 'Quién soy',
     aboutTitle: 'Perfil Profesional',
-    aboutCard1Title: 'Desarrollo de Software',
-    aboutCard1Text: 'Más de una década diseñando sistemas a medida, automatizaciones avanzadas y plataformas web robustas.',
+    aboutCard1Title: 'Desarrollo Full-Stack & SaaS',
+    aboutCard1Text: 'Sistemas institucionales a la medida (UACH) y productos SaaS propios en producción (ESISCOM Medical y Barber) con React, TypeScript, PHP y SQL.',
     aboutCard2Title: 'Ciencia de Datos e IA',
-    aboutCard2Text: 'Análisis predictivo, modelos de Machine Learning e integración práctica de APIs de Inteligencia Artificial.',
-    aboutCard3Title: 'Docencia Universitaria',
-    aboutCard3Text: 'Profesor en asignaturas críticas como Big Data, DevOps, Ingeniería de Software y Bases de Datos.',
+    aboutCard2Text: 'Modelos de Machine Learning en Python (tesis de maestría en predicción deportiva) e integración de APIs de IA como Gemini y OpenAI.',
+    aboutCard3Title: 'Docencia & Mentoría Técnica',
+    aboutCard3Text: 'Cátedra universitaria en Tecmilenio y UACH en Python, Ingeniería de Software, arquitecturas Cloud, pipelines CI/CD y Big Data.',
     // Education
     educationKicker: 'Trayectoria académica',
     educationTitle: 'Formación Académica',
@@ -114,7 +114,7 @@ const UI = {
     heroSubtitle: 'University lecturer building solutions with data, code, and AI.',
     heroCtaAbout: 'About me',
     heroCtaCV: 'Download résumé',
-    heroCardCredential: 'MIC · Systems Engineer',
+    heroCardCredential: 'MIC · Computer Engineer',
     heroCardLocation: 'Chihuahua, Mexico',
     statYears: 'Years in tech',
     statUniversities: 'Universities',
@@ -122,12 +122,12 @@ const UI = {
     // About
     aboutKicker: 'Who I am',
     aboutTitle: 'Professional Profile',
-    aboutCard1Title: 'Software Development',
-    aboutCard1Text: 'More than a decade designing custom systems, advanced automations, and robust web platforms.',
+    aboutCard1Title: 'Full-Stack & SaaS Development',
+    aboutCard1Text: 'Custom institutional systems (UACH) and production SaaS products (ESISCOM Medical & Barber) built with React, TypeScript, PHP, and SQL.',
     aboutCard2Title: 'Data Science & AI',
-    aboutCard2Text: 'Predictive analytics, machine learning models, and hands-on integration of AI APIs.',
-    aboutCard3Title: 'University Teaching',
-    aboutCard3Text: 'Professor of key courses such as Big Data, DevOps, Software Engineering, and Databases.',
+    aboutCard2Text: "Machine learning models in Python (Master's thesis on sports prediction) and hands-on integration of AI APIs such as Gemini and OpenAI.",
+    aboutCard3Title: 'Teaching & Technical Mentorship',
+    aboutCard3Text: 'University lecturer at Tecmilenio and UACH teaching Python, Software Engineering, Cloud architectures, CI/CD pipelines, and Big Data.',
     // Education
     educationKicker: 'Academic background',
     educationTitle: 'Education',
@@ -198,34 +198,34 @@ export type UIKey = keyof (typeof UI)['es'];
 
 const PROFILE_EN = {
   ...PROFILE,
-  title: 'Systems Engineer & Data Specialist',
+  title: 'Computer Engineer · Full-Stack Developer / Data Specialist',
   about:
-    "Systems Engineer with extensive experience in software development and in implementing solutions based on data science and artificial intelligence. Master's degree in Computer Science Engineering, focused on applied machine learning. More than a decade of experience as a university lecturer, combining theory and practice in real-world projects involving data analysis, automation, and technology support.",
+    "Computer Engineer with solid experience in Full-Stack software development, infrastructure automation, and data modeling. Holder of a Master's degree in Computer Engineering with a specialization in applied Machine Learning. I combine leading institutional software projects and proprietary SaaS products (ESISCOM) with university teaching, modern CI/CD pipelines, cloud architectures, and AI-based solutions.",
 };
 
 const EXPERIENCES_EN: ExperienceItem[] = [
   {
     company: 'Universidad Tecmilenio',
-    role: 'Part-Time Professor',
+    role: 'Part-Time Lecturer (Software Engineering and Cloud)',
     period: 'June 2024 - Present',
     description:
-      'University lecturer guiding students through the design and implementation of complex software projects using cloud architectures, agile methodologies (Scrum), continuous integration (CI/CD), and Big Data analysis. Active member of the Proyecto Maestro Insignia.',
+      'Teaching programming courses using Python and mentoring students in architecture design and implementation of complex software projects under agile methodologies (Scrum), cloud architectures, CI/CD pipelines, and Big Data analysis. Active member of Proyecto Maestro Insignia.',
     current: true,
   },
   {
     company: 'Facultad de Ciencias de la Cultura Física UACH',
-    role: 'Information Technology Professor',
+    role: 'Information Technology Lecturer',
     period: '2012 - Present',
     description:
-      'Part-time professor teaching Information Technology and Digital Culture courses, integrating project-based learning methodologies and modern technology tools for academic development.',
+      'University lecturer teaching databases, web development, and digital culture courses, integrating project-based learning and modern technology tools.',
     current: true,
   },
   {
     company: 'Facultad de Ciencias de la Cultura Física - UACH',
-    role: 'Head of IT Systems Unit',
+    role: 'Head of Systems Unit / Lead Software Developer',
     period: '2012 - 2024',
     description:
-      'Led the design, development, and implementation of custom institutional web systems using PHP, MySQL, and modern network architectures. Responsible for comprehensive technical support, local server administration, information security, and IP video surveillance and access control systems for the entire faculty.',
+      'Led the full software life cycle in the design, development, and implementation of custom institutional web systems using PHP, MySQL, and modern architectures. Managed and optimized local servers and production environments, reducing operating times through digitization and automation.',
   },
   {
     company: 'UNIDEP',
@@ -236,10 +236,10 @@ const EXPERIENCES_EN: ExperienceItem[] = [
   },
   {
     company: 'Grupo Cimarron Chihuahua',
-    role: 'Technical Support Engineer',
+    role: 'Technical Support and Automation Engineer',
     period: '2018 - 2020',
     description:
-      'Planned and installed wired/wireless network infrastructure and corporate video surveillance. Supported the Microsip ERP and developed automation and internal management tools.',
+      'Developed and implemented internal software tools to automate workflows and data management. Provided advanced support and administration for the Microsip ERP, and planned and installed corporate networks and data security measures.',
   },
   {
     company: 'COBACH PLANTEL 8',
@@ -252,7 +252,7 @@ const EXPERIENCES_EN: ExperienceItem[] = [
     role: 'Head of Computer Science',
     period: '2008 - 2019',
     description:
-      'Designed and implemented an adaptive technology curriculum focused on digital culture, basic programming, and robotics for preschool, elementary, and middle school.',
+      'Designed adaptive curricula in structured programming, databases, and robotics for preschool, elementary, and middle school, promoting logical-mathematical thinking.',
   },
   {
     company: 'XNET',
@@ -265,17 +265,19 @@ const EXPERIENCES_EN: ExperienceItem[] = [
 
 const EDUCATIONS_EN: EducationItem[] = [
   {
-    institution: 'Universidad Autónoma de Chihuahua',
-    degree: "Master's in Computer Science Engineering (MIC)",
-    period: 'Graduated',
-    description: 'Specialization in applied Machine Learning, data science, and neural networks.',
+    institution: 'Universidad Autónoma de Chihuahua (UACH)',
+    degree: "Master's in Computer Engineering",
+    period: '2023 – 2026 · Degree awarded',
+    description: 'Focus on applied Machine Learning, Data Science, and Artificial Neural Networks.',
+    thesisTitle: 'Thesis (2026): Machine Learning Models for Predicting Football Results — UACH Repository',
+    thesisUrl: 'http://repositorio.uach.mx/1047/',
   },
   {
-    institution: 'Universidad Autónoma de Chihuahua',
-    degree: 'Systems Engineering',
-    period: 'Graduated',
+    institution: 'Universidad Autónoma de Chihuahua (UACH)',
+    degree: "Bachelor's in Computer Engineering",
+    period: 'Graduate',
     description:
-      'Solid foundation in software development, database administration, computer networks, and embedded systems.',
+      'Solid training in software development, relational database administration, networks, and infrastructure.',
   },
 ];
 
